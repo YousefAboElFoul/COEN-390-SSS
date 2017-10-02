@@ -5,4 +5,4 @@ Our project is focused on creating an application that is used to translate sign
 **Student** | **ID**
 :---:| ---
 Nicholas Gattuso | `40007087`
-Yousef Abo El Foul | '27199120'
+Yousef Abo El Foul | `27199120`
