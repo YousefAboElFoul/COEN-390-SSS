@@ -7,4 +7,4 @@ Our project is focused on creating an application that is used to translate sign
 Nicholas Gattuso | `40007087`
 Yousef Abo El Foul | `27199120`
 Cameron Hall | `40004827`
-
+Yazan Odeh | `26556191`
