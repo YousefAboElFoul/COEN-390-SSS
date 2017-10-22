@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity
     //--------to LOG mainActivity events-----------
     protected static final String TAG = "MainActivity";
 
+    //---------------------------------------Function for when the activity is created--------------------------------
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

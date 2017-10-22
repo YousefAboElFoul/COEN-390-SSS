@@ -14,6 +14,7 @@ public class voicePage extends AppCompatActivity
     //--------to LOG textPage events-----------
     protected static final String TAG = "textActivity";
 
+    //---------------------------------------Function for when the activity is created--------------------------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
