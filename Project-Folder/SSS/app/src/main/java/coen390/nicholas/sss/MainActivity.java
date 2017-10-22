@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity
         {
             //action to switch to settings gets pressed
             case R.id.goSettings:
-                Intent startIntent = new Intent(MainActivity.this, voicePage.class);
+                Intent startIntent = new Intent(MainActivity.this, settings.class);
                 startActivity(startIntent);
                 return true;
         }
