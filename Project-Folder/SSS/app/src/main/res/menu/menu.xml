@@ -3,7 +3,6 @@
 
     <item
         android:id="@+id/goSettings"
-        android:onClick="goToSettings"
         android:checkable="false"
         android:enabled="true"
         android:icon="@android:drawable/ic_menu_agenda"

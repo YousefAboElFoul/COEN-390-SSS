@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -39,6 +41,14 @@ public class MainActivity extends AppCompatActivity
         goVoice = (Button) findViewById(R.id.getVoice);
     }
 
+    //---------------------------------Function for when the action button gets pressed----------------------------------
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.menu, menu);
+
+        return true;
+    }
+
     //-----------------------------Function to go to text page when text button is pressed---------------------------------
     public void goToText(View view)
     {
@@ -51,5 +61,20 @@ public class MainActivity extends AppCompatActivity
     {
         Intent startIntent = new Intent(MainActivity.this, voicePage.class);
         startActivity(startIntent);
+    }
+
+    //function for when items are selected
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        Log.d(TAG, "The onOptions event");
+        switch (item.getItemId())
+        {
+            //action to switch grades gets pressed
+            case R.id.goSettings:
+                Intent startIntent = new Intent(MainActivity.this, voicePage.class);
+                startActivity(startIntent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
