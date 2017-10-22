@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity
         goVoice = (Button) findViewById(R.id.getVoice);
     }
 
-    //---------------------------------Function for when the action button gets pressed----------------------------------
+    //-----------------------------------Functions for when the user presses the items--------------------------------------
+    //------when the action button gets pressed--------
     public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -49,27 +50,28 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    //-----------------------------Function to go to text page when text button is pressed---------------------------------
+    //----------when text button is pressed------------
     public void goToText(View view)
     {
         Intent startIntent = new Intent(MainActivity.this, textPageActivity.class);
         startActivity(startIntent);
     }
 
-    //-----------------------------Function to go to voice page when voice button is pressed---------------------------------
+    //----------when voice button is pressed--------------
     public void goToVoice(View view)
     {
         Intent startIntent = new Intent(MainActivity.this, voicePage.class);
         startActivity(startIntent);
     }
 
-    //function for when items are selected
+    //-----------when items are selected----------------
+    //attempted to make an onClick in the menu, but it crashed the app...
     public boolean onOptionsItemSelected(MenuItem item)
     {
         Log.d(TAG, "The onOptions event");
         switch (item.getItemId())
         {
-            //action to switch grades gets pressed
+            //action to switch to settings gets pressed
             case R.id.goSettings:
                 Intent startIntent = new Intent(MainActivity.this, voicePage.class);
                 startActivity(startIntent);
