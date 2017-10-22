@@ -18,7 +18,7 @@ public class textPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_text_page);
         Log.d(TAG,"The onCreate() event");
 
         setupUI();
