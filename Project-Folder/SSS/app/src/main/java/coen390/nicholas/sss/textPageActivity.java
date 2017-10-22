@@ -3,7 +3,6 @@ package coen390.nicholas.sss;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class textPageActivity extends AppCompatActivity {

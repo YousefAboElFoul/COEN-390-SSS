@@ -1,8 +1,10 @@
 package coen390.nicholas.sss;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -37,4 +39,10 @@ public class MainActivity extends AppCompatActivity
         goVoice = (Button) findViewById(R.id.getVoice);
     }
 
+    //-----------------------------Function to go to text page when text button is pressed---------------------------------
+    public void goToText(View view)
+    {
+        Intent startIntent = new Intent(MainActivity.this, textPageActivity.class);
+        startActivity(startIntent);
+    }
 }
