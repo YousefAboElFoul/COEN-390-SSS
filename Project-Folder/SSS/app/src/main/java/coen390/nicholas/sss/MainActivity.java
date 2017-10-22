@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity
     protected void setupUI()
     {
         title = (TextView) findViewById(R.id.Title);
-        hello = (TextView) findViewById(R.id.helloText); //link button
+        hello = (TextView) findViewById(R.id.helloText);
         goText = (Button) findViewById(R.id.getText);
         goVoice = (Button) findViewById(R.id.getVoice);
     }
