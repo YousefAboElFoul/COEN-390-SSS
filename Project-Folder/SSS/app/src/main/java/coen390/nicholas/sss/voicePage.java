@@ -6,28 +6,22 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity
+public class voicePage extends AppCompatActivity
 {
     //--------------------------------------------Declaring variables----------------------------------------------
     //-------for objects needed in the home page-------
     TextView title = null;
-    TextView hello = null;
-    Button goText = null;
-    Button goVoice = null;
 
-    //--------to LOG mainActivity events-----------
-    protected static final String TAG = "MainActivity";
+    //--------to LOG textPage events-----------
+    protected static final String TAG = "textActivity";
 
     //---------------------------------------Function for when the activity is created--------------------------------
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_voice_page);
         Log.d(TAG,"The onCreate() event");
 
         setupUI();
@@ -36,10 +30,7 @@ public class MainActivity extends AppCompatActivity
     //---------------------------Function that links the objects to their xml definitions-----------------------------
     protected void setupUI()
     {
-        title = (TextView) findViewById(R.id.Title);
-        hello = (TextView) findViewById(R.id.helloText);
-        goText = (Button) findViewById(R.id.getText);
-        goVoice = (Button) findViewById(R.id.getVoice);
+        title = (TextView) findViewById(R.id.voiceTitle);
     }
 
     //-----------------------------------Functions for when the user presses the items--------------------------------------
@@ -51,22 +42,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    //----------when text button is pressed------------
-    public void goToText(View view)
-    {
-        Intent startIntent = new Intent(MainActivity.this, textPageActivity.class);
-        startActivity(startIntent);
-    }
-
-    //----------when voice button is pressed--------------
-    public void goToVoice(View view)
-    {
-        Intent startIntent = new Intent(MainActivity.this, voicePage.class);
-        startActivity(startIntent);
-    }
-
     //-----------when items are selected----------------
-    //attempted to make an onClick in the menu, but it crashed the app...
     public boolean onOptionsItemSelected(MenuItem item)
     {
         Log.d(TAG, "The onOptions event");
@@ -74,7 +50,7 @@ public class MainActivity extends AppCompatActivity
         {
             //action to switch to settings gets pressed
             case R.id.goSettings:
-                Intent startIntent = new Intent(MainActivity.this, settings.class);
+                Intent startIntent = new Intent(voicePage.this, settings.class);
                 startActivity(startIntent);
                 return true;
         }
