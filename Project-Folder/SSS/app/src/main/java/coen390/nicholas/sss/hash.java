@@ -10,7 +10,7 @@ public class hash
     public hash(){}
 
     //--------------------------------------------Function that sets the alphabet----------------------------------------------
-    public void setAlphabets() {
+    public static void setAlphabets() {
         //this where we assign the key and the value<KEY,Value>
         alphabets.put(1, "A");
         alphabets.put(2, "B");
@@ -45,7 +45,7 @@ public class hash
     public static String getAlphabets(int key)
     {
         String letter = alphabets.get(key);//this where we get the key and get the value that is assigned to the key
-
+        
         return letter;
     }
 }

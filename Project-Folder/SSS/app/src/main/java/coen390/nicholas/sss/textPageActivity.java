@@ -32,6 +32,7 @@ public class textPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_text_page);
         Log.d(TAG,"The onCreate() event");
 
+        hash.setAlphabets();
         setupUI();
     }
 
