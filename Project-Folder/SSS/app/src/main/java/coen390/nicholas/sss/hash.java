@@ -2,7 +2,8 @@ package coen390.nicholas.sss;
 
 import java.util.Hashtable;
 
-public class hash {
+public class hash
+{
     Hashtable<Integer, String> alphabets = new Hashtable<Integer, String>();
 
     //--------------------------------------------Function that sets the alphabet----------------------------------------------
@@ -37,9 +38,10 @@ public class hash {
     }
 
 
+    //--------------------------------------------Function to get a letter-------------------------------------------
     public Hashtable<Integer, String> getAlphabets(int key)
     {
-        alphabets.get(key);//this where we get the key andget the value that is assigned to the key
+        alphabets.get(key);//this where we get the key and get the value that is assigned to the key
 
         return alphabets;
     }
