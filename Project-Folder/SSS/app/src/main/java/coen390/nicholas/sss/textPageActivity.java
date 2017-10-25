@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.Random;
 
 public class textPageActivity extends AppCompatActivity {
 
@@ -19,6 +22,7 @@ public class textPageActivity extends AppCompatActivity {
 
     //--------to LOG textPage events-----------
     protected static final String TAG = "textActivity";
+
 
     //---------------------------------------Function for when the activity is created--------------------------------
     @Override
@@ -61,5 +65,17 @@ public class textPageActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    //-------------------------------------Function for getting and outputting a letter----------------------------------------
+    public void outputLetter(View view)
+    {
+        //-------Generate a random number from 1-26 for the indexes---------
+        Random rndIndex = new Random();
+        int hashIndex = rndIndex.nextInt(26) + 1;
+
+        String letter = hash.getAlphabets(hashIndex);
+
+        showText.setText(letter);
     }
 }
