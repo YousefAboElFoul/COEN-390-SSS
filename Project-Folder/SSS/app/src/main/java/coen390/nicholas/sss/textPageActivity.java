@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class textPageActivity extends AppCompatActivity {
@@ -13,6 +14,8 @@ public class textPageActivity extends AppCompatActivity {
     //--------------------------------------------Declaring variables----------------------------------------------
     //-------for objects needed in the home page-------
     TextView title = null;
+    TextView showText = null;
+    Button getLetter = null;
 
     //--------to LOG textPage events-----------
     protected static final String TAG = "textActivity";
@@ -32,6 +35,8 @@ public class textPageActivity extends AppCompatActivity {
     protected void setupUI()
     {
         title = (TextView) findViewById(R.id.textTitle);
+        showText = (TextView) findViewById(R.id.viewLetter);
+        getLetter = (Button) findViewById(R.id.getLetter);
     }
 
     //-----------------------------------Functions for when the user presses the items--------------------------------------
