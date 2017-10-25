@@ -27,7 +27,7 @@ public class voicePage extends AppCompatActivity
     protected static final String TAG = "textActivity";
 
     //------------Voice variable-----------------
-    TextToSpeech t1;
+    TextToSpeech speaking;
 
     //---------------------------------------Function for when the activity is created--------------------------------
     @Override
@@ -38,11 +38,13 @@ public class voicePage extends AppCompatActivity
 
         hash.setAlphabets();
 
-        t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+        //reference on initialization:
+        //https://www.tutorialspoint.com/android/android_text_to_speech.htm
+        speaking = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 if (status != TextToSpeech.ERROR) {
-                    t1.setLanguage(Locale.UK);
+                    speaking.setLanguage(Locale.UK);
                 }
             }
         });
@@ -83,6 +85,8 @@ public class voicePage extends AppCompatActivity
     }
 
     //-------------------------------------Function for getting and outputting a letter----------------------------------------
+    //potential to customize our own voice:
+    //https://android.stackexchange.com/questions/14713/is-there-a-way-to-change-the-text-to-speech-persons-voice
     public void outputVoice(View view)
     {
         //-------Generate a random number from 1-26 for the indexes---------
@@ -91,10 +95,12 @@ public class voicePage extends AppCompatActivity
 
         String letter = hash.getAlphabets(hashIndex);
 
+        //reference on using the if to fix the speak issue:
+        //https://stackoverflow.com/questions/30280082/android-tts-sound-leaked-service-connection-and-speak-deprecated
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            t1.speak(letter,TextToSpeech.QUEUE_FLUSH,null,null);
+            speaking.speak(letter,TextToSpeech.QUEUE_FLUSH,null,null);
         } else {
-            t1.speak(letter, TextToSpeech.QUEUE_FLUSH, null);
+            speaking.speak(letter, TextToSpeech.QUEUE_FLUSH, null);
         }
     }
 }
