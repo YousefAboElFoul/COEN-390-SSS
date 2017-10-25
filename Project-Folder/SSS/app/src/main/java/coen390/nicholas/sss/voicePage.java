@@ -1,12 +1,15 @@
 package coen390.nicholas.sss;
 
 import android.content.Intent;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import java.util.Locale;
 
 public class voicePage extends AppCompatActivity
 {
@@ -17,12 +20,24 @@ public class voicePage extends AppCompatActivity
     //--------to LOG textPage events-----------
     protected static final String TAG = "textActivity";
 
+    //------------Voice variable-----------------
+    TextToSpeech t1;
+
     //---------------------------------------Function for when the activity is created--------------------------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice_page);
         Log.d(TAG,"The onCreate() event");
+
+        t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status != TextToSpeech.ERROR) {
+                    t1.setLanguage(Locale.UK);
+                }
+            }
+        });
 
         setupUI();
     }

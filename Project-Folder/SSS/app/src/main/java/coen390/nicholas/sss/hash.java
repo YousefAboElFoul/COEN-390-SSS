@@ -45,7 +45,7 @@ public class hash
     public static String getAlphabets(int key)
     {
         String letter = alphabets.get(key);//this where we get the key and get the value that is assigned to the key
-        
+
         return letter;
     }
 }
