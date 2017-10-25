@@ -2,7 +2,7 @@ package coen390.nicholas.sss;
 
 import java.util.Hashtable;
 
-public class Hash {
+public class hash {
     Hashtable<Integer, String> alphabets = new Hashtable<Integer, String>();
 
     //--------------------------------------------Function that sets the alphabet----------------------------------------------
