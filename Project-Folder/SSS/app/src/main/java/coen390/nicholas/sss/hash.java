@@ -6,6 +6,9 @@ public class hash
 {
     Hashtable<Integer, String> alphabets = new Hashtable<Integer, String>();
 
+    //-----------------------------------------------------Class Constructor-------------------------------------------------
+    public hash(){}
+
     //--------------------------------------------Function that sets the alphabet----------------------------------------------
     public void setAlphabets() {
         //this where we assign the key and the value<KEY,Value>
