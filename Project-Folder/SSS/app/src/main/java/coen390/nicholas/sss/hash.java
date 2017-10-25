@@ -42,10 +42,10 @@ public class hash
 
 
     //--------------------------------------------Function to get a letter-------------------------------------------
-    public static Hashtable<Integer, String> getAlphabets(int key)
+    public static String getAlphabets(int key)
     {
-        alphabets.get(key);//this where we get the key and get the value that is assigned to the key
+        String letter = alphabets.get(key);//this where we get the key and get the value that is assigned to the key
 
-        return alphabets;
+        return letter;
     }
 }
