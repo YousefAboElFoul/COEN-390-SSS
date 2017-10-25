@@ -35,6 +35,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="59dp"
         android:text="Get A Letter"
+        android:onClick="outputLetter"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textTitle" />
