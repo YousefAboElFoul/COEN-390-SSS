@@ -41,7 +41,7 @@ public class textPageActivity extends AppCompatActivity {
     {
         title = (TextView) findViewById(R.id.textTitle);
         showText = (TextView) findViewById(R.id.viewLetter);
-        getLetter = (Button) findViewById(R.id.getLetter);
+        getLetter = (Button) findViewById(R.id.getLetterV);
     }
 
     //-----------------------------------Functions for when the user presses the items--------------------------------------
