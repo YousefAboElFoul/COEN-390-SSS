@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
 {
+//
     //--------------------------------------------Declaring variables----------------------------------------------
     //-------for objects needed in the home page-------
     TextView title = null;
