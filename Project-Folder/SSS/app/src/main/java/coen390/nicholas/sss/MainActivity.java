@@ -16,12 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    //
-
-    //---------------------------------Bluetooth  variables------------------------------------------------------
-    BluetoothAdapter myBluetoothAdapter;
 
     //--------------------------------------------Declaring variables----------------------------------------------
+    //------------Bluetooth variables--------------
+    BluetoothAdapter myBluetoothAdapter;
+
     //-------for objects needed in the home page-------
     TextView title = null;
     TextView hello = null;
