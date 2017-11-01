@@ -76,4 +76,12 @@
         app:layout_constraintVertical_bias="0.507"
         app:layout_constraintLeft_toRightOf="@+id/getText" />
 
+    <Button
+        android:id="@+id/bluetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connect to arduino"
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="404dp" />
+
 </android.support.constraint.ConstraintLayout>
