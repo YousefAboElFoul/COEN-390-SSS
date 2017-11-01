@@ -79,10 +79,17 @@ public class MainActivity extends AppCompatActivity {
     //attempted to make an onClick in the menu, but it crashed the app...
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.d(TAG, "The onOptions event");
+        Intent startIntent;
         switch (item.getItemId()) {
+
+            //action to switch to the letter page
+            case R.id.goLetter:
+                startIntent = new Intent(MainActivity.this, letterPage.class);
+                startActivity(startIntent);
+                return true;
             //action to switch to settings gets pressed
             case R.id.goSettings:
-                Intent startIntent = new Intent(MainActivity.this, settings.class);
+                startIntent = new Intent(MainActivity.this, settings.class);
                 startActivity(startIntent);
                 return true;
         }
