@@ -102,7 +102,7 @@ public class wordPageActivity extends AppCompatActivity {
             wording = null;
             addLetter.setVisibility(View.INVISIBLE);
         }
-        else {word = true; getWord.setText("End Word"); addLetter.setVisibility(View.VISIBLE);}
+        else {word = true; getWord.setText("End Word"); addLetter.setVisibility(View.VISIBLE); showText.setText(wording);}
     }
 
     public void addToWord(View view)
