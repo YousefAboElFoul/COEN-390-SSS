@@ -92,8 +92,8 @@ public class wordPageActivity extends AppCompatActivity {
     public void makingWord(View view)
     {
         //make bool variable false if its true, and true if its false
-        if (word) { word = false;}
-        else {word = true;}
+        if (word) { word = false; getWord.setText("Make a Word");}
+        else {word = true; getWord.setText("End Word");}
     }
 
 
