@@ -81,10 +81,14 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "The onOptions event");
         Intent startIntent;
         switch (item.getItemId()) {
-
             //action to switch to the letter page
             case R.id.goLetter:
                 startIntent = new Intent(MainActivity.this, letterPage.class);
+                startActivity(startIntent);
+                return true;
+            //action to switch to word page
+            case R.id.goWord:
+                startIntent = new Intent(MainActivity.this, wordPageActivity.class);
                 startActivity(startIntent);
                 return true;
             //action to switch to settings gets pressed
