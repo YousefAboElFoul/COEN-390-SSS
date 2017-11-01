@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity
     //----------when voice button is pressed--------------
     public void goToVoice(View view)
     {
-        Intent startIntent = new Intent(MainActivity.this, voicePage.class);
+        Intent startIntent = new Intent(MainActivity.this, letterPage.class);
         startActivity(startIntent);
     }
 

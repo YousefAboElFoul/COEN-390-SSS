@@ -15,12 +15,12 @@ import android.widget.TextView;
 import java.util.Locale;
 import java.util.Random;
 
-public class voicePage extends AppCompatActivity
+public class letterPage extends AppCompatActivity
 {
     //--------------------------------------------Declaring variables----------------------------------------------
     //-------for objects needed in the home page-------
     TextView title = null;
-    TextView voice = null;
+    TextView letter = null;
     Button getVLetter = null;
 
     //--------to LOG textPage events-----------
@@ -33,7 +33,7 @@ public class voicePage extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_voice_page);
+        setContentView(R.layout.activity_letter_page);
         Log.d(TAG,"The onCreate() event");
 
         hash.setAlphabets();
@@ -56,7 +56,7 @@ public class voicePage extends AppCompatActivity
     protected void setupUI()
     {
         title = (TextView) findViewById(R.id.voiceTitle);
-        voice = (TextView) findViewById(R.id.viewLetter);
+        letter = (TextView) findViewById(R.id.viewLetter);
         getVLetter = (Button) findViewById(R.id.getLetterV);
     }
 
@@ -77,7 +77,7 @@ public class voicePage extends AppCompatActivity
         {
             //action to switch to settings gets pressed
             case R.id.goSettings:
-                Intent startIntent = new Intent(voicePage.this, settings.class);
+                Intent startIntent = new Intent(letterPage.this, settings.class);
                 startActivity(startIntent);
                 return true;
         }
@@ -87,20 +87,21 @@ public class voicePage extends AppCompatActivity
     //-------------------------------------Function for getting and outputting a letter----------------------------------------
     //potential to customize our own voice:
     //https://android.stackexchange.com/questions/14713/is-there-a-way-to-change-the-text-to-speech-persons-voice
-    public void outputVoice(View view)
+    public void outputLetter(View view)
     {
         //-------Generate a random number from 1-26 for the indexes---------
         Random rndIndex = new Random();
         int hashIndex = rndIndex.nextInt(26) + 1;
 
-        String letter = hash.getAlphabets(hashIndex);
+        String alpha = hash.getAlphabets(hashIndex);
+        letter.setText(alpha);
 
         //reference on using the if to fix the speak issue:
         //https://stackoverflow.com/questions/30280082/android-tts-sound-leaked-service-connection-and-speak-deprecated
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            speaking.speak(letter,TextToSpeech.QUEUE_FLUSH,null,null);
+            speaking.speak(alpha,TextToSpeech.QUEUE_FLUSH,null,null);
         } else {
-            speaking.speak(letter, TextToSpeech.QUEUE_FLUSH, null);
+            speaking.speak(alpha, TextToSpeech.QUEUE_FLUSH, null);
         }
     }
 }

@@ -20,7 +20,7 @@
             android:name=".textPageActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".voicePage"
+            android:name=".letterPage"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".settings"
             android:parentActivityName=".MainActivity" />

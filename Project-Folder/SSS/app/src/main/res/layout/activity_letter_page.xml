@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="coen390.nicholas.sss.voicePage">
+    tools:context="coen390.nicholas.sss.letterPage">
 
     <TextView
         android:id="@+id/voiceTitle"
@@ -35,7 +35,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="53dp"
         android:text="Get A Letter"
-        android:onClick="outputVoice"
+        android:onClick="outputLetter"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/voiceTitle"
