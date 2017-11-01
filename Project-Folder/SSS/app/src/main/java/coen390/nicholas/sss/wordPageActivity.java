@@ -29,6 +29,9 @@ public class wordPageActivity extends AppCompatActivity {
     //------------Voice variable-----------------
     TextToSpeech speaking;
 
+    //----------To control word making-----------
+    boolean word = false;
+
 
     //---------------------------------------Function for when the activity is created--------------------------------
     @Override
@@ -84,6 +87,15 @@ public class wordPageActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    //-------------------------------------Function for monitoring the Word making----------------------------------------
+    public void makingWord(View view)
+    {
+        //make bool variable false if its true, and true if its false
+        if (word) { word = false;}
+        else {word = true;}
+    }
+
 
     //-------------------------------------Function for getting and outputting a letter----------------------------------------
     //potential to customize our own voice:
