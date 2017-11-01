@@ -99,6 +99,7 @@ public class wordPageActivity extends AppCompatActivity {
         {
             word = false;
             getWord.setText("Make a Word");
+            wording = null;
             addLetter.setVisibility(View.INVISIBLE);
         }
         else {word = true; getWord.setText("End Word"); addLetter.setVisibility(View.VISIBLE);}
