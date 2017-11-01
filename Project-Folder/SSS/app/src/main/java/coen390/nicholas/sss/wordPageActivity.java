@@ -118,7 +118,7 @@ public class wordPageActivity extends AppCompatActivity {
         if (wording == null) {wording = letter + "";}
         else { wording = wording + letter;}
 
-        showText.setText(letter);
+        showText.setText(wording);
     }
 
 
