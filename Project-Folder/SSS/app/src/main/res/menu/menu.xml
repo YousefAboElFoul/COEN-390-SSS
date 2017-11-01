@@ -2,6 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/goWord"
+        android:checkable="false"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="Word Translation"
+        android:visible="true" />
+
+    <item
         android:id="@+id/goSettings"
         android:checkable="false"
         android:enabled="true"
