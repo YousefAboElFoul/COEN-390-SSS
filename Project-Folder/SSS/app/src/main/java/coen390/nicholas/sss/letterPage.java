@@ -15,13 +15,13 @@ import android.widget.TextView;
 import java.util.Locale;
 import java.util.Random;
 
-public class letterPage extends AppCompatActivity
-{
+public class letterPage extends AppCompatActivity {
+
     //--------------------------------------------Declaring variables----------------------------------------------
     //-------for objects needed in the home page-------
     TextView title = null;
-    TextView letter = null;
-    Button getVLetter = null;
+    TextView showText = null;
+    Button getLetter = null;
 
     //--------to LOG textPage events-----------
     protected static final String TAG = "textActivity";
@@ -29,14 +29,14 @@ public class letterPage extends AppCompatActivity
     //------------Voice variable-----------------
     TextToSpeech speaking;
 
+
     //---------------------------------------Function for when the activity is created--------------------------------
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_letter_page);
         Log.d(TAG,"The onCreate() event");
-
-        hash.setAlphabets();
 
         //reference on initialization:
         //https://www.tutorialspoint.com/android/android_text_to_speech.htm
@@ -49,15 +49,16 @@ public class letterPage extends AppCompatActivity
             }
         });
 
+        hash.setAlphabets();
         setupUI();
     }
 
     //---------------------------Function that links the objects to their xml definitions-----------------------------
     protected void setupUI()
     {
-        title = (TextView) findViewById(R.id.voiceTitle);
-        letter = (TextView) findViewById(R.id.viewLetter);
-        getVLetter = (Button) findViewById(R.id.getLetterV);
+        title = (TextView) findViewById(R.id.textTitle);
+        showText = (TextView) findViewById(R.id.viewLetter);
+        getLetter = (Button) findViewById(R.id.getLetterV);
     }
 
     //-----------------------------------Functions for when the user presses the items--------------------------------------
@@ -93,15 +94,16 @@ public class letterPage extends AppCompatActivity
         Random rndIndex = new Random();
         int hashIndex = rndIndex.nextInt(26) + 1;
 
-        String alpha = hash.getAlphabets(hashIndex);
-        //letter.setText(alpha);
+        String letter = hash.getAlphabets(hashIndex);
+
+        showText.setText(letter);
 
         //reference on using the if to fix the speak issue:
         //https://stackoverflow.com/questions/30280082/android-tts-sound-leaked-service-connection-and-speak-deprecated
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            speaking.speak(alpha,TextToSpeech.QUEUE_FLUSH,null,null);
+            speaking.speak(letter, TextToSpeech.QUEUE_FLUSH,null,null);
         } else {
-            speaking.speak(alpha, TextToSpeech.QUEUE_FLUSH, null);
+            speaking.speak(letter, TextToSpeech.QUEUE_FLUSH, null);
         }
     }
 }

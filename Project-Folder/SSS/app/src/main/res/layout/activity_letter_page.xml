@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="coen390.nicholas.sss.letterPage">
+    tools:context="coen390.nicholas.sss.textPageActivity">
 
     <TextView
-        android:id="@+id/voiceTitle"
+        android:id="@+id/textTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -15,7 +15,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="casual"
-        android:text="VOICE TRANSLATION PAGE"
+        android:text="TEXT TRANSLATION PAGE"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
         android:textSize="24sp"
@@ -33,16 +33,15 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="59dp"
         android:text="Get A Letter"
         android:onClick="outputLetter"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/voiceTitle"
-        app:layout_constraintHorizontal_bias="0.501" />
+        app:layout_constraintTop_toBottomOf="@+id/textTitle" />
 
     <TextView
-        android:id="@+id/showVoice"
+        android:id="@+id/viewLetter"
         android:layout_width="139dp"
         android:layout_height="78dp"
         android:layout_marginBottom="8dp"
@@ -57,5 +56,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/getLetterV"
-        app:layout_constraintVertical_bias="0.333" />
+        app:layout_constraintVertical_bias="0.341" />
 </android.support.constraint.ConstraintLayout>
