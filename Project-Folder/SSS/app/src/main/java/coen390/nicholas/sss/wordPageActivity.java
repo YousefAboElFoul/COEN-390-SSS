@@ -32,6 +32,7 @@ public class wordPageActivity extends AppCompatActivity {
 
     //----------To control word making-----------
     boolean word = false;
+    String wording;
 
 
     //---------------------------------------Function for when the activity is created--------------------------------
@@ -94,8 +95,27 @@ public class wordPageActivity extends AppCompatActivity {
     public void makingWord(View view)
     {
         //make bool variable false if its true, and true if its false
-        if (word) { word = false; getWord.setText("Make a Word"); addLetter.setVisibility(View.INVISIBLE);}
+        if (word)
+        {
+            word = false;
+            getWord.setText("Make a Word");
+            addLetter.setVisibility(View.INVISIBLE);
+        }
         else {word = true; getWord.setText("End Word"); addLetter.setVisibility(View.VISIBLE);}
+    }
+
+    public void addToWord(View view)
+    {
+        //-------Generate a random number from 1-26 for the indexes---------
+        Random rndIndex = new Random();
+        int hashIndex = rndIndex.nextInt(26) + 1;
+
+        String letter = hash.getAlphabets(hashIndex);
+
+        if (wording == null) {wording = letter + "";}
+        else { wording = wording + letter;}
+
+        showText.setText(letter);
     }
 
 
@@ -104,13 +124,6 @@ public class wordPageActivity extends AppCompatActivity {
     //https://android.stackexchange.com/questions/14713/is-there-a-way-to-change-the-text-to-speech-persons-voice
     public void outputLetter(View view)
     {
-        //-------Generate a random number from 1-26 for the indexes---------
-        Random rndIndex = new Random();
-        int hashIndex = rndIndex.nextInt(26) + 1;
-
-        String letter = hash.getAlphabets(hashIndex);
-
-        showText.setText(letter);
 
         //reference on using the if to fix the speak issue:
         //https://stackoverflow.com/questions/30280082/android-tts-sound-leaked-service-connection-and-speak-deprecated
