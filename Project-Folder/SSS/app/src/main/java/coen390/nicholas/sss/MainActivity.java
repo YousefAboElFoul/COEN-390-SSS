@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity
     //----------when text button is pressed------------
     public void goToText(View view)
     {
-        Intent startIntent = new Intent(MainActivity.this, textPageActivity.class);
+        Intent startIntent = new Intent(MainActivity.this, wordPageActivity.class);
         startActivity(startIntent);
     }
 

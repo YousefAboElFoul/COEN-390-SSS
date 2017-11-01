@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".textPageActivity"
+            android:name=".wordPageActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".letterPage"

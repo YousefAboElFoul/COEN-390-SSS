@@ -15,7 +15,7 @@ import android.widget.TextView;
 import java.util.Locale;
 import java.util.Random;
 
-public class textPageActivity extends AppCompatActivity {
+public class wordPageActivity extends AppCompatActivity {
 
     //--------------------------------------------Declaring variables----------------------------------------------
     //-------for objects needed in the home page-------
@@ -35,7 +35,7 @@ public class textPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_text_page);
+        setContentView(R.layout.activity_word_page);
         Log.d(TAG,"The onCreate() event");
 
         //reference on initialization:
@@ -78,7 +78,7 @@ public class textPageActivity extends AppCompatActivity {
         {
             //action to switch to settings gets pressed
             case R.id.goSettings:
-                Intent startIntent = new Intent(textPageActivity.this, settings.class);
+                Intent startIntent = new Intent(wordPageActivity.this, settings.class);
                 startActivity(startIntent);
                 return true;
         }
