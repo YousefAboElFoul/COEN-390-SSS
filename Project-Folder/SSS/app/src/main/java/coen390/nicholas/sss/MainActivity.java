@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(TAG, "The onCreate() event");
         myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        bluetoothbutton();
+        //bluetoothbutton();
         setupUI();
     }
 
@@ -89,15 +89,17 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /*
     //-------------------Button onclick for bluetooth-----------------------------------------
     public void bluetoothbutton() {
         Bluetoothonoff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Enable_disable_bluetooth();
+                //Enable_disable_bluetooth();
             }
         });
     }
+
 
     //---------------------------------Checking for bluetooth if its enabled or disabled------------------------------
     public void Enable_disable_bluetooth() {
@@ -141,13 +143,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-    };
+    };*/
+
     //---------------------------------------------functionality function for the bluetooth-------------------------
     @Override
     protected void onDestroy() {
         Log.d(TAG, "onDestroy: called.");
         super.onDestroy();
-        unregisterReceiver(mBroadcastReceiver1);
+        //unregisterReceiver(mBroadcastReceiver1);
     }
 
 }
