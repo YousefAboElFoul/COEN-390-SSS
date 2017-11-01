@@ -1,6 +1,8 @@
 package coen390.nicholas.sss;
 
 import android.content.Intent;
+import android.os.Build;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Locale;
 import java.util.Random;
 
 public class textPageActivity extends AppCompatActivity {
@@ -23,6 +26,8 @@ public class textPageActivity extends AppCompatActivity {
     //--------to LOG textPage events-----------
     protected static final String TAG = "textActivity";
 
+    TextToSpeech speaking;
+
 
     //---------------------------------------Function for when the activity is created--------------------------------
     @Override
@@ -31,6 +36,15 @@ public class textPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_page);
         Log.d(TAG,"The onCreate() event");
+
+        speaking = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status != TextToSpeech.ERROR) {
+                    speaking.setLanguage(Locale.UK);
+                }
+            }
+        });
 
         hash.setAlphabets();
         setupUI();
@@ -78,5 +92,11 @@ public class textPageActivity extends AppCompatActivity {
         String letter = hash.getAlphabets(hashIndex);
 
         showText.setText(letter);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            speaking.speak(letter, TextToSpeech.QUEUE_FLUSH,null,null);
+        } else {
+            speaking.speak(letter, TextToSpeech.QUEUE_FLUSH, null);
+        }
     }
 }

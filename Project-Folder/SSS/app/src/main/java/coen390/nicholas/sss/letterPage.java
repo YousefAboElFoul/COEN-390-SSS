@@ -94,7 +94,7 @@ public class letterPage extends AppCompatActivity
         int hashIndex = rndIndex.nextInt(26) + 1;
 
         String alpha = hash.getAlphabets(hashIndex);
-        letter.setText(alpha);
+        //letter.setText(alpha);
 
         //reference on using the if to fix the speak issue:
         //https://stackoverflow.com/questions/30280082/android-tts-sound-leaked-service-connection-and-speak-deprecated
