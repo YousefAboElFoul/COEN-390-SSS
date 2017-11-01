@@ -97,6 +97,8 @@ public class wordPageActivity extends AppCompatActivity {
         //make bool variable false if its true, and true if its false
         if (word)
         {
+            voiceWord();
+
             word = false;
             getWord.setText("Make a Word");
             wording = null;
@@ -123,15 +125,14 @@ public class wordPageActivity extends AppCompatActivity {
     //-------------------------------------Function for getting and outputting a letter----------------------------------------
     //potential to customize our own voice:
     //https://android.stackexchange.com/questions/14713/is-there-a-way-to-change-the-text-to-speech-persons-voice
-    public void outputLetter(View view)
+    public void voiceWord()
     {
-
         //reference on using the if to fix the speak issue:
         //https://stackoverflow.com/questions/30280082/android-tts-sound-leaked-service-connection-and-speak-deprecated
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            speaking.speak(letter, TextToSpeech.QUEUE_FLUSH,null,null);
+            speaking.speak(wording, TextToSpeech.QUEUE_FLUSH,null,null);
         } else {
-            speaking.speak(letter, TextToSpeech.QUEUE_FLUSH, null);
+            speaking.speak(wording, TextToSpeech.QUEUE_FLUSH, null);
         }
     }
 }
