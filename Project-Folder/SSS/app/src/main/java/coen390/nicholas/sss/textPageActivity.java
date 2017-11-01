@@ -26,6 +26,7 @@ public class textPageActivity extends AppCompatActivity {
     //--------to LOG textPage events-----------
     protected static final String TAG = "textActivity";
 
+    //------------Voice variable-----------------
     TextToSpeech speaking;
 
 
@@ -37,6 +38,8 @@ public class textPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_text_page);
         Log.d(TAG,"The onCreate() event");
 
+        //reference on initialization:
+        //https://www.tutorialspoint.com/android/android_text_to_speech.htm
         speaking = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -83,6 +86,8 @@ public class textPageActivity extends AppCompatActivity {
     }
 
     //-------------------------------------Function for getting and outputting a letter----------------------------------------
+    //potential to customize our own voice:
+    //https://android.stackexchange.com/questions/14713/is-there-a-way-to-change-the-text-to-speech-persons-voice
     public void outputLetter(View view)
     {
         //-------Generate a random number from 1-26 for the indexes---------
@@ -93,6 +98,8 @@ public class textPageActivity extends AppCompatActivity {
 
         showText.setText(letter);
 
+        //reference on using the if to fix the speak issue:
+        //https://stackoverflow.com/questions/30280082/android-tts-sound-leaked-service-connection-and-speak-deprecated
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             speaking.speak(letter, TextToSpeech.QUEUE_FLUSH,null,null);
         } else {
