@@ -41,12 +41,12 @@
         app:layout_constraintVertical_bias="0.544" />
 
     <Button
-        android:id="@+id/getText"
+        android:id="@+id/getWord"
         style="@android:style/Widget.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get Text"
-        android:onClick="goToText"
+        android:text="Get Word"
+        android:onClick="goToWord"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"

@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     //-------for objects needed in the home page-------
     TextView title = null;
     TextView hello = null;
-    Button goText = null;
+    Button goWord = null;
     Button goVoice = null;
     Button Bluetoothonoff = null;
 
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     protected void setupUI() {
         title = (TextView) findViewById(R.id.Title);
         hello = (TextView) findViewById(R.id.helloText);
-        goText = (Button) findViewById(R.id.getText);
+        goWord = (Button) findViewById(R.id.getWord);
         goVoice = (Button) findViewById(R.id.getVoice);
         Bluetoothonoff = (Button) findViewById(R.id.bluetooth);
 
@@ -62,14 +62,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //----------when text button is pressed------------
-    public void goToText(View view) {
-        Intent startIntent = new Intent(MainActivity.this, textPageActivity.class);
+
+    public void goToWord(View view)
+    {
+        Intent startIntent = new Intent(MainActivity.this, wordPageActivity.class);
         startActivity(startIntent);
     }
 
     //----------when voice button is pressed--------------
-    public void goToVoice(View view) {
-        Intent startIntent = new Intent(MainActivity.this, voicePage.class);
+    public void goToVoice(View view)
+    {
+        Intent startIntent = new Intent(MainActivity.this, letterPage.class);
         startActivity(startIntent);
     }
 

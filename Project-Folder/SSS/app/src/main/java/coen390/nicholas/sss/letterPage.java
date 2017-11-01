@@ -15,47 +15,50 @@ import android.widget.TextView;
 import java.util.Locale;
 import java.util.Random;
 
-public class voicePage extends AppCompatActivity
-{
+public class letterPage extends AppCompatActivity {
+
     //--------------------------------------------Declaring variables----------------------------------------------
     //-------for objects needed in the home page-------
     TextView title = null;
-    TextView voice = null;
-    Button getVLetter = null;
+    TextView showText = null;
+    Button getLetter = null;
 
     //--------to LOG textPage events-----------
     protected static final String TAG = "textActivity";
 
     //------------Voice variable-----------------
-    TextToSpeech t1;
+    TextToSpeech speaking;
+
 
     //---------------------------------------Function for when the activity is created--------------------------------
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_voice_page);
+        setContentView(R.layout.activity_letter_page);
         Log.d(TAG,"The onCreate() event");
 
-        hash.setAlphabets();
-
-        t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+        //reference on initialization:
+        //https://www.tutorialspoint.com/android/android_text_to_speech.htm
+        speaking = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 if (status != TextToSpeech.ERROR) {
-                    t1.setLanguage(Locale.UK);
+                    speaking.setLanguage(Locale.UK);
                 }
             }
         });
 
+        hash.setAlphabets();
         setupUI();
     }
 
     //---------------------------Function that links the objects to their xml definitions-----------------------------
     protected void setupUI()
     {
-        title = (TextView) findViewById(R.id.voiceTitle);
-        voice = (TextView) findViewById(R.id.viewLetter);
-        getVLetter = (Button) findViewById(R.id.getLetterV);
+        title = (TextView) findViewById(R.id.textTitle);
+        showText = (TextView) findViewById(R.id.viewLetter);
+        getLetter = (Button) findViewById(R.id.getLetterV);
     }
 
     //-----------------------------------Functions for when the user presses the items--------------------------------------
@@ -75,7 +78,7 @@ public class voicePage extends AppCompatActivity
         {
             //action to switch to settings gets pressed
             case R.id.goSettings:
-                Intent startIntent = new Intent(voicePage.this, settings.class);
+                Intent startIntent = new Intent(letterPage.this, settings.class);
                 startActivity(startIntent);
                 return true;
         }
@@ -83,7 +86,9 @@ public class voicePage extends AppCompatActivity
     }
 
     //-------------------------------------Function for getting and outputting a letter----------------------------------------
-    public void outputVoice(View view)
+    //potential to customize our own voice:
+    //https://android.stackexchange.com/questions/14713/is-there-a-way-to-change-the-text-to-speech-persons-voice
+    public void outputLetter(View view)
     {
         //-------Generate a random number from 1-26 for the indexes---------
         Random rndIndex = new Random();
@@ -91,10 +96,14 @@ public class voicePage extends AppCompatActivity
 
         String letter = hash.getAlphabets(hashIndex);
 
+        showText.setText(letter);
+
+        //reference on using the if to fix the speak issue:
+        //https://stackoverflow.com/questions/30280082/android-tts-sound-leaked-service-connection-and-speak-deprecated
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            t1.speak(letter,TextToSpeech.QUEUE_FLUSH,null,null);
+            speaking.speak(letter, TextToSpeech.QUEUE_FLUSH,null,null);
         } else {
-            t1.speak(letter, TextToSpeech.QUEUE_FLUSH, null);
+            speaking.speak(letter, TextToSpeech.QUEUE_FLUSH, null);
         }
     }
 }

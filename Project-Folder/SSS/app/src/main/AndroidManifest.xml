@@ -17,9 +17,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".textPageActivity"
+            android:name=".wordPageActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".voicePage"
+        <activity
+            android:name=".letterPage"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".settings"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".settings"

@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="coen390.nicholas.sss.voicePage">
+    tools:context="coen390.nicholas.sss.wordPageActivity">
 
     <TextView
-        android:id="@+id/voiceTitle"
+        android:id="@+id/textTitleW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -15,7 +15,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="casual"
-        android:text="VOICE TRANSLATION PAGE"
+        android:text="WORD TRANSLATION PAGE"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
         android:textSize="24sp"
@@ -28,23 +28,22 @@
         app:layout_constraintVertical_bias="0.074" />
 
     <Button
-        android:id="@+id/getLetterV"
+        android:id="@+id/getWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="53dp"
-        android:text="Get A Letter"
-        android:onClick="outputVoice"
+        android:layout_marginTop="59dp"
+        android:text="Make a Word"
+        android:onClick="makingWord"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/voiceTitle"
-        app:layout_constraintHorizontal_bias="0.501" />
+        app:layout_constraintTop_toBottomOf="@+id/textTitleW" />
 
     <TextView
-        android:id="@+id/showVoice"
-        android:layout_width="139dp"
-        android:layout_height="78dp"
+        android:id="@+id/viewWord"
+        android:layout_width="337dp"
+        android:layout_height="191dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -53,9 +52,25 @@
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getLetterV"
-        app:layout_constraintVertical_bias="0.333" />
+        app:layout_constraintTop_toBottomOf="@+id/getWord"
+        app:layout_constraintVertical_bias="0.762" />
+
+    <Button
+        android:id="@+id/addLetter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Add Letter"
+        android:onClick="addToWord"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/viewWord"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getWord" />
 </android.support.constraint.ConstraintLayout>
