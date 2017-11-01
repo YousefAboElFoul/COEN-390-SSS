@@ -18,10 +18,11 @@ import java.util.Random;
 public class wordPageActivity extends AppCompatActivity {
 
     //--------------------------------------------Declaring variables----------------------------------------------
-    //-------for objects needed in the home page-------
+    //-------for objects needed in the activity-------
     TextView title = null;
     TextView showText = null;
     Button getWord = null;
+    Button addLetter = null;
 
     //--------to LOG textPage events-----------
     protected static final String TAG = "textActivity";
@@ -62,6 +63,7 @@ public class wordPageActivity extends AppCompatActivity {
         title = (TextView) findViewById(R.id.textTitleW);
         showText = (TextView) findViewById(R.id.viewWord);
         getWord = (Button) findViewById(R.id.getWord);
+        addLetter = (Button) findViewById(R.id.addLetter);
     }
 
     //-----------------------------------Functions for when the user presses the items--------------------------------------
