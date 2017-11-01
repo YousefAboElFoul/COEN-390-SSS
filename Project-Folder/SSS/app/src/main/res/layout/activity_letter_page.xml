@@ -15,7 +15,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="casual"
-        android:text="TEXT TRANSLATION PAGE"
+        android:text="LETTER TRANSLATION PAGE"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
         android:textSize="24sp"

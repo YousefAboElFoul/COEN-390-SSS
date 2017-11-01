@@ -21,7 +21,7 @@ public class wordPageActivity extends AppCompatActivity {
     //-------for objects needed in the home page-------
     TextView title = null;
     TextView showText = null;
-    Button getLetter = null;
+    Button getWord = null;
 
     //--------to LOG textPage events-----------
     protected static final String TAG = "textActivity";
@@ -56,9 +56,9 @@ public class wordPageActivity extends AppCompatActivity {
     //---------------------------Function that links the objects to their xml definitions-----------------------------
     protected void setupUI()
     {
-        title = (TextView) findViewById(R.id.textTitle);
-        showText = (TextView) findViewById(R.id.viewLetter);
-        getLetter = (Button) findViewById(R.id.getLetterV);
+        title = (TextView) findViewById(R.id.textTitleW);
+        showText = (TextView) findViewById(R.id.viewWord);
+        getWord = (Button) findViewById(R.id.getWord);
     }
 
     //-----------------------------------Functions for when the user presses the items--------------------------------------
