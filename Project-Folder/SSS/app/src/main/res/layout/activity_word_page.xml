@@ -42,8 +42,8 @@
 
     <TextView
         android:id="@+id/viewWord"
-        android:layout_width="139dp"
-        android:layout_height="78dp"
+        android:layout_width="337dp"
+        android:layout_height="191dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -52,11 +52,11 @@
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/getWord"
-        app:layout_constraintVertical_bias="0.341" />
+        app:layout_constraintVertical_bias="0.762" />
 
     <Button
         android:id="@+id/addLetter"
