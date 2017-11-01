@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity
     //-------for objects needed in the home page-------
     TextView title = null;
     TextView hello = null;
-    Button goText = null;
+    Button goWord = null;
     Button goVoice = null;
 
     //--------to LOG mainActivity events-----------
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity
     {
         title = (TextView) findViewById(R.id.Title);
         hello = (TextView) findViewById(R.id.helloText);
-        goText = (Button) findViewById(R.id.getText);
+        goWord = (Button) findViewById(R.id.getWord);
         goVoice = (Button) findViewById(R.id.getVoice);
     }
 
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     //----------when text button is pressed------------
-    public void goToText(View view)
+    public void goToWord(View view)
     {
         Intent startIntent = new Intent(MainActivity.this, wordPageActivity.class);
         startActivity(startIntent);
