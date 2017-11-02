@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/sssTheme1">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,10 +22,10 @@
         <activity
             android:name=".letterPage"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".settings"
-            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".settings"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".help"
             android:parentActivityName=".MainActivity" />
     </application>
 

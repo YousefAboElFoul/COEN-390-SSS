@@ -71,14 +71,26 @@ public class letterPage extends AppCompatActivity {
     }
 
     //-----------when items are selected----------------
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
+    public boolean onOptionsItemSelected(MenuItem item) {
         Log.d(TAG, "The onOptions event");
-        switch (item.getItemId())
-        {
+        Intent startIntent;
+        switch (item.getItemId()) {
+            //action for the letter page
+            case R.id.goLetter:
+                return true;
+            //action to switch to word page
+            case R.id.goWord:
+                startIntent = new Intent(letterPage.this, wordPageActivity.class);
+                startActivity(startIntent);
+                return true;
+            //action to switch to help
+            case R.id.goHelp:
+                startIntent = new Intent(letterPage.this, help.class);
+                startActivity(startIntent);
+                return true;
             //action to switch to settings gets pressed
             case R.id.goSettings:
-                Intent startIntent = new Intent(letterPage.this, settings.class);
+                startIntent = new Intent(letterPage.this, settings.class);
                 startActivity(startIntent);
                 return true;
         }

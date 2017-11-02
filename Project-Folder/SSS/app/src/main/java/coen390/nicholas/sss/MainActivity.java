@@ -16,17 +16,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    //
-
-    //---------------------------------Bluetooth  variables------------------------------------------------------
-    BluetoothAdapter myBluetoothAdapter;
 
     //--------------------------------------------Declaring variables----------------------------------------------
+    //------------Bluetooth variables--------------
+    BluetoothAdapter myBluetoothAdapter;
+
     //-------for objects needed in the home page-------
     TextView title = null;
     TextView hello = null;
-    Button goWord = null;
-    Button goVoice = null;
     Button Bluetoothonoff = null;
 
     //--------to LOG mainActivity events-----------
@@ -39,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(TAG, "The onCreate() event");
         myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        bluetoothbutton();
+        //bluetoothbutton();
         setupUI();
     }
 
@@ -47,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
     protected void setupUI() {
         title = (TextView) findViewById(R.id.Title);
         hello = (TextView) findViewById(R.id.helloText);
-        goWord = (Button) findViewById(R.id.getWord);
-        goVoice = (Button) findViewById(R.id.getVoice);
         Bluetoothonoff = (Button) findViewById(R.id.bluetooth);
 
     }
@@ -61,44 +56,47 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    //----------when text button is pressed------------
-
-    public void goToWord(View view)
-    {
-        Intent startIntent = new Intent(MainActivity.this, wordPageActivity.class);
-        startActivity(startIntent);
-    }
-
-    //----------when voice button is pressed--------------
-    public void goToVoice(View view)
-    {
-        Intent startIntent = new Intent(MainActivity.this, letterPage.class);
-        startActivity(startIntent);
-    }
-
     //-----------when items are selected----------------
     //attempted to make an onClick in the menu, but it crashed the app...
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.d(TAG, "The onOptions event");
+        Intent startIntent;
         switch (item.getItemId()) {
-            //action to switch to settings gets pressed
+            //action to switch to the letter page
+            case R.id.goLetter:
+                startIntent = new Intent(MainActivity.this, letterPage.class);
+                startActivity(startIntent);
+                return true;
+            //action to switch to word page
+            case R.id.goWord:
+                startIntent = new Intent(MainActivity.this, wordPageActivity.class);
+                startActivity(startIntent);
+                return true;
+            //action to switch to help
+            case R.id.goHelp:
+                startIntent = new Intent(MainActivity.this, help.class);
+                startActivity(startIntent);
+                return true;
+            //action to switch to settings
             case R.id.goSettings:
-                Intent startIntent = new Intent(MainActivity.this, settings.class);
+                startIntent = new Intent(MainActivity.this, settings.class);
                 startActivity(startIntent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    /*
     //-------------------Button onclick for bluetooth-----------------------------------------
     public void bluetoothbutton() {
         Bluetoothonoff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Enable_disable_bluetooth();
+                //Enable_disable_bluetooth();
             }
         });
     }
+
 
     //---------------------------------Checking for bluetooth if its enabled or disabled------------------------------
     public void Enable_disable_bluetooth() {
@@ -142,13 +140,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-    };
+    };*/
+
     //---------------------------------------------functionality function for the bluetooth-------------------------
     @Override
     protected void onDestroy() {
         Log.d(TAG, "onDestroy: called.");
         super.onDestroy();
-        unregisterReceiver(mBroadcastReceiver1);
+        //unregisterReceiver(mBroadcastReceiver1);
     }
 
 }
