@@ -22,7 +22,10 @@
         <activity
             android:name=".letterPage"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".settings"
+        <activity
+            android:name=".settings"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".help"
             android:parentActivityName=".MainActivity" />
     </application>
 

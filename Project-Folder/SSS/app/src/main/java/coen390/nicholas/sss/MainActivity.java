@@ -72,7 +72,12 @@ public class MainActivity extends AppCompatActivity {
                 startIntent = new Intent(MainActivity.this, wordPageActivity.class);
                 startActivity(startIntent);
                 return true;
-            //action to switch to settings gets pressed
+            //action to switch to help
+            case R.id.goHelp:
+                startIntent = new Intent(MainActivity.this, help.class);
+                startActivity(startIntent);
+                return true;
+            //action to switch to settings
             case R.id.goSettings:
                 startIntent = new Intent(MainActivity.this, settings.class);
                 startActivity(startIntent);
