@@ -83,6 +83,11 @@ public class letterPage extends AppCompatActivity {
                 startIntent = new Intent(letterPage.this, wordPageActivity.class);
                 startActivity(startIntent);
                 return true;
+            //action to switch to help
+            case R.id.goHelp:
+                startIntent = new Intent(letterPage.this, help.class);
+                startActivity(startIntent);
+                return true;
             //action to switch to settings gets pressed
             case R.id.goSettings:
                 startIntent = new Intent(letterPage.this, settings.class);

@@ -89,6 +89,11 @@ public class wordPageActivity extends AppCompatActivity {
             //action to switch to word page
             case R.id.goWord:
                 return true;
+            //action to switch to help
+            case R.id.goHelp:
+                startIntent = new Intent(wordPageActivity.this, help.class);
+                startActivity(startIntent);
+                return true;
             //action to switch to settings gets pressed
             case R.id.goSettings:
                 startIntent = new Intent(wordPageActivity.this, settings.class);
