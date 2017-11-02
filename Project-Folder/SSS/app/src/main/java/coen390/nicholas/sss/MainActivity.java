@@ -24,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
     //-------for objects needed in the home page-------
     TextView title = null;
     TextView hello = null;
-    Button goWord = null;
-    Button goVoice = null;
     Button Bluetoothonoff = null;
 
     //--------to LOG mainActivity events-----------
@@ -46,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
     protected void setupUI() {
         title = (TextView) findViewById(R.id.Title);
         hello = (TextView) findViewById(R.id.helloText);
-        goWord = (Button) findViewById(R.id.getWord);
-        goVoice = (Button) findViewById(R.id.getVoice);
         Bluetoothonoff = (Button) findViewById(R.id.bluetooth);
 
     }
@@ -58,21 +54,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
 
         return true;
-    }
-
-    //----------when text button is pressed------------
-
-    public void goToWord(View view)
-    {
-        Intent startIntent = new Intent(MainActivity.this, wordPageActivity.class);
-        startActivity(startIntent);
-    }
-
-    //----------when voice button is pressed--------------
-    public void goToVoice(View view)
-    {
-        Intent startIntent = new Intent(MainActivity.this, letterPage.class);
-        startActivity(startIntent);
     }
 
     //-----------when items are selected----------------
