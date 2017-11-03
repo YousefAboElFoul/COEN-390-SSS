@@ -27,6 +27,10 @@ public class help extends AppCompatActivity
     //--------to LOG textPage events-----------
     protected static final String TAG = "helpActivity";
 
+    //--------to keep track of presses---------
+    //View lastview = null;
+    //int lastLetter = -1;
+
     //---------------------------------------Function for when the activity is created--------------------------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +121,12 @@ public class help extends AppCompatActivity
                     case 0: //case A
                         showLetter.setText("A");
                         imageView.setImageResource(R.drawable.lettera);
-                        view.setBackgroundColor(Color.argb(100, 10, 150, 100));
+                        /*view.setBackgroundColor(Color.argb(100, 10, 150, 100));
+                        if(lastLetter %2 == 1) { lastview.setBackgroundColor(Color.rgb(130, 130, 130));}
+                        else
+                        { view.setBackgroundColor(Color.argb(100, 100, 100, 100));}
+                        lastLetter = position;
+                        lastview = view;*/
                         break;
                     case 1: //case B
                         showLetter.setText("B");
