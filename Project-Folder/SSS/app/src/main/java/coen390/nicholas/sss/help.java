@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.graphics.Color;
 import android.view.View;
@@ -109,19 +110,24 @@ public class help extends AppCompatActivity
         myLetters.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
+                final ImageView imageView = (ImageView) findViewById(R.id.helpImage);
                 switch (position)
                 {
                     case 0:
                         showLetter.setText("A");
+                        imageView.setImageResource(R.drawable.lettera);
                         break;
                     case 1:
                         showLetter.setText("B");
+                        imageView.setImageResource(R.drawable.letterb);
                         break;
                     case 2:
                         showLetter.setText("C");
+                        imageView.setImageResource(R.drawable.letterc);
                         break;
                     case 3:
                         showLetter.setText("D");
+                        imageView.setImageResource(R.drawable.letterd);
                         break;
                     case 4:
                         showLetter.setText("E");

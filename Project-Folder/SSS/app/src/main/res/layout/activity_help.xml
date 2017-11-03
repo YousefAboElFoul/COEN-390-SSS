@@ -39,7 +39,23 @@
         app:layout_constraintLeft_toRightOf="@+id/linearLayout"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.241"
-        app:layout_constraintHorizontal_bias="0.485" />
+        app:layout_constraintVertical_bias="0.141"
+        app:layout_constraintHorizontal_bias="0.47" />
+
+    <ImageView
+        android:id="@+id/helpImage"
+        android:layout_width="229dp"
+        android:layout_height="227dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintLeft_toRightOf="@+id/linearLayout"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/showHelpLetter"
+        app:layout_constraintVertical_bias="0.256"
+        app:srcCompat="@drawable/signlanguage" />
 
 </android.support.constraint.ConstraintLayout>
