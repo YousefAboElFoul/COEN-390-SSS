@@ -113,87 +113,109 @@ public class help extends AppCompatActivity
                 final ImageView imageView = (ImageView) findViewById(R.id.helpImage);
                 switch (position)
                 {
-                    case 0:
+                    case 0: //case A
                         showLetter.setText("A");
                         imageView.setImageResource(R.drawable.lettera);
                         break;
-                    case 1:
+                    case 1: //case B
                         showLetter.setText("B");
                         imageView.setImageResource(R.drawable.letterb);
                         break;
-                    case 2:
+                    case 2: //case C
                         showLetter.setText("C");
                         imageView.setImageResource(R.drawable.letterc);
                         break;
-                    case 3:
+                    case 3: //case D
                         showLetter.setText("D");
                         imageView.setImageResource(R.drawable.letterd);
                         break;
-                    case 4:
+                    case 4: //case E
                         showLetter.setText("E");
+                        imageView.setImageResource(R.drawable.lettere);
                         break;
-                    case 5:
+                    case 5: //case F
                         showLetter.setText("F");
+                        imageView.setImageResource(R.drawable.letterf);
                         break;
-                    case 6:
+                    case 6: //case G
                         showLetter.setText("G");
+                        imageView.setImageResource(R.drawable.letterg);
                         break;
-                    case 7:
+                    case 7: //case H
                         showLetter.setText("H");
+                        imageView.setImageResource(R.drawable.letterh);
                         break;
-                    case 8:
+                    case 8: //case I
                         showLetter.setText("I");
+                        imageView.setImageResource(R.drawable.letteri);
                         break;
-                    case 9:
+                    case 9: //case J
                         showLetter.setText("J");
+                        imageView.setImageResource(R.drawable.letterj);
                         break;
-                    case 10:
+                    case 10: //case K
                         showLetter.setText("K");
+                        imageView.setImageResource(R.drawable.letterk);
                         break;
-                    case 11:
+                    case 11: //case L
                         showLetter.setText("L");
+                        imageView.setImageResource(R.drawable.letterl);
                         break;
-                    case 12:
+                    case 12: //case M
                         showLetter.setText("M");
+                        imageView.setImageResource(R.drawable.letterm);
                         break;
-                    case 13:
+                    case 13: //case N
                         showLetter.setText("N");
+                        imageView.setImageResource(R.drawable.lettern);
                         break;
-                    case 14:
+                    case 14: //case O
                         showLetter.setText("O");
+                        imageView.setImageResource(R.drawable.lettero);
                         break;
-                    case 15:
+                    case 15: //case P
                         showLetter.setText("P");
+                        imageView.setImageResource(R.drawable.letterp);
                         break;
-                    case 16:
+                    case 16: //case Q
                         showLetter.setText("Q");
+                        imageView.setImageResource(R.drawable.letterq);
                         break;
-                    case 17:
+                    case 17: //case R
                         showLetter.setText("R");
+                        imageView.setImageResource(R.drawable.letterr);
                         break;
-                    case 18:
+                    case 18: //case S
                         showLetter.setText("S");
+                        imageView.setImageResource(R.drawable.letters);
                         break;
-                    case 19:
+                    case 19: //case T
                         showLetter.setText("T");
+                        imageView.setImageResource(R.drawable.lettert);
                         break;
-                    case 20:
+                    case 20: //case U
                         showLetter.setText("U");
+                        imageView.setImageResource(R.drawable.letteru);
                         break;
-                    case 21:
+                    case 21: //case V
                         showLetter.setText("V");
+                        imageView.setImageResource(R.drawable.letterv);
                         break;
-                    case 22:
+                    case 22: //case W
                         showLetter.setText("W");
+                        imageView.setImageResource(R.drawable.letterw);
                         break;
-                    case 23:
+                    case 23: //case X
                         showLetter.setText("X");
+                        imageView.setImageResource(R.drawable.letterx);
                         break;
-                    case 24:
+                    case 24: //case Y
                         showLetter.setText("Y");
+                        imageView.setImageResource(R.drawable.lettery);
                         break;
-                    case 25:
+                    case 25: //case Z
                         showLetter.setText("Z");
+                        imageView.setImageResource(R.drawable.letterz);
                         break;
                     default:
                         break;
