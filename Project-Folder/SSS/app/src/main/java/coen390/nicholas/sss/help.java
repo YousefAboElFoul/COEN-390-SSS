@@ -85,6 +85,7 @@ public class help extends AppCompatActivity
     //-----------------------------------Function that control listview environment------------------------------------------
     private void listviewStuff()
     {
+        //-------------Create the adapter-----------------
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.list_tutorial, R.id.letterText, alphabet)
         {
             @Override
@@ -99,14 +100,14 @@ public class help extends AppCompatActivity
                 else
                 {
                     // Set the background color for alternate row/item
-                    view.setBackgroundColor(Color.rgb(100, 100, 200));
+                    view.setBackgroundColor(Color.argb(100, 100, 100, 100));
                 }
                 return view;
             }
         };
         myLetters.setAdapter(arrayAdapter);
 
-
+        //----------When Items on list are pressed-----------------
         myLetters.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
@@ -116,6 +117,7 @@ public class help extends AppCompatActivity
                     case 0: //case A
                         showLetter.setText("A");
                         imageView.setImageResource(R.drawable.lettera);
+                        view.setBackgroundColor(Color.argb(100, 10, 150, 100));
                         break;
                     case 1: //case B
                         showLetter.setText("B");
