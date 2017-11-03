@@ -11,7 +11,8 @@ import android.widget.ListView;
 public class tutorialActivitiy extends AppCompatActivity {
 
     ListView simpleList;
-    String alphabet[] = {"A", "B", "C", "D", "E", "F"};
+    String alphabet[] = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
+            "U", "V", "W", "X", "Y", "Z"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
