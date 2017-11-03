@@ -5,12 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class tutorialActivitiy extends AppCompatActivity {
 
-    ListView simpleList;
+    ListView myLetters;
     String alphabet[] = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
             "U", "V", "W", "X", "Y", "Z"};
 
@@ -20,7 +21,13 @@ public class tutorialActivitiy extends AppCompatActivity {
         setContentView(R.layout.activity_tutorial_activitiy);
 
         setContentView(R.layout.activity_tutorial_activitiy);
-        simpleList = (ListView)findViewById(R.id.letterList);
+        myLetters = (ListView)findViewById(R.id.letterList);
+        myLetters.setClickable(true);
+        listviewStuff();
+    }
+
+    private void listviewStuff()
+    {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.list_tutorial, R.id.letterText, alphabet)
         {
             @Override
@@ -40,6 +47,15 @@ public class tutorialActivitiy extends AppCompatActivity {
                 return view;
             }
         };
-        simpleList.setAdapter(arrayAdapter);
+        myLetters.setAdapter(arrayAdapter);
+
+
+        myLetters.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+
+            }
+        });
     }
 }
