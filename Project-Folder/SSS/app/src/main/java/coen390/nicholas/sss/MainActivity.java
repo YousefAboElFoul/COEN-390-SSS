@@ -77,6 +77,11 @@ public class MainActivity extends AppCompatActivity {
                 startIntent = new Intent(MainActivity.this, help.class);
                 startActivity(startIntent);
                 return true;
+            //action to switch to tutorial
+            case R.id.goTutorial:
+                startIntent = new Intent(MainActivity.this, tutorialActivitiy.class);
+                startActivity(startIntent);
+                return true;
             //action to switch to settings
             case R.id.goSettings:
                 startIntent = new Intent(MainActivity.this, settings.class);
