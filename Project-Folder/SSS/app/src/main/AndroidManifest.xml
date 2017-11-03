@@ -25,8 +25,10 @@
         <activity
             android:name=".settings"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".help"
+        <activity
+            android:name=".help"
             android:parentActivityName=".MainActivity" />
+        <activity android:name=".tutorialActivitiy"></activity>
     </application>
 
 </manifest>
