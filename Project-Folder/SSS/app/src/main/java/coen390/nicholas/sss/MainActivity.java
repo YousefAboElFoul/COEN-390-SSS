@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /*
+
     //-------------------Button onclick for bluetooth-----------------------------------------
     public void bluetoothbutton() {
         Bluetoothonoff.setOnClickListener(new View.OnClickListener() {
@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-    };*/
+    };
 
     //---------------------------------------------functionality function for the bluetooth-------------------------
     @Override
