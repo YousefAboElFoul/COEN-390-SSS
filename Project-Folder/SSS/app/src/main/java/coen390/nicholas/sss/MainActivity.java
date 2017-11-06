@@ -1,6 +1,7 @@
 package coen390.nicholas.sss;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -15,11 +16,18 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
     //--------------------------------------------Declaring variables----------------------------------------------
+    //----------Define an array-list so that if u want to connect to different bluetooth device--------------------
+    public ArrayList<BluetoothDevice> mBTDevices = new ArrayList<>();
+    //------------------------adapter for devices that are already paired--------------------------------------------
+    public DeviceListAdapter mDeviceListAdapter;
+    //---------defining a bluetooth device-----------------
+    BluetoothDevice mBTDevice;
     //------------Bluetooth variables--------------
     BluetoothAdapter myBluetoothAdapter;
     private static final UUID MY_UUID_INSECURE =
@@ -155,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    //---------------------------------------------functionality function for the bluetooth-------------------------
+    //---------------------------------------------functionality destroy the bluetooth connections for the bluetooth-------------------------
     @Override
     protected void onDestroy() {
         Log.d(TAG, "onDestroy: called.");
@@ -199,5 +207,54 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+    /**
+     * Broadcast Receiver for listing devices that are not yet paired
+     * -Executed by btnDiscover() method.
+     */
+    private BroadcastReceiver mBroadcastReceiver3 = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            final String action = intent.getAction();
+            Log.d(TAG, "onReceive: ACTION FOUND.");
+
+            if (action.equals(BluetoothDevice.ACTION_FOUND)){
+                BluetoothDevice device = intent.getParcelableExtra (BluetoothDevice.EXTRA_DEVICE);
+                mBTDevices.add(device);
+                Log.d(TAG, "onReceive: " + device.getName() + ": " + device.getAddress());
+                mDeviceListAdapter = new DeviceListAdapter(context, R.layout.device_adapter_view, mBTDevices);
+                lvNewDevices.setAdapter(mDeviceListAdapter);
+            }
+        }
+    };
+
+    /**
+     * Broadcast Receiver that detects bond state changes (Pairing status changes)
+     */
+    private final BroadcastReceiver mBroadcastReceiver4 = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            final String action = intent.getAction();
+
+            if(action.equals(BluetoothDevice.ACTION_BOND_STATE_CHANGED)){
+                BluetoothDevice mDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                //3 cases:
+                //case1: bonded already
+                if (mDevice.getBondState() == BluetoothDevice.BOND_BONDED){
+                    Log.d(TAG, "BroadcastReceiver: BOND_BONDED.");
+                    //inside BroadcastReceiver4
+                    mBTDevice = mDevice;
+                }
+                //case2: creating a bone
+                if (mDevice.getBondState() == BluetoothDevice.BOND_BONDING) {
+                    Log.d(TAG, "BroadcastReceiver: BOND_BONDING.");
+                }
+                //case3: breaking a bond
+                if (mDevice.getBondState() == BluetoothDevice.BOND_NONE) {
+                    Log.d(TAG, "BroadcastReceiver: BOND_NONE.");
+                }
+            }
+        }
+    };
+
 
 }
