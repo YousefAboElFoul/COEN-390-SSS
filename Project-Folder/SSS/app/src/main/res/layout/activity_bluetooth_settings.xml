@@ -6,24 +6,9 @@
     android:layout_height="match_parent"
     tools:context="coen390.nicholas.sss.BluetoothSettings">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/sssTheme1.AppBarOverlay">
-
-    </android.support.design.widget.AppBarLayout>
-
     <include
         android:id="@+id/include"
         layout="@layout/content_bluetooth_settings" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:id="@+id/linearLayout2">
-
-    </LinearLayout>
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -58,5 +43,13 @@
         android:text="Button"
         app:layout_anchor="@+id/linearLayout2"
         app:layout_anchorGravity="top|center_horizontal" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
