@@ -18,11 +18,11 @@ import java.util.UUID;
 
 
 public class BluetoothConnectionService {
-    //Defining TAGs
+    //Defining TAG
     private static final String TAG = "BluetoothConnectionService";
     //UUID for the application
     private static final UUID MY_UUID_INSECURE =
-            UUID.fromString("8ce255c0-200a-11e0-ac64-0800200c9a66");
+            UUID.fromString("8ce255c0-200a-11e0-ac64-0800200c9a66"); //Default uuid from the api since we dont need a secure connection
     // Name for the SDP record when creating server socket
     private static final String NAME_SECURE = "BluetoothSign-See-Sound";
     // defining members
@@ -205,7 +205,7 @@ public class BluetoothConnectionService {
         private final BluetoothSocket mmSocket;
         private final InputStream mmInStream;
         private final OutputStream mmOutStream;
-
+        //
         public ConnectedThread(BluetoothSocket socket) {
             Log.d(TAG, "ConnectedThread: Starting.");
 
