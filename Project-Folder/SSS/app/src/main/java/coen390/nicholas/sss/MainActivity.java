@@ -35,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "The onCreate() event");
-        myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        //bluetoothbutton();
         setupUI();
+        myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        bluetoothbutton();
+
     }
 
     //---------------------------Function that links the objects to their xml definitions-----------------------------
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         Bluetoothonoff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Enable_disable_bluetooth();
+                Enable_disable_bluetooth();
             }
         });
     }
@@ -152,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         Log.d(TAG, "onDestroy: called.");
         super.onDestroy();
-        //unregisterReceiver(mBroadcastReceiver1);
+        unregisterReceiver(mBroadcastReceiver1);
     }
 
 }
