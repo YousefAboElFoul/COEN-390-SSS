@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SSS</string>
+    <string name="title_activity_bluetooth_settings">BluetoothSettings</string>
 </resources>

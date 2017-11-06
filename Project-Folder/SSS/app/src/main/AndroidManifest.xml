@@ -3,10 +3,11 @@
     package="coen390.nicholas.sss">
 
     <uses-feature android:name="android.hardware.bluetooth" />
+
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" />
 
     <application
@@ -35,7 +36,11 @@
         <activity
             android:name=".help"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".tutorialActivitiy"></activity>
+        <activity android:name=".tutorialActivitiy" />
+        <activity
+            android:name=".BluetoothSettings"
+            android:label="@string/title_activity_bluetooth_settings"
+            android:theme="@style/sssTheme1.NoActionBar"></activity>
     </application>
 
 </manifest>
