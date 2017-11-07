@@ -36,12 +36,5 @@
         android:icon="@android:drawable/ic_menu_agenda"
         android:title="settings"
         android:visible="true" />
-    <item
-        android:id="@+id/BluetoothSettings"
-        android:checkable="false"
-        android:enabled="true"
-        android:icon="@android:drawable/ic_menu_agenda"
-        android:title="Bluetooth"
-        android:visible="true" />
 
 </menu>

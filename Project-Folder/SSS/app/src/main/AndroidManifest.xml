@@ -12,7 +12,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/test"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -37,10 +37,6 @@
             android:name=".help"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".tutorialActivitiy" />
-        <activity
-            android:name=".BluetoothSettings"
-            android:label="@string/title_activity_bluetooth_settings"
-            android:theme="@style/sssTheme1.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -87,11 +87,6 @@ public class MainActivity extends AppCompatActivity {
                 startIntent = new Intent(MainActivity.this, settings.class);
                 startActivity(startIntent);
                 return true;
-            //action to go to BluetoothSettings to setup bluetooth
-            case R.id.BluetoothSettings:
-                startIntent = new Intent(MainActivity.this, BluetoothSettings.class);
-                startActivity(startIntent);
-                return true;
         }
         return super.onOptionsItemSelected(item);
     }
