@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-public class Bluetooth extends AppCompatActivity {
+public class Bluetooth extends BlunoLibrary{
 
     private Button buttonScan;
     private Button buttonSerialSend;
