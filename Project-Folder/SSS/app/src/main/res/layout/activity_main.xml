@@ -41,39 +41,16 @@
         app:layout_constraintVertical_bias="0.544" />
 
     <Button
-        android:id="@+id/getText"
-        style="@android:style/Widget.Button"
+        android:id="@+id/bluetooth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get Text"
-        android:onClick="goToText"
-        android:layout_marginLeft="8dp"
+        android:text="Connect to arduino"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_bias="0.459"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/helloText"
-        app:layout_constraintHorizontal_bias="0.242"
-        app:layout_constraintVertical_bias="0.507" />
-
-    <Button
-        android:id="@+id/getVoice"
-        style="@android:style/Widget.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Get Voice"
-        android:onClick="goToVoice"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/helloText"
-        app:layout_constraintHorizontal_bias="0.571"
-        app:layout_constraintVertical_bias="0.507"
-        app:layout_constraintLeft_toRightOf="@+id/getText" />
+        app:layout_constraintTop_toBottomOf="@+id/helloText" />
 
 </android.support.constraint.ConstraintLayout>
