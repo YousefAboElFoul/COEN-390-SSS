@@ -1,7 +1,5 @@
 package coen390.nicholas.sss;
 
-
-
 @SuppressWarnings("unchecked")
 public class RingBuffer<T> {
 

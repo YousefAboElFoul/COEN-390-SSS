@@ -3,12 +3,12 @@
     package="coen390.nicholas.sss">
 
     <uses-feature android:name="android.hardware.bluetooth" />
-
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" />
+
 
     <application
         android:allowBackup="true"
@@ -42,5 +42,6 @@
             android:label="@string/title_activity_bluetooth"
             android:theme="@style/sssTheme1.NoActionBar"></activity>
     </application>
+
 
 </manifest>
