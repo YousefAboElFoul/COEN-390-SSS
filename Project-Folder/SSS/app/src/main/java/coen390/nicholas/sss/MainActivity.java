@@ -1,6 +1,7 @@
 package coen390.nicholas.sss;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -15,16 +16,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.UUID;
+
+public class MainActivity extends AppCompatActivity  {
 
     //--------------------------------------------Declaring variables----------------------------------------------
-    //------------Bluetooth variables--------------
-    BluetoothAdapter myBluetoothAdapter;
 
     //-------for objects needed in the home page-------
     TextView title = null;
     TextView hello = null;
-    Button Bluetoothonoff = null;
 
     //--------to LOG mainActivity events-----------
     protected static final String TAG = "MainActivity";
@@ -35,16 +36,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "The onCreate() event");
-        myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        //bluetoothbutton();
         setupUI();
+
     }
 
     //---------------------------Function that links the objects to their xml definitions-----------------------------
     protected void setupUI() {
         title = (TextView) findViewById(R.id.Title);
         hello = (TextView) findViewById(R.id.helloText);
-        Bluetoothonoff = (Button) findViewById(R.id.bluetooth);
+
 
     }
 
@@ -87,72 +87,17 @@ public class MainActivity extends AppCompatActivity {
                 startIntent = new Intent(MainActivity.this, settings.class);
                 startActivity(startIntent);
                 return true;
+            //action to go to BluetoothSettings to setup bluetooth
+            case R.id.Bluetooth:
+                startIntent = new Intent(MainActivity.this, Bluetooth.class);
+                startActivity(startIntent);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    /*
-    //-------------------Button onclick for bluetooth-----------------------------------------
-    public void bluetoothbutton() {
-        Bluetoothonoff.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Enable_disable_bluetooth();
-            }
-        });
-    }
 
 
-    //---------------------------------Checking for bluetooth if its enabled or disabled------------------------------
-    public void Enable_disable_bluetooth() {
-        if (myBluetoothAdapter == null)
-            Toast.makeText(this, "Bluetooth not available on your device!", Toast.LENGTH_SHORT).show();
-        if (!myBluetoothAdapter.isEnabled()) {
-            Intent enableBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivity(enableBluetooth);
 
-            IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-            registerReceiver(mBroadcastReceiver1, BTIntent);
-        }
-        if (myBluetoothAdapter.isEnabled()) {
-            Log.d(TAG, "enableDisableBT: disabling BT.");
-            myBluetoothAdapter.disable();
-            IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-            registerReceiver(mBroadcastReceiver1, BTIntent);
-        }
-    }
-    //----------------------------------Brodcast function for the change of states---------------------------------
-    private final BroadcastReceiver mBroadcastReceiver1 = new BroadcastReceiver() {
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            // When discovery finds a device
-            if (action.equals(myBluetoothAdapter.ACTION_STATE_CHANGED)) {
-                final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, myBluetoothAdapter.ERROR);
-
-                switch(state){
-                    case BluetoothAdapter.STATE_OFF:
-                        Log.d(TAG, "onReceive: STATE OFF");
-                        break;
-                    case BluetoothAdapter.STATE_TURNING_OFF:
-                        Log.d(TAG, "mBroadcastReceiver1: STATE TURNING OFF");
-                        break;
-                    case BluetoothAdapter.STATE_ON:
-                        Log.d(TAG, "mBroadcastReceiver1: STATE ON");
-                        break;
-                    case BluetoothAdapter.STATE_TURNING_ON:
-                        Log.d(TAG, "mBroadcastReceiver1: STATE TURNING ON");
-                        break;
-                }
-            }
-        }
-    };*/
-
-    //---------------------------------------------functionality function for the bluetooth-------------------------
-    @Override
-    protected void onDestroy() {
-        Log.d(TAG, "onDestroy: called.");
-        super.onDestroy();
-        //unregisterReceiver(mBroadcastReceiver1);
-    }
 
 }
