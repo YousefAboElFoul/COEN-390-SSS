@@ -40,7 +40,7 @@
         <activity
             android:name=".Bluetooth"
             android:label="@string/title_activity_bluetooth"
-            android:theme="@style/sssTheme1.NoActionBar"></activity>
+            android:theme="@style/sssTheme1.NoActionBar"/>
     </application>
 
 
