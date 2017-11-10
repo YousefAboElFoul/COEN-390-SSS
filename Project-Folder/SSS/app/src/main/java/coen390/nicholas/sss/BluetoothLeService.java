@@ -1,23 +1,9 @@
 package coen390.nicholas.sss;
 
-/*
- * Copyright (C) 2013 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
         import android.app.Service;
         import android.bluetooth.BluetoothAdapter;
+        import android.bluetooth.BluetoothClass;
         import android.bluetooth.BluetoothDevice;
         import android.bluetooth.BluetoothGatt;
         import android.bluetooth.BluetoothGattCallback;
@@ -33,6 +19,7 @@ package coen390.nicholas.sss;
         import android.util.Log;
 
         import java.io.UnsupportedEncodingException;
+        import java.security.Provider;
         import java.util.List;
 
 
@@ -44,7 +31,6 @@ public class BluetoothLeService extends Service {
     private final static String TAG = BluetoothLeService.class.getSimpleName();
 
     private BluetoothManager mBluetoothManager;
-    private BluetoothAdapter mBluetoothAdapter;
     BluetoothGatt mBluetoothGatt;
     public String mBluetoothDeviceAddress;
 
@@ -52,8 +38,6 @@ public class BluetoothLeService extends Service {
     private static final int STATE_CONNECTING = 1;
     private static final int STATE_CONNECTED = 2;
     public int mConnectionState = STATE_DISCONNECTED;
-
-
     //To tell the onCharacteristicWrite call back function that this is a new characteristic,
     //not the Write Characteristic to the device successfully.
     private static final int WRITE_NEW_CHARACTERISTIC = -1;
@@ -61,6 +45,7 @@ public class BluetoothLeService extends Service {
     private static final int MAX_CHARACTERISTIC_LENGTH = 17;
     //Show that Characteristic is writing or not.
     private boolean mIsWritingCharacteristic=false;
+    public BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
     //class to store the Characteristic and content string push into the ring buffer.
     private class BluetoothGattCharacteristicHelper{
@@ -291,7 +276,7 @@ public class BluetoothLeService extends Service {
 
     private void broadcastUpdate(final String action) {
         final Intent intent = new Intent(action);
-        sendBroadcast(intent);
+       // sendBroadcast(intent);
     }
 
     private void broadcastUpdate(final String action,
@@ -352,24 +337,20 @@ public class BluetoothLeService extends Service {
      * @return Return true if the initialization is successful.
      */
     public boolean initialize() {
-        // For API level 18 and above, get a reference to BluetoothAdapter through
-        // BluetoothManager.
-        System.out.println("BluetoothLeService initialize"+mBluetoothManager);
-        if (mBluetoothManager == null) {
-            mBluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
-            if (mBluetoothManager == null) {
+        System.out.println("BluetoothLeService initialize" + this.mBluetoothManager);
+        if (this.mBluetoothManager == null) {
+            this.mBluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+            if (this.mBluetoothManager == null) {
                 Log.e(TAG, "Unable to initialize BluetoothManager.");
                 return false;
             }
         }
-
-        mBluetoothAdapter = mBluetoothManager.getAdapter();
-        if (mBluetoothAdapter == null) {
-            Log.e(TAG, "Unable to obtain a BluetoothAdapter.");
-            return false;
+        this.mBluetoothAdapter = this.mBluetoothManager.getAdapter();
+        if (this.mBluetoothAdapter != null) {
+            return true;
         }
-
-        return true;
+        Log.e(TAG, "Unable to obtain a BluetoothAdapter.");
+        return false;
     }
 
     /**
@@ -383,7 +364,9 @@ public class BluetoothLeService extends Service {
      *         callback.
      */
     public boolean connect(final String address) {
-        System.out.println("BluetoothLeService connect"+address+mBluetoothGatt);
+
+    BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        System.out.println("BluetoothLeService connect"+address+mBluetoothAdapter);
         if (mBluetoothAdapter == null || address == null) {
             Log.w(TAG, "BluetoothAdapter not initialized or unspecified address.");
             return false;

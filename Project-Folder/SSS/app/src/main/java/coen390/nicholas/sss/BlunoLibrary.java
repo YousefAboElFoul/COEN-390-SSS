@@ -69,11 +69,11 @@ public abstract  class BlunoLibrary  extends Activity{
         TextView deviceAddress;
     }
     private static BluetoothGattCharacteristic mSCharacteristic, mModelNumberCharacteristic, mSerialPortCharacteristic, mCommandCharacteristic;
-    BluetoothLeService mBluetoothLeService;
+    BluetoothLeService mBluetoothLeService = new BluetoothLeService() ;
     private ArrayList<ArrayList<BluetoothGattCharacteristic>> mGattCharacteristics =
             new ArrayList<ArrayList<BluetoothGattCharacteristic>>();
     private LeDeviceListAdapter mLeDeviceListAdapter=null;
-    private BluetoothAdapter mBluetoothAdapter;
+    public BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     private boolean mScanning =false;
     AlertDialog mScanDeviceDialog;
     private String mDeviceName;
@@ -81,12 +81,12 @@ public abstract  class BlunoLibrary  extends Activity{
     public enum connectionStateEnum{isNull, isScanning, isToScan, isConnecting , isConnected, isDisconnecting};
     public connectionStateEnum mConnectionState = connectionStateEnum.isNull;
     private static final int REQUEST_ENABLE_BT = 1;
-
     private Handler mHandler= new Handler();
-
     public boolean mConnected = false;
-
     private final static String TAG = BlunoLibrary.class.getSimpleName();
+
+
+
 
     private Runnable mConnectingOverTimeRunnable=new Runnable(){
 
@@ -111,6 +111,7 @@ public abstract  class BlunoLibrary  extends Activity{
     public static final String SerialPortUUID="0000dfb1-0000-1000-8000-00805f9b34fb";
     public static final String CommandUUID="0000dfb2-0000-1000-8000-00805f9b34fb";
     public static final String ModelNumberStringUUID="00002a24-0000-1000-8000-00805f9b34fb";
+
 
     public void onCreateProcess()
 
