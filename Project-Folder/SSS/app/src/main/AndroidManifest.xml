@@ -2,9 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="coen390.nicholas.sss">
 
+    <uses-feature android:name="android.hardware.bluetooth" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" />
+
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/test"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -28,7 +36,12 @@
         <activity
             android:name=".help"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".tutorialActivitiy"></activity>
+        <activity android:name=".tutorialActivitiy" />
+        <activity
+            android:name=".Bluetooth"
+            android:label="@string/title_activity_bluetooth"
+            android:theme="@style/sssTheme1.NoActionBar"></activity>
     </application>
+
 
 </manifest>

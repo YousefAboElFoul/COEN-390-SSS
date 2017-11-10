@@ -10,12 +10,21 @@
 
     </style>
 
-    <style name="sssTheme1" parent="Theme.AppCompat.Light.DarkActionBar" >
-       <!-- <item name="windowActionBar">true</item>-->
-       <!-- <item name="android:windowBackground">@android:color/darker_gray</item>-->
+    <style name="sssTheme1" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- <item name="windowActionBar">true</item>-->
+        <!-- <item name="android:windowBackground">@android:color/darker_gray</item>-->
         <item name="colorAccent">@color/bright_bluegreen</item>
         <item name="android:colorBackground">@color/background_grayblue</item>
         <item name="colorPrimary">@color/background_grayblue2</item>
     </style>
+
+    <style name="sssTheme1.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="sssTheme1.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="sssTheme1.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
