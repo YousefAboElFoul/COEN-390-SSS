@@ -11,6 +11,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -341,5 +343,37 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
             mBTDevice = mBTDevices.get(i);
             mBluetoothConnection = new BluetoothConnectionService(Bluetooth.this);
         }
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(TAG, "The onOptions event");
+        Intent startIntent;
+        switch (item.getItemId()) {
+            //action for the letter page
+            case R.id.goLetter:
+                startIntent = new Intent(Bluetooth.this,letterPage.class);
+                startActivity(startIntent);
+                return true;
+            //action to switch to word page
+            case R.id.goWord:
+                startIntent = new Intent(Bluetooth.this, wordPageActivity.class);
+                startActivity(startIntent);
+                return true;
+            //action to switch to help
+            case R.id.goHelp:
+                startIntent = new Intent(Bluetooth.this, help.class);
+                startActivity(startIntent);
+                return true;
+            //action to switch to settings gets pressed
+            case R.id.goSettings:
+                startIntent = new Intent(Bluetooth.this, settings.class);
+                startActivity(startIntent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+
+        return true;
     }
 }

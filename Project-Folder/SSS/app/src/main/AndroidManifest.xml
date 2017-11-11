@@ -39,8 +39,8 @@
         <activity android:name=".tutorialActivitiy" />
         <activity
             android:name=".Bluetooth"
-            android:label="@string/title_activity_bluetooth"
-            android:theme="@style/sssTheme1.NoActionBar"/>
+            android:parentActivityName=".MainActivity"
+            android:label="@string/title_activity_bluetooth"/>
     </application>
 
 
