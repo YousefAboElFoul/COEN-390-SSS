@@ -104,7 +104,6 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
                         break;
                     case BluetoothAdapter.STATE_CONNECTED:
                         Log.d(TAG, "mBroadcastReceiver2: Connected.");
-                        mBluetoothConnection.run();
                         break;
                 }
 
@@ -217,7 +216,6 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG,"ONCLICK");
                 byte[] bytes = etSend.getText().toString().getBytes(Charset.defaultCharset());
                 mBluetoothConnection.write(bytes);
             }

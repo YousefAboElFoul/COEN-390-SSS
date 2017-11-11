@@ -241,7 +241,7 @@ public class BluetoothConnectionService {
 
             mmInStream = tmpIn;
             mmOutStream = tmpOut;
-            System.out.println(mmInStream+":"+mmOutStream);
+            System.out.println("");
         }
 
         public void run(){
