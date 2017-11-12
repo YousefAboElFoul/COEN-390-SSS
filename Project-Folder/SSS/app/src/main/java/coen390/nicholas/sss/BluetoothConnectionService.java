@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ import java.util.UUID;
 
 public class BluetoothConnectionService {
     private static final String TAG = "BluetoothConnectionServ";
-
+    private  static String Incoming;
     private static final String appName = "MYAPP";
 
     private static final UUID MY_UUID_INSECURE =
@@ -253,9 +254,15 @@ public class BluetoothConnectionService {
             while (true) {
                 // Read from the InputStream
                 try {
+
                     bytes = mmInStream.read(buffer);
                     String incomingMessage = new String(buffer, 0, bytes);
                     Log.d(TAG, "InputStream: " + incomingMessage);
+
+                    Incoming=incomingMessage;
+                    setthevalue(Incoming);
+                    Log.d(TAG, "Print Function called :  " + Print());
+
                 } catch (IOException e) {
                     Log.e(TAG, "write: Error reading Input Stream. " + e.getMessage() );
                     break;
@@ -306,4 +313,10 @@ public class BluetoothConnectionService {
         mConnectedThread.write(out);
     }
 
+    public static String Print(){
+    return Incoming;
+    }
+    public void setthevalue(String Incoming){
+        Incoming=Incoming;
+    }
 }
