@@ -12,19 +12,26 @@
             android:id="@+id/listLevel"
             android:layout_width="200dp"
             android:layout_height="match_parent"
-            android:layout_weight="78.10" />
+            android:layout_weight="78.10"
+            android:gravity="center_vertical"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/listScore"
             android:layout_width="79dp"
             android:layout_height="match_parent"
-            android:layout_weight="21.43" />
+            android:layout_weight="21.43"
+            android:gravity="center_vertical"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/listDescription"
         android:layout_width="match_parent"
         android:layout_height="51dp"
-        android:textSize="30sp" />
+        android:gravity="fill"
+        android:textSize="14sp" />
 
 </LinearLayout>

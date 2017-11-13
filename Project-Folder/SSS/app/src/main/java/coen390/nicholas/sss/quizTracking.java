@@ -5,9 +5,10 @@ public class quizTracking
     //-------------------------------------Variables to set the lvl list---------------------------------------------
     private String lvl;
     private String lvlDescription;
+    private int totalQ = 0;
 
     //-------------------------------------tracking variables for quizzes---------------------------------------------
-    public int nmbCorrectQ1;
+    public int nmbCorrect;
     int questionCompletition[] = new int[26];
 
     //---------------------------------------------Quiz Questions-------------------------------------------------
@@ -17,7 +18,9 @@ public class quizTracking
     //----------------------------------------------------Constructor--------------------------------------------------------
     public quizTracking(String level, String description)
     {
-        lvl = level; lvlDescription = description;
+        lvl = "Level " + level; lvlDescription = description;
+
+       // if (level == "1"){totalQ = 26;}
     }
 
     //--------------------------------------------------------Getters-------------------------------------------------------4
@@ -26,4 +29,6 @@ public class quizTracking
 
     //get the description
     public String getDescription() { return lvlDescription;}
+
+    public String getScore() { return "Score: " + nmbCorrect + "/" + totalQ;}
 }

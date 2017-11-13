@@ -25,7 +25,9 @@ public class tutorialActivitiy extends AppCompatActivity
         Log.d(TAG, "The onCreate event");
 
         quizTracking quiz1 = new quizTracking("1", "Test Your skills against the alphabet");
+        quizTracking quiz2 = new quizTracking("2", "Dare to Challenge Yourself Against Some Words");
         quizList.add(quiz1);
+        quizList.add(quiz2);
 
         //function to set the listview
         setList(); //go to setlist function
@@ -35,10 +37,10 @@ public class tutorialActivitiy extends AppCompatActivity
     public void setList()
     {
         Log.d(TAG, "The setList event");
-        ListView gradesList = (ListView) findViewById(R.id.tutLvls);
+        ListView quiz = (ListView) findViewById(R.id.tutLvls);
 
         customTutorialListView adapter = new customTutorialListView(this, R.layout.tutlist, quizList);
-        gradesList.setAdapter(adapter);
+        quiz.setAdapter(adapter);
     }
 
 }
