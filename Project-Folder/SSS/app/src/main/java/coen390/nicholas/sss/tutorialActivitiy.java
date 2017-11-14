@@ -8,15 +8,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 
-import coen390.nicholas.sss.quizTracking;
 
 public class tutorialActivitiy extends AppCompatActivity
 {
     //---------------------------------------------Activity Variables--------------------------------------------------------
     protected static final String TAG = "Tutorial Activity";
+    ListView quiz;
     ArrayList<quizTracking> quizList = new ArrayList<>();
     quizTracking quiz1 = new quizTracking("1", "Test Your skills against the alphabet");
     quizTracking quiz2 = new quizTracking("2", "Dare to Challenge Yourself Against Some Words");
@@ -39,11 +38,16 @@ public class tutorialActivitiy extends AppCompatActivity
     //function to create the listview
     public void setList() {
         Log.d(TAG, "The setList event");
-        final ListView quiz = (ListView) findViewById(R.id.tutLvls);
+        quiz = (ListView) findViewById(R.id.tutLvls);
 
         customTutorialListView adapter = new customTutorialListView(this, R.layout.tutlist, quizList);
         quiz.setAdapter(adapter);
 
+        setListener();
+
+    }
+
+    public void setListener(){
         //----------When Items on list are pressed-----------------
         quiz.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
