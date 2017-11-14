@@ -1,6 +1,7 @@
 package coen390.nicholas.sss;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -49,11 +50,12 @@ public class tutorialActivitiy extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
                 switch (position) {
                     case 0: //case level 1
-                        quiz1.setCorrect();
-                        System.out.println(quiz1.getScore());
+                        Intent startIntent = new Intent(tutorialActivitiy.this, testActivity.class);
+                        startActivity(startIntent);
                         break;
                     case 1:
-                        quiz2.setCorrect();
+                        startIntent = new Intent(tutorialActivitiy.this, testActivity.class);
+                        startActivity(startIntent);
                         break;
                 }
 
