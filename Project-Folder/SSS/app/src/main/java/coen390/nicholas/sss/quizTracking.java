@@ -8,11 +8,11 @@ public class quizTracking
     private int totalQ = 0;
 
     //-------------------------------------tracking variables for quizzes---------------------------------------------
-    private int nmbCorrect;
-    int questionCompletition[] = new int[26];
+    private static int nmbCorrect;
+    int questionCompletion[] = new int[26];
 
     //---------------------------------------------Quiz Questions-------------------------------------------------
-    String questions[] = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
+    private static String questions[] = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
             "U", "V", "W", "X", "Y", "Z"};
 
     //----------------------------------------------------Constructor--------------------------------------------------------
@@ -33,4 +33,8 @@ public class quizTracking
     public String getScore() { return "Score: " + nmbCorrect + "/" + totalQ;}
 
     public void setCorrect() { nmbCorrect += 1;}
+
+    public static int getNmbCorrect() { return nmbCorrect;}
+
+    public static String getQuestion(int q){ return questions[q];}
 }

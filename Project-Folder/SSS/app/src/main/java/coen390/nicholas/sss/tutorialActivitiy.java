@@ -15,10 +15,15 @@ public class tutorialActivitiy extends AppCompatActivity
 {
     //---------------------------------------------Activity Variables--------------------------------------------------------
     protected static final String TAG = "Tutorial Activity";
+
+    //----------for the listview----------------
     ListView quiz;
     ArrayList<quizTracking> quizList = new ArrayList<>();
-    quizTracking quiz1 = new quizTracking("1", "Test Your skills against the alphabet");
-    quizTracking quiz2 = new quizTracking("2", "Dare to Challenge Yourself Against Some Words");
+    static quizTracking quiz1 = new quizTracking("1", "Test Your skills against the alphabet");
+    static quizTracking quiz2 = new quizTracking("2", "Dare to Challenge Yourself Against Some Words");
+
+    //---------for setting the quiz----------------
+    static int testLevel;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -54,10 +59,12 @@ public class tutorialActivitiy extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
                 switch (position) {
                     case 0: //case level 1
+                        testLevel = 1;
                         Intent startIntent = new Intent(tutorialActivitiy.this, testActivity.class);
                         startActivity(startIntent);
                         break;
                     case 1:
+                        testLevel = 2;
                         startIntent = new Intent(tutorialActivitiy.this, testActivity.class);
                         startActivity(startIntent);
                         break;
@@ -67,4 +74,30 @@ public class tutorialActivitiy extends AppCompatActivity
         });
     }
 
+    //----------------------------------------return the current level--------------------------------------------
+    public static int getLvl(){ return testLevel; }
+
+    public static int getCurrent(int i)
+    {
+        int correct = 0;
+        if (i == 1){ correct = quiz1.getNmbCorrect();}
+        else if (i == 2) { correct = quiz2.getNmbCorrect();}
+
+        return correct;
+    }
+
+    public static void setCurrent(int i)
+    {
+        if (i == 1){ quiz1.setCorrect();}
+        else if (i == 2) { quiz2.setCorrect();}
+    }
+
+    public static String getScore(int i)
+    {
+        String score = "";
+        if (i == 1){ score = quiz1.getScore();}
+        else if (i == 2) { score = quiz2.getScore();}
+
+        return score;
+    }
 }

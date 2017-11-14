@@ -35,9 +35,8 @@ public class customTutorialListView extends ArrayAdapter<quizTracking>
             //-------Set the content-------------
             String level = getItem(position).getLevel();
             String descrip = getItem(position).getDescription();
-            String score = getItem(position).getScore();
+            String score = tutorialActivitiy.getScore(position + 1);
 
-            quizTracking course = new quizTracking(level, descrip);
 
             //setting the inflater
             LayoutInflater inflater = LayoutInflater.from(mContext);
