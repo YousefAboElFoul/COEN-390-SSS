@@ -52,6 +52,7 @@ public class customTutorialListView extends ArrayAdapter<quizTracking>
             quizScore.setText(score);
             quizDesc.setText(descrip);
 
+            //---------------Set the colour------------------
             if (position == 0) {
                 quizLvl.setBackgroundColor(Color.argb(100, 0, 0, 130));
                 quizScore.setBackgroundColor(Color.argb(100, 0, 0, 130));
@@ -63,6 +64,8 @@ public class customTutorialListView extends ArrayAdapter<quizTracking>
                 quizDesc.setBackgroundColor(Color.argb(100, 130, 0, 0));
             }
 
+
             return convertView;
         }
+
 }

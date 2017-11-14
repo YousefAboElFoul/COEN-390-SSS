@@ -4,6 +4,8 @@ package coen390.nicholas.sss;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -14,8 +16,9 @@ public class tutorialActivitiy extends AppCompatActivity
 {
     //---------------------------------------------Activity Variables--------------------------------------------------------
     protected static final String TAG = "Tutorial Activity";
-    ListView levelList;
     ArrayList<quizTracking> quizList = new ArrayList<>();
+    quizTracking quiz1 = new quizTracking("1", "Test Your skills against the alphabet");
+    quizTracking quiz2 = new quizTracking("2", "Dare to Challenge Yourself Against Some Words");
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -24,8 +27,7 @@ public class tutorialActivitiy extends AppCompatActivity
 
         Log.d(TAG, "The onCreate event");
 
-        quizTracking quiz1 = new quizTracking("1", "Test Your skills against the alphabet");
-        quizTracking quiz2 = new quizTracking("2", "Dare to Challenge Yourself Against Some Words");
+
         quizList.add(quiz1);
         quizList.add(quiz2);
 
@@ -34,13 +36,29 @@ public class tutorialActivitiy extends AppCompatActivity
     }
 
     //function to create the listview
-    public void setList()
-    {
+    public void setList() {
         Log.d(TAG, "The setList event");
-        ListView quiz = (ListView) findViewById(R.id.tutLvls);
+        final ListView quiz = (ListView) findViewById(R.id.tutLvls);
 
         customTutorialListView adapter = new customTutorialListView(this, R.layout.tutlist, quizList);
         quiz.setAdapter(adapter);
+
+        //----------When Items on list are pressed-----------------
+        quiz.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
+                switch (position) {
+                    case 0: //case level 1
+                        quiz1.setCorrect();
+                        System.out.println(quiz1.getScore());
+                        break;
+                    case 1:
+                        quiz2.setCorrect();
+                        break;
+                }
+
+            }
+        });
     }
 
 }
