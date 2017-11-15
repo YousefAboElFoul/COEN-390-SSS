@@ -50,55 +50,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //-----------------------------------Functions for when the user presses the items--------------------------------------
-    //------when the action button gets pressed--------
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-
-        return true;
+    public void goTranslate(View view)
+    {
+        Intent startIntent = new Intent(MainActivity.this, wordPageActivity.class);
+        startActivity(startIntent);
     }
 
-    //-----------when items are selected----------------
-    //attempted to make an onClick in the menu, but it crashed the app...
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d(TAG, "The onOptions event");
-        Intent startIntent;
-        switch (item.getItemId()) {
-            //action to switch to the letter page
-            case R.id.goLetter:
-                startIntent = new Intent(MainActivity.this, letterPage.class);
-                startActivity(startIntent);
-                return true;
-            //action to switch to word page
-            case R.id.goWord:
-                startIntent = new Intent(MainActivity.this, wordPageActivity.class);
-                startActivity(startIntent);
-                return true;
-            //action to switch to help
-            case R.id.goHelp:
-                startIntent = new Intent(MainActivity.this, help.class);
-                startActivity(startIntent);
-                return true;
-            //action to switch to tutorial
-            case R.id.goTutorial:
-                startIntent = new Intent(MainActivity.this, tutorialActivitiy.class);
-                startActivity(startIntent);
-                return true;
-            //action to switch to settings
-            case R.id.goSettings:
-                startIntent = new Intent(MainActivity.this, settings.class);
-                startActivity(startIntent);
-                return true;
-            //action to go to BluetoothSettings to setup bluetooth
-            case R.id.Bluetooth:
-                startIntent = new Intent(MainActivity.this, Bluetooth.class);
-                startActivity(startIntent);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
+    public void goTutorial(View view)
+    {
+        Intent startIntent = new Intent(MainActivity.this, tutorialActivitiy.class);
+        startActivity(startIntent);
     }
 
+    public void goHelp(View view)
+    {
+        Intent startIntent = new Intent(MainActivity.this, help.class);
+        startActivity(startIntent);
+    }
 
-
+    public void goSettings(View view)
+    {
+        Intent startIntent = new Intent(MainActivity.this, settings.class);
+        startActivity(startIntent);
+    }
 
 
 }
