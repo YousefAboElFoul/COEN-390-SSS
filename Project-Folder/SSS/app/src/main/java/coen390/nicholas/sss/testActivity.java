@@ -115,7 +115,7 @@ public class testActivity extends AppCompatActivity
 
             beginAnswer.setVisibility(View.INVISIBLE);
             nextQ.setVisibility(View.VISIBLE);
-            if (tutorialActivitiy.getCurrent(level) - 1 == tutorialActivitiy.getTotal(level))
+            if (tutorialActivitiy.getCurrent(level) + 1 == tutorialActivitiy.getTotal(level))
             {
                 String text = "Completed";
                 nextQ.setText(text);
