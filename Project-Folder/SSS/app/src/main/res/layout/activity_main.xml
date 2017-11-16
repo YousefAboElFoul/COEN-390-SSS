@@ -49,7 +49,7 @@
         android:layout_marginTop="313dp"
         android:orientation="horizontal"
         android:weightSum="100"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:gravity="start"
         app:layout_constraintTop_toBottomOf="@+id/helloText"
         tools:layout_editor_absoluteY="482dp">
 
