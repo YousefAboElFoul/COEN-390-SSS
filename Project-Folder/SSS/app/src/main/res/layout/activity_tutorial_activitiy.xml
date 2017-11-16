@@ -7,4 +7,26 @@
     tools:context="coen390.nicholas.sss.tutorialActivitiy">
 
 
+    <TextView
+        android:id="@+id/tutTit"
+        android:layout_width="132dp"
+        android:layout_height="111dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:text="SELECT YOUR LEVEL"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/tutLvls"
+        android:layout_width="370dp"
+        android:layout_height="342dp"
+        android:layout_marginTop="26dp"
+        app:layout_constraintTop_toBottomOf="@+id/tutTit"
+        tools:layout_editor_absoluteX="7dp" />
 </android.support.constraint.ConstraintLayout>
