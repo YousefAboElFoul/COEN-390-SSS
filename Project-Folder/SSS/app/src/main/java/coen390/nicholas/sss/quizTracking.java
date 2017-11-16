@@ -8,7 +8,7 @@ public class quizTracking
     private int totalQ = 0;
 
     //-------------------------------------tracking variables for quizzes---------------------------------------------
-    private static int nmbCorrect;
+    private int nmbCorrect;
     int questionCompletion[] = new int[26];
 
     //---------------------------------------------Quiz Questions-------------------------------------------------
@@ -34,7 +34,7 @@ public class quizTracking
 
     public void setCorrect() { nmbCorrect += 1;}
 
-    public static int getNmbCorrect() { return nmbCorrect;}
+    public int getNmbCorrect() { return nmbCorrect;}
 
     public static String getQuestion(int q){ return questions[q];}
 }
