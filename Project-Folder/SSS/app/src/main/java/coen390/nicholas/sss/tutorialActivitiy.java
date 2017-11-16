@@ -19,8 +19,8 @@ public class tutorialActivitiy extends AppCompatActivity
     //----------for the listview----------------
     ListView quiz;
     ArrayList<quizTracking> quizList = new ArrayList<>();
-    static quizTracking quiz1 = new quizTracking("1", "Test Your skills against the alphabet");
-    static quizTracking quiz2 = new quizTracking("2", "Dare to Challenge Yourself Against Some Words");
+    static quizTracking quiz1 = new quizTracking(1, "Test Your skills against the alphabet");
+    static quizTracking quiz2 = new quizTracking(2, "Dare to Challenge Yourself Against Some Words");
 
     //---------for setting the quiz----------------
     static int testLevel;
@@ -77,6 +77,7 @@ public class tutorialActivitiy extends AppCompatActivity
     //----------------------------------------return the current level--------------------------------------------
     public static int getLvl(){ return testLevel; }
 
+    //gets the number of correct
     public static int getCurrent(int i)
     {
         int correct = 0;
@@ -86,18 +87,33 @@ public class tutorialActivitiy extends AppCompatActivity
         return correct;
     }
 
+    //sets the new correct
     public static void setCurrent(int i)
     {
         if (i == 1){ quiz1.setCorrect();}
         else if (i == 2) { quiz2.setCorrect();}
     }
 
+    public static void setNew(int i)
+    {
+        if (i == 1){ quiz1.setNewGame();}
+        else if (i == 2) { quiz2.setNewGame();}
+    }
+    //get the score
     public static String getScore(int i)
     {
-        String score = "";
-        if (i == 1){ score = quiz1.getScore();}
-        else if (i == 2) { score = quiz2.getScore();}
+        if (i == 1){ return quiz1.getScore();}
+        else if (i == 2) { return quiz2.getScore();}
 
-        return score;
+        return "";
+    }
+
+    //get the total questions
+    public static int getTotal(int i)
+    {
+        if (i == 1){ return quiz1.getTotal();}
+        else if (i == 2) { return quiz2.getTotal();}
+
+        return 0;
     }
 }
