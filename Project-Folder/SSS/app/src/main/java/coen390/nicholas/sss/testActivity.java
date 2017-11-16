@@ -28,6 +28,7 @@ public class testActivity extends AppCompatActivity
     String letterAns = "";
     Boolean restart = false;
 
+    //NEED TO ADD CHECK FOR COMPLETITION WHEN IN THE ON CREATE
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -111,20 +112,19 @@ public class testActivity extends AppCompatActivity
     {
         if (quizTracking.getQuestion(tutorialActivitiy.getCurrent(level)).equals(ans))
         {
+            //increment level
+            tutorialActivitiy.setCurrent(level);
+
             answer.setBackgroundColor(Color.argb(100, 0, 200, 0));
 
             beginAnswer.setVisibility(View.INVISIBLE);
             nextQ.setVisibility(View.VISIBLE);
-            if (tutorialActivitiy.getCurrent(level) + 1 == tutorialActivitiy.getTotal(level))
+            if (tutorialActivitiy.getCurrent(level)  == tutorialActivitiy.getTotal(level))
             {
                 String text = "Completed";
                 nextQ.setText(text);
 
                 completeGame();
-            }
-            else{
-                //increment level
-                tutorialActivitiy.setCurrent(level);
             }
         }
         else
