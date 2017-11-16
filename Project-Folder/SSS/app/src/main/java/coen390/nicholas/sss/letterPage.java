@@ -67,39 +67,28 @@ public class letterPage  extends AppCompatActivity {
     }
 
     //-----------------------------------Functions for when the user presses the items--------------------------------------
-    //------when the action button gets pressed--------
-    public boolean onCreateOptionsMenu(Menu menu)
+    public void goHelp(View view)
     {
-        getMenuInflater().inflate(R.menu.menu, menu);
-
-        return true;
+        Intent startIntent = new Intent(letterPage.this, help.class);
+        startActivity(startIntent);
     }
 
-    //-----------when items are selected----------------
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d(TAG, "The onOptions event");
-        Intent startIntent;
-        switch (item.getItemId()) {
-            //action for the letter page
-            case R.id.goLetter:
-                return true;
-            //action to switch to word page
-            case R.id.goWord:
-                startIntent = new Intent(letterPage.this, wordPageActivity.class);
-                startActivity(startIntent);
-                return true;
-            //action to switch to help
-            case R.id.goHelp:
-                startIntent = new Intent(letterPage.this, help.class);
-                startActivity(startIntent);
-                return true;
-            //action to switch to settings gets pressed
-            case R.id.goSettings:
-                startIntent = new Intent(letterPage.this, settings.class);
-                startActivity(startIntent);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
+    public void goTutorial(View view)
+    {
+        Intent startIntent = new Intent(letterPage.this, tutorialActivitiy.class);
+        startActivity(startIntent);
+    }
+
+    public void goHome(View view)
+    {
+        Intent startIntent = new Intent(letterPage.this, MainActivity.class);
+        startActivity(startIntent);
+    }
+
+    public void goSettings(View view)
+    {
+        Intent startIntent = new Intent(letterPage.this, settings.class);
+        startActivity(startIntent);
     }
 
     //-------------------------------------Function for getting and outputting a letter----------------------------------------

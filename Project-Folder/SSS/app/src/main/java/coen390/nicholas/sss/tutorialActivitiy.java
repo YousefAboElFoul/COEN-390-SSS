@@ -2,13 +2,15 @@ package coen390.nicholas.sss;
 
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
+import coen390.nicholas.sss.quizTracking;
+import android.os.Bundle;
+import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import java.util.ArrayList;
+
 
 
 public class tutorialActivitiy extends AppCompatActivity
@@ -16,11 +18,37 @@ public class tutorialActivitiy extends AppCompatActivity
     //---------------------------------------------Activity Variables--------------------------------------------------------
     protected static final String TAG = "Tutorial Activity";
 
+
+    public void goTranslate(View view)
+    {
+        Intent startIntent = new Intent(tutorialActivitiy.this, letterPage.class);
+        startActivity(startIntent);
+    }
+
+    public void goHelp(View view)
+    {
+        Intent startIntent = new Intent(tutorialActivitiy.this, help.class);
+        startActivity(startIntent);
+    }
+
+    public void goHome(View view)
+    {
+        Intent startIntent = new Intent(tutorialActivitiy.this, MainActivity.class);
+        startActivity(startIntent);
+    }
+
+    public void goSettings(View view)
+    {
+        Intent startIntent = new Intent(tutorialActivitiy.this, settings.class);
+        startActivity(startIntent);
+    }
+
     //----------for the listview----------------
     ListView quiz;
     ArrayList<quizTracking> quizList = new ArrayList<>();
     static quizTracking quiz1 = new quizTracking(1, "Test Your skills against the alphabet");
     static quizTracking quiz2 = new quizTracking(2, "Dare to Challenge Yourself Against Some Words");
+
 
     //---------for setting the quiz----------------
     static int testLevel;
