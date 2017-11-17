@@ -78,4 +78,60 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewAnswer" />
 
+    <LinearLayout
+        android:layout_width="364dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="503dp"
+        android:gravity="start"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/homeButton"
+            style="@android:style/Widget.DeviceDefault.Button.Borderless"
+            android:layout_width="73dp"
+            android:layout_height="61dp"
+            android:background="@color/background_grayish"
+            android:onClick="goHome"
+            android:text="H" />
+
+        <Button
+            android:id="@+id/translationButton"
+            style="@android:style/Widget.DeviceDefault.Button.Borderless"
+            android:layout_width="73dp"
+            android:layout_height="61dp"
+            android:background="@color/background_grayish"
+            android:onClick="goTranslate"
+            android:text="C" />
+
+        <Button
+            android:id="@+id/tutorialButton"
+            style="@android:style/Widget.DeviceDefault.Button.Borderless"
+            android:layout_width="73dp"
+            android:layout_height="61dp"
+            android:background="@color/background_grayish"
+            android:textColor="@android:color/holo_blue_bright"
+            android:onClick="goTutorial"
+            android:text="T" />
+
+        <Button
+            android:id="@+id/helpButton"
+            style="@android:style/Widget.DeviceDefault.Button.Borderless"
+            android:layout_width="73dp"
+            android:layout_height="61dp"
+            android:background="@color/background_grayish"
+            android:onClick="goHelp"
+            android:text="!" />
+
+        <Button
+            android:id="@+id/settingsButton"
+            style="@android:style/Widget.DeviceDefault.Button.Borderless"
+            android:layout_width="73dp"
+            android:layout_height="61dp"
+            android:background="@color/background_grayish"
+            android:onClick="goSettings"
+            android:text="S" />
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

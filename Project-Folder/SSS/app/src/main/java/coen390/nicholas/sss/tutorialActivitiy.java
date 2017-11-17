@@ -19,30 +19,6 @@ public class tutorialActivitiy extends AppCompatActivity
     protected static final String TAG = "Tutorial Activity";
 
 
-    public void goTranslate(View view)
-    {
-        Intent startIntent = new Intent(tutorialActivitiy.this, letterPage.class);
-        startActivity(startIntent);
-    }
-
-    public void goHelp(View view)
-    {
-        Intent startIntent = new Intent(tutorialActivitiy.this, help.class);
-        startActivity(startIntent);
-    }
-
-    public void goHome(View view)
-    {
-        Intent startIntent = new Intent(tutorialActivitiy.this, MainActivity.class);
-        startActivity(startIntent);
-    }
-
-    public void goSettings(View view)
-    {
-        Intent startIntent = new Intent(tutorialActivitiy.this, settings.class);
-        startActivity(startIntent);
-    }
-
     //----------for the listview----------------
     ListView quiz;
     ArrayList<quizTracking> quizList = new ArrayList<>();
@@ -143,5 +119,31 @@ public class tutorialActivitiy extends AppCompatActivity
         else if (i == 2) { return quiz2.getTotal();}
 
         return 0;
+    }
+
+
+    //--------------------------------------------Menu Functions------------------------------------------------------------
+    public void goTranslate(View view)
+    {
+        Intent startIntent = new Intent(tutorialActivitiy.this, letterPage.class);
+        startActivity(startIntent);
+    }
+
+    public void goHelp(View view)
+    {
+        Intent startIntent = new Intent(tutorialActivitiy.this, help.class);
+        startActivity(startIntent);
+    }
+
+    public void goHome(View view)
+    {
+        Intent startIntent = new Intent(tutorialActivitiy.this, MainActivity.class);
+        startActivity(startIntent);
+    }
+
+    public void goSettings(View view)
+    {
+        Intent startIntent = new Intent(tutorialActivitiy.this, settings.class);
+        startActivity(startIntent);
     }
 }

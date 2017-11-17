@@ -1,5 +1,6 @@
 package coen390.nicholas.sss;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.speech.tts.TextToSpeech;
@@ -170,5 +171,37 @@ public class testActivity extends AppCompatActivity
                 //get next question
                 setQuestion();
         }
+    }
+
+
+    //--------------------------------------------------Menu Functions---------------------------------------------------
+    public void goTranslate(View view)
+    {
+        Intent startIntent = new Intent(testActivity.this, letterPage.class);
+        startActivity(startIntent);
+    }
+
+    public void goHelp(View view)
+    {
+        Intent startIntent = new Intent(testActivity.this, help.class);
+        startActivity(startIntent);
+    }
+
+    public void goHome(View view)
+    {
+        Intent startIntent = new Intent(testActivity.this, MainActivity.class);
+        startActivity(startIntent);
+    }
+
+    public void goSettings(View view)
+    {
+        Intent startIntent = new Intent(testActivity.this, settings.class);
+        startActivity(startIntent);
+    }
+
+    public void goTutorial(View view)
+    {
+        Intent startIntent = new Intent(testActivity.this, tutorialActivitiy.class);
+        startActivity(startIntent);
     }
 }
