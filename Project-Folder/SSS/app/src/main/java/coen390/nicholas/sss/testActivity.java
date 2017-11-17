@@ -17,17 +17,23 @@ import java.util.Random;
 public class testActivity extends AppCompatActivity
 {
     //-------------------------------------------Necessary Variables------------------------------------------
-    int level;
-    int currentQ = 0;
+    //Layout Variable
     TextView lvlShow;
     TextView question;
     TextView answer;
     Button nextQ;
     Button beginAnswer;
-    TextToSpeech speaking;
-    Boolean receivingAnswer = true;
+
+    //test control variables
+    int level;
+    int currentQ = 0;
     String letterAns = "";
+    String theQuestion = "";
     Boolean restart = false;
+    Boolean receivingAnswer = true;
+    int allQuestions[] = new int[10];
+
+    TextToSpeech speaking;
 
     //NEED TO ADD CHECK FOR COMPLETITION WHEN IN THE ON CREATE
     @Override
@@ -90,14 +96,62 @@ public class testActivity extends AppCompatActivity
 
     private void setQuestion()
     {
-        String theQuestion = "Question undefined";
+        getQuestion();
+        String ask = "Sign the Following: " + theQuestion;
+
+        question.setText(ask);
+    }
+
+    private void getQuestion()
+    {
+        Random rndIndex = new Random();
+        Boolean foundNew = false;
+        int qIndex = 0;
+
         if (level == 1) {
-            theQuestion = "Sign the Following: " + quizTracking.getQuestion(tutorialActivitiy.getCurrent(level));
+            theQuestion = quizTracking.getQuestion(tutorialActivitiy.getCurrent(level));
         }
         else if (level == 2){
-            theQuestion = "Sign the Following: " + quizTracking.getQuestion(2 * tutorialActivitiy.getCurrent(level));
+            while(!foundNew) { //loop until you find a new question index
+                qIndex = rndIndex.nextInt(26); //get a new random index from 0 to 25
+                if (tutorialActivitiy.getCurrent(level) != 0) {
+                    for (int i = 0; i < tutorialActivitiy.getCurrent(level); i++) { //check if it exist
+                        if (allQuestions[i] != qIndex) //if it doesnt
+                        {
+                            foundNew = true;
+                        } else {
+                            foundNew = false;
+                        }
+                    }
+                }
+                else {foundNew = true;}
+            }
+            //once you find a new index
+            allQuestions[tutorialActivitiy.getCurrent(level)] = qIndex;
+            theQuestion = quizTracking.getQuestion(qIndex);
         }
-        question.setText(theQuestion);
+        else if (level == 3){
+            //System.out.println("current is: " + tutorialActivitiy.getCurrent(level));
+
+            while(!foundNew) { //loop until you find a new question index
+                qIndex = rndIndex.nextInt(10) + 26; //get a new random index from 0 to 25
+                //System.out.println("The new index is: " + qIndex);
+                if (tutorialActivitiy.getCurrent(level) != 0) {
+                    for (int i = 0; i < tutorialActivitiy.getCurrent(level); i++) { //check if it exist
+                        if (allQuestions[i] != qIndex) //if it doesnt
+                        {
+                            foundNew = true;
+                        } else {
+                            foundNew = false;
+                        }
+                    }
+                }
+                else {foundNew = true;}
+            }
+            //once you find a new index
+            allQuestions[tutorialActivitiy.getCurrent(level)] = qIndex;
+            theQuestion = quizTracking.getQuestion(qIndex);
+        }
     }
 
     //----------------------------------------Function for when the user begins answering-------------------------------------
@@ -110,7 +164,7 @@ public class testActivity extends AppCompatActivity
             //String letter = BluetoothConnectionService.Print();
         //}
         if (receivingAnswer) {
-            letterAns += quizTracking.getQuestion(tutorialActivitiy.getCurrent(level));
+            letterAns += theQuestion;
             answer.setText(letterAns);
             receivingAnswer = false;
         }
@@ -128,7 +182,7 @@ public class testActivity extends AppCompatActivity
     //--------------------------------------Function to check if answer is corrected------------------------------------------
     public void checkQ(String ans)
     {
-        if (quizTracking.getQuestion(tutorialActivitiy.getCurrent(level)).equals(ans))
+        if (theQuestion.equals(ans))
         {
             //increment level
             tutorialActivitiy.setCurrent(level);

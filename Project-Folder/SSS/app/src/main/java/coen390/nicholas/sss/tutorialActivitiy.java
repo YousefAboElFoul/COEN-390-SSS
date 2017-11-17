@@ -55,7 +55,6 @@ public class tutorialActivitiy extends AppCompatActivity
         quiz.setAdapter(adapter);
 
         setListener();
-
     }
 
     public void setListener(){
