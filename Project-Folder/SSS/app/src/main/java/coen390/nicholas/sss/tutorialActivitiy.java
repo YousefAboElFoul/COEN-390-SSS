@@ -22,8 +22,9 @@ public class tutorialActivitiy extends AppCompatActivity
     //----------for the listview----------------
     ListView quiz;
     ArrayList<quizTracking> quizList = new ArrayList<>();
-    static quizTracking quiz1 = new quizTracking(1, "Test Your skills against the alphabet");
-    static quizTracking quiz2 = new quizTracking(2, "Dare to Challenge Yourself Against Some Words");
+    static quizTracking quiz1 = new quizTracking(1, "Learn How To Sign The Alphabet");
+    static quizTracking quiz2 = new quizTracking(2, "Test Your Skills Against 10 Random Letters");
+    static quizTracking quiz3 = new quizTracking(3, "Dare to Challenge Yourself Against Some Words");
 
 
     //---------for setting the quiz----------------
@@ -39,6 +40,7 @@ public class tutorialActivitiy extends AppCompatActivity
 
         quizList.add(quiz1);
         quizList.add(quiz2);
+        quizList.add(quiz3);
 
         //function to set the listview
         setList(); //go to setlist function
@@ -72,6 +74,11 @@ public class tutorialActivitiy extends AppCompatActivity
                         startIntent = new Intent(tutorialActivitiy.this, testActivity.class);
                         startActivity(startIntent);
                         break;
+                    case 2:
+                        testLevel = 3;
+                        startIntent = new Intent(tutorialActivitiy.this, testActivity.class);
+                        startActivity(startIntent);
+                        break;
                 }
 
             }
@@ -87,6 +94,7 @@ public class tutorialActivitiy extends AppCompatActivity
         int correct = 0;
         if (i == 1){ correct = quiz1.getNmbCorrect();}
         else if (i == 2) { correct = quiz2.getNmbCorrect();}
+        else if (i == 3) { correct = quiz3.getNmbCorrect();}
 
         return correct;
     }
@@ -96,18 +104,21 @@ public class tutorialActivitiy extends AppCompatActivity
     {
         if (i == 1){ quiz1.setCorrect();}
         else if (i == 2) { quiz2.setCorrect();}
+        else if (i == 3) {quiz3.setCorrect();}
     }
 
     public static void setNew(int i)
     {
         if (i == 1){ quiz1.setNewGame();}
         else if (i == 2) { quiz2.setNewGame();}
+        else if (i == 3) { quiz3.setNewGame();}
     }
     //get the score
     public static String getScore(int i)
     {
         if (i == 1){ return quiz1.getScore();}
         else if (i == 2) { return quiz2.getScore();}
+        else if (i == 3) { return quiz3.getScore();}
 
         return "";
     }
@@ -117,6 +128,7 @@ public class tutorialActivitiy extends AppCompatActivity
     {
         if (i == 1){ return quiz1.getTotal();}
         else if (i == 2) { return quiz2.getTotal();}
+        else if (i == 3) { return quiz3.getTotal();}
 
         return 0;
     }

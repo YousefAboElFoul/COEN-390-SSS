@@ -21,7 +21,8 @@ public class quizTracking
         lvl = "Level " + level; lvlDescription = description;
 
        if (level == 1){totalQ = 26;}
-        else {totalQ = 5;}
+       else if (level == 2) { totalQ = 10;}
+       else {totalQ = 5;}
     }
 
     //--------------------------------------------------------Getters--------------------------------------------------------
