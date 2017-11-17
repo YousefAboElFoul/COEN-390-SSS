@@ -48,15 +48,32 @@ public class testActivity extends AppCompatActivity
         lvlShow = (TextView) findViewById(R.id.showLvl);
         question = (TextView) findViewById(R.id.showQ);
         answer = (TextView) findViewById(R.id.viewAnswer);
-        answer.setBackgroundColor(Color.argb(100, 100, 100, 100));
         nextQ = (Button) findViewById(R.id.nextQ);
         beginAnswer = (Button) findViewById(R.id.addAnswer);
 
         level = tutorialActivitiy.getLvl();
         currentQ = tutorialActivitiy.getCurrent(level);
 
-        setText();
-        setQuestion();
+        //check if already completed
+        if (tutorialActivitiy.getCurrent(level)  == tutorialActivitiy.getTotal(level))
+        {
+            //set text
+            String text = "Completed";
+            nextQ.setText(text);
+            String title = "Welcome To Level " + level;
+            lvlShow.setText(title);
+
+            //set the buttons
+            nextQ.setVisibility(View.VISIBLE);
+            beginAnswer.setVisibility(View.INVISIBLE);
+
+            //set the restart mode
+            completeGame();
+        }
+        else {
+            setText();
+            setQuestion();
+        }
     }
 
     //----function to set the title of the page:  use this for when we change the language-----------
@@ -86,7 +103,7 @@ public class testActivity extends AppCompatActivity
     //----------------------------------------Function for when the user begins answering-------------------------------------
     public void beginQ(View view)
     {
-        answer.setBackgroundColor(Color.argb(100, 100, 100, 100));
+        answer.setBackgroundColor(Color.TRANSPARENT);
 
         //count++;
         //while (count != 2) {
@@ -142,7 +159,7 @@ public class testActivity extends AppCompatActivity
         letterAns = "";
         nextQ.setVisibility(View.INVISIBLE);
         answer.setText("");
-        answer.setBackgroundColor(Color.argb(100, 100, 100, 100));
+        answer.setBackgroundColor(Color.TRANSPARENT);
     }
 
     //---------------------------------------Function to set the game as complete----------------------------------------
@@ -151,7 +168,9 @@ public class testActivity extends AppCompatActivity
         toast.show();
 
         String restartText = "Restart";
+        String textComplete = "Level Completed!";
         nextQ.setText(restartText);
+        question.setText(textComplete);
         restart = true;
     }
     //---------------------------------------Function to go to the next question-----------------------------------------
