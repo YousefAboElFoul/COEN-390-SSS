@@ -28,28 +28,23 @@
         </activity>
         <activity
             android:name=".wordPageActivity"
-            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".letterPage"
-            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".settings"
-            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".help"
-            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Bluetooth"
             android:label="@string/title_activity_bluetooth"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".settings"
             android:screenOrientation="portrait" />
         <activity
             android:name=".tutorialActivitiy"
-            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".testActivity"
