@@ -114,17 +114,15 @@ public class testActivity extends AppCompatActivity
         else if (level == 2){
             while(!foundNew) { //loop until you find a new question index
                 qIndex = rndIndex.nextInt(26); //get a new random index from 0 to 25
+                foundNew = true;
                 if (tutorialActivitiy.getCurrent(level) != 0) {
                     for (int i = 0; i < tutorialActivitiy.getCurrent(level); i++) { //check if it exist
-                        if (allQuestions[i] != qIndex) //if it doesnt
+                        if (allQuestions[i] == qIndex) //if it doesnt
                         {
-                            foundNew = true;
-                        } else {
                             foundNew = false;
                         }
                     }
                 }
-                else {foundNew = true;}
             }
             //once you find a new index
             allQuestions[tutorialActivitiy.getCurrent(level)] = qIndex;
