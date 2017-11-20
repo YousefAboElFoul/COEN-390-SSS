@@ -14,7 +14,7 @@
         <!-- <item name="windowActionBar">true</item>-->
         <!-- <item name="android:windowBackground">@android:color/darker_gray</item>-->
         <item name="colorAccent">@color/bright_bluegreen</item>
-        <item name="android:colorBackground">@color/background_grayblue</item>
+        <item name="android:colorBackground">@color/colorAccent</item>
         <item name="colorPrimary">@color/background_grayblue2</item>
     </style>
 
