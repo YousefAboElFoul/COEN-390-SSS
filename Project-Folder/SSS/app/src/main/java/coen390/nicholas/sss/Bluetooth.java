@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -226,9 +227,18 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
     }
 
     //create method for starting connection
-//***remember the conncction will fail and app will crash if you haven't paired first
+//***remember the conncction will fail and app won't crash
     public void startConnection(){
-        startBTConnection(mBTDevice,MY_UUID_INSECURE);
+
+
+       if (mBTDevice ==  null)
+
+        {  // Context text =  " Please choose a device..."  ;
+            Log.d(TAG, "No Connection established.....");
+           // Toast.show(,Toast.LENGTH_LONG);}
+        else
+       {startBTConnection(mBTDevice,MY_UUID_INSECURE);}
+
     }
 
     /**
