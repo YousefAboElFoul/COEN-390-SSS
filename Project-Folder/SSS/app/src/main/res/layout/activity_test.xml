@@ -4,59 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="coen390.nicholas.sss.help">
-
-    <LinearLayout
-        android:layout_width="120dp"
-        android:layout_height="0dp"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="0dp"
-        android:id="@+id/linearLayout">
-
-        <ListView
-            android:id="@+id/letterList"
-            android:layout_width="120dp"
-            android:layout_height="512dp"
-            android:layout_marginBottom="0dp"
-            android:layout_marginEnd="285dp"
-            android:layout_marginRight="291dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
-    </LinearLayout>
+    tools:context="coen390.nicholas.sss.testActivity">
 
     <TextView
-        android:id="@+id/showHelpLetter"
-        android:layout_width="110dp"
-        android:layout_height="85dp"
-        android:layout_marginBottom="8dp"
+        android:id="@+id/showLvl"
+        android:layout_width="135dp"
+        android:layout_height="68dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:textAlignment="center"
-        android:textSize="50sp"
+        android:layout_marginTop="16dp"
+        android:textSize="26sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.141"
-        app:layout_constraintHorizontal_bias="0.47" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/helpImage"
-        android:layout_width="229dp"
-        android:layout_height="227dp"
-        android:layout_marginBottom="8dp"
+    <TextView
+        android:id="@+id/showQ"
+        android:layout_width="264dp"
+        android:layout_height="89dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintLeft_toRightOf="@+id/linearLayout"
+        android:layout_marginTop="35dp"
+        android:fontFamily="monospace"
+        android:textSize="24sp"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/showHelpLetter"
-        app:layout_constraintVertical_bias="0.256"
-        app:srcCompat="@drawable/signlanguage" />
+        app:layout_constraintTop_toBottomOf="@+id/showLvl" />
+
+    <Button
+        android:id="@+id/nextQ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="27dp"
+        android:onClick="goToNextQ"
+        android:visibility="invisible"
+        app:layout_constraintHorizontal_bias="0.759"
+        app:layout_constraintLeft_toRightOf="@+id/showLvl"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/viewAnswer"
+        android:layout_width="344dp"
+        android:layout_height="125dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="38dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="50sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/showQ" />
+
+    <Button
+        android:id="@+id/addAnswer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="46dp"
+        android:onClick="beginQ"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewAnswer" />
 
     <LinearLayout
         android:layout_width="364dp"
@@ -91,6 +108,7 @@
             android:layout_width="73dp"
             android:layout_height="61dp"
             android:background="@color/background_grayish"
+            android:textColor="@android:color/holo_blue_bright"
             android:onClick="goTutorial"
             android:text="T" />
 
@@ -100,8 +118,8 @@
             android:layout_width="73dp"
             android:layout_height="61dp"
             android:background="@color/background_grayish"
-            android:text="!"
-            android:textColor="@android:color/holo_blue_bright" />
+            android:onClick="goHelp"
+            android:text="!" />
 
         <Button
             android:id="@+id/settingsButton"
@@ -113,5 +131,4 @@
             android:text="S" />
 
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>
