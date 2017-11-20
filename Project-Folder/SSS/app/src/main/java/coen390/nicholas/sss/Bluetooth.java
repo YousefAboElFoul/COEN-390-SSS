@@ -227,18 +227,17 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
     }
 
     //create method for starting connection
-//***remember the conncction will fail and app won't crash
+//----------------------------------------------------------------------------Application wont crash------------------------------------------------------------------
     public void startConnection(){
-
-
-       if (mBTDevice ==  null)
-
-        {  // Context text =  " Please choose a device..."  ;
-            Log.d(TAG, "No Connection established.....");
-           // Toast.show(,Toast.LENGTH_LONG);}
+        Context context =getApplicationContext();
+        CharSequence text =  " Please choose a device..."  ;
+        Toast toast=Toast.makeText(context, text, Toast.LENGTH_LONG);
+       if (mBTDevice ==  null) {
+           Log.d(TAG, "No Connection established.....");
+           toast.show();
+       }
         else
-       {startBTConnection(mBTDevice,MY_UUID_INSECURE);}
-
+       startBTConnection(mBTDevice,MY_UUID_INSECURE);
     }
 
     /**
