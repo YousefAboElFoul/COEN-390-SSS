@@ -136,7 +136,7 @@ public class tutorialActivitiy extends AppCompatActivity
     //--------------------------------------------Menu Functions------------------------------------------------------------
     public void goTranslate(View view)
     {
-        Intent startIntent = new Intent(tutorialActivitiy.this, letterPage.class);
+        Intent startIntent = new Intent(tutorialActivitiy.this, wordPageActivity.class);
         startActivity(startIntent);
     }
 

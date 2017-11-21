@@ -55,7 +55,7 @@ public class settings extends AppCompatActivity
 
     public void goTranslate(View view)
     {
-        Intent startIntent = new Intent(settings.this, letterPage.class);
+        Intent startIntent = new Intent(settings.this, wordPageActivity.class);
         startActivity(startIntent);
     }
 }
