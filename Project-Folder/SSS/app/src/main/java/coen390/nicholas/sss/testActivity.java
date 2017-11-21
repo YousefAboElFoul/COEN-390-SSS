@@ -163,10 +163,9 @@ public class testActivity extends AppCompatActivity
             //String letter = BluetoothConnectionService.Print();
         //}
         if (receivingAnswer) {
-            letterAns += theQuestion;
-            answer.setText(letterAns);
             beginAnswer.setText("END"); //to be changed for better implementation
             receivingAnswer = false;
+            signAnswer();
         }
         else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -177,6 +176,16 @@ public class testActivity extends AppCompatActivity
             }
             checkQ(letterAns);
         }
+    }
+
+    public void signAnswer()
+    {
+        //need to think of how to receive an answer without use the get letter button
+        //while(true) {
+        //}
+
+        letterAns += theQuestion;
+        answer.setText(letterAns);
     }
 
     //--------------------------------------Function to check if answer is corrected------------------------------------------
