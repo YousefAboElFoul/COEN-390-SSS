@@ -183,8 +183,8 @@ public class testActivity extends AppCompatActivity
         //need to think of how to receive an answer without use the get letter button
         //while(true) {
         //}
-
-        letterAns += theQuestion;
+        letterAns += BluetoothConnectionService.Print();
+        //letterAns += theQuestion;
         answer.setText(letterAns);
     }
 
