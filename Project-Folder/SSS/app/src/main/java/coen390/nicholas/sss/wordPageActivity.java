@@ -6,8 +6,6 @@ import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -89,7 +87,9 @@ public class wordPageActivity extends AppCompatActivity {
         Random rndIndex = new Random();
         int hashIndex = rndIndex.nextInt(26) + 1;
 
-        String letter = hash.getAlphabets(hashIndex);
+        //String letter = hash.getAlphabets(hashIndex);
+        Log.d(TAG,"IS the output being sent:"+BluetoothConnectionService.Print());
+        String letter = BluetoothConnectionService.Print();
 
         if (wording == null) {wording = letter + "";}
         else { wording = wording + letter;}
