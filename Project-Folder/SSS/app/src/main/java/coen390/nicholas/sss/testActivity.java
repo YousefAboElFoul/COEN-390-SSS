@@ -31,6 +31,7 @@ public class testActivity extends AppCompatActivity
     String theQuestion = "";
     Boolean restart = false;
     Boolean receivingAnswer = true;
+
     int allQuestions[] = new int[10];
 
     TextToSpeech speaking;
@@ -164,6 +165,7 @@ public class testActivity extends AppCompatActivity
         if (receivingAnswer) {
             letterAns += theQuestion;
             answer.setText(letterAns);
+            beginAnswer.setText("END"); //to be changed for better implementation
             receivingAnswer = false;
         }
         else {
