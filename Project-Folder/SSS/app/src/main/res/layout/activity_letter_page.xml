@@ -112,6 +112,5 @@
             android:background="@color/background_grayish"
             android:onClick="goSettings"
             android:text="S" />
-
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

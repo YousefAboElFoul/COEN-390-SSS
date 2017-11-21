@@ -146,4 +146,29 @@ public class wordPageActivity extends AppCompatActivity {
             speaking.speak(wording, TextToSpeech.QUEUE_FLUSH, null);
         }
     }
+
+    //-----------------------------------Functions for when the user presses the items--------------------------------------
+    public void goHelp(View view)
+    {
+        Intent startIntent = new Intent(wordPageActivity.this, help.class);
+        startActivity(startIntent);
+    }
+
+    public void goTutorial(View view)
+    {
+        Intent startIntent = new Intent(wordPageActivity.this, tutorialActivitiy.class);
+        startActivity(startIntent);
+    }
+
+    public void goHome(View view)
+    {
+        Intent startIntent = new Intent(wordPageActivity.this, MainActivity.class);
+        startActivity(startIntent);
+    }
+
+    public void goSettings(View view)
+    {
+        Intent startIntent = new Intent(wordPageActivity.this, settings.class);
+        startActivity(startIntent);
+    }
 }
