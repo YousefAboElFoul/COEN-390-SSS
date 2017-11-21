@@ -74,11 +74,11 @@ public class wordPageActivity extends AppCompatActivity {
             voiceWord();
 
             word = false;
-            getWord.setText("Make a Word");
+            getWord.setText("BEGIN TRANSLATING");
             wording = null;
             addLetter.setVisibility(View.INVISIBLE);
         }
-        else {word = true; getWord.setText("End Word"); addLetter.setVisibility(View.VISIBLE); showText.setText(wording);}
+        else {word = true; getWord.setText("End"); addLetter.setVisibility(View.VISIBLE); showText.setText(wording);}
     }
 
     public void addToWord(View view)
