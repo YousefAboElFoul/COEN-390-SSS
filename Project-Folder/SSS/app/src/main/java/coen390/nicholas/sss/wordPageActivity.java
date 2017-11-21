@@ -67,42 +67,6 @@ public class wordPageActivity extends AppCompatActivity {
         addLetter = (Button) findViewById(R.id.addLetter);
     }
 
-    //-----------------------------------Functions for when the user presses the items--------------------------------------
-    //------when the action button gets pressed--------
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.menu, menu);
-
-        return true;
-    }
-
-    //-----------when items are selected----------------
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d(TAG, "The onOptions event");
-        Intent startIntent;
-        switch (item.getItemId()) {
-            //action to switch to the letter page
-            case R.id.goLetter:
-                startIntent = new Intent(wordPageActivity.this, letterPage.class);
-                startActivity(startIntent);
-                return true;
-            //action to switch to word page
-            case R.id.goWord:
-                return true;
-            //action to switch to help
-            case R.id.goHelp:
-                startIntent = new Intent(wordPageActivity.this, help.class);
-                startActivity(startIntent);
-                return true;
-            //action to switch to settings gets pressed
-            case R.id.goSettings:
-                startIntent = new Intent(wordPageActivity.this, settings.class);
-                startActivity(startIntent);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     //-------------------------------------Function for monitoring the Word making----------------------------------------
     public void makingWord(View view)
     {
