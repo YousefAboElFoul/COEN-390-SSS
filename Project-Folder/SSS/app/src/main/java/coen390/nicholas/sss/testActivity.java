@@ -221,6 +221,7 @@ public class testActivity extends AppCompatActivity
         receivingAnswer = true;
         letterAns = "";
         nextQ.setVisibility(View.INVISIBLE);
+        beginAnswer.setText("BEGIN");
         answer.setText("");
         answer.setBackgroundColor(Color.TRANSPARENT);
     }
