@@ -349,10 +349,6 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
         Intent startIntent;
         switch (item.getItemId()) {
             //action for the letter page
-            case R.id.goLetter:
-                startIntent = new Intent(Bluetooth.this,letterPage.class);
-                startActivity(startIntent);
-                return true;
             //action to switch to word page
             case R.id.goWord:
                 startIntent = new Intent(Bluetooth.this, wordPageActivity.class);
