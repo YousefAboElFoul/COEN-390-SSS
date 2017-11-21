@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(TAG, "The onCreate() event");
         setupUI();
+
         SharedPreferences sp = getSharedPreferences("FirstTimeFile", Context.MODE_PRIVATE);
         boolean appIsOpenedForTheFirstTime = sp.getBoolean("IsAppOpenedForFirstTime",true);
 
@@ -43,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
                     "First time use.", Toast.LENGTH_LONG).show();
 
         }
-
     }
 
     //---------------------------Function that links the objects to their xml definitions-----------------------------
