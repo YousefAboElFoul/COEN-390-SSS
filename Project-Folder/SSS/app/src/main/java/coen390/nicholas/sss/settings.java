@@ -1,6 +1,8 @@
 package coen390.nicholas.sss;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
@@ -9,11 +11,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.Locale;
+import android.widget.ToggleButton;
 
 public class settings extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     //--------------------------------------------Declaring variables----------------------------------------------
@@ -21,7 +23,6 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
     TextView title = null;
     private Spinner spinner;
     TextToSpeech speaking;
-
     private static final String[]paths = {"English", "French", "Arabic","Kharma"};
     //--------to LOG textPage events-----------
     protected static final String TAG = "settingsActivity";
@@ -60,6 +61,27 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
                 startActivity(startIntent);
             }
         });
+
+        ToggleButton toggle = (ToggleButton) findViewById(R.id.togglebuttonVoiceOn);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) { AudioManager amanager=(AudioManager)getSystemService(Context.AUDIO_SERVICE);
+                    amanager.setStreamMute(AudioManager.STREAM_SYSTEM, false); // The toggle is disabled
+                    //unmute audio
+                    Toast.makeText(getApplicationContext(),
+                            "Toggle on.", Toast.LENGTH_SHORT).show();
+                    AudioManager volumeControl = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+                    volumeControl.setStreamMute(AudioManager.STREAM_MUSIC, false);
+                    // The toggle is enabled
+                } else {
+
+                    Toast.makeText(getApplicationContext(),
+                            "Toggle off.", Toast.LENGTH_SHORT).show();
+                    AudioManager volumeControl = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+                    volumeControl.setStreamMute(AudioManager.STREAM_MUSIC, true);
+                }
+            }
+        });
     }
 
     //-----------------------------------Functions for when the user presses the items--------------------------------------
@@ -95,20 +117,11 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
                         "English selected.", Toast.LENGTH_SHORT).show();// Whatever you want to happen when the first item gets selected
 
 
-                speaking = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-                    @Override
-                    public void onInit(int status) {
-                        if (status != TextToSpeech.ERROR) {
-                            speaking.setLanguage(Locale.FRANCE);
-                        }
-                    }
-                });
-
-
                 break;
             case 1:
                 Toast.makeText(getApplicationContext(),
                         "French selected.", Toast.LENGTH_SHORT).show();// Whatever you want to happen when the second item gets selected
+
 
                 break;
             case 2:
