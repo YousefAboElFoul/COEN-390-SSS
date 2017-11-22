@@ -2,23 +2,20 @@ package coen390.nicholas.sss;
 
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.app.Activity;
 
 import java.util.Locale;
 import java.util.Random;
 
 
 public class letterPage  extends AppCompatActivity {
-//---------------------------decalring a conecction service bluetooth object-------------------------------------
+//---------------------------declaring a conecction service bluetooth object-------------------------------------
 
 
     String value;
@@ -112,4 +109,7 @@ public class letterPage  extends AppCompatActivity {
             speaking.speak(letter, TextToSpeech.QUEUE_FLUSH, null);
         }
     }
+
+
+
 }
