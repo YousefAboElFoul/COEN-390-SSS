@@ -24,7 +24,7 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
     Button btn;
 
     //----------options for language-------------
-    private static final String[]paths = {"English", "French", "Cameron","Kharma"};
+    private static final String[]paths = {"English", "Français", "Cameron","Kharma"};
 
     //------------track variables----------------
     private static int languageTrack = 1;
