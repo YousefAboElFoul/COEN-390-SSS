@@ -48,12 +48,14 @@ public class wordPageActivity extends AppCompatActivity {
             public void onInit(int status) {
                 if (status != TextToSpeech.ERROR) {
                     speaking.setLanguage(Locale.UK);
+                    if (settings.getLanguageSelection() == 2){speaking.setLanguage(Locale.CANADA_FRENCH);}
                 }
             }
         });
 
         hash.setAlphabets();
         setupUI();
+        setText();
     }
 
     //---------------------------Function that links the objects to their xml definitions-----------------------------
@@ -65,13 +67,32 @@ public class wordPageActivity extends AppCompatActivity {
         addLetter = (Button) findViewById(R.id.addLetter);
     }
 
+    //---------------------------------------set the text base on app language--------------------------------------
+    private void setText()
+    {
+        String Title = "TRANSLATION PAGE";
+        String getWordText = "Begin";
+        String addLetterText = "Add a Letter";
+
+        if (settings.getLanguageSelection() == 2)
+        {
+            Title = "PAGE DE TRANSLATION";
+            getWordText = "Commencer";
+            addLetterText = "Ajouter un Lettre";
+        }
+
+        title.setText(Title);
+        getWord.setText(getWordText);
+        addLetter.setText(addLetterText);
+    }
+
     //-------------------------------------Function for monitoring the Word making----------------------------------------
     public void makingWord(View view)
     {
         //make bool variable false if its true, and true if its false
         if (word)
         {
-            voiceWord();
+            if (settings.getVoiceOption()) {voiceWord();}
 
             word = false;
             getWord.setText("BEGIN TRANSLATING");
