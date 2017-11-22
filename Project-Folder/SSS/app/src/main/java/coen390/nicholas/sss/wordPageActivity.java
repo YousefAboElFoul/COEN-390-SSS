@@ -50,6 +50,7 @@ public class wordPageActivity extends AppCompatActivity {
             public void onInit(int status) {
                 if (status != TextToSpeech.ERROR) {
                     speaking.setLanguage(Locale.UK);
+                    if (settings.getLanguageSelection() == 2){speaking.setLanguage(Locale.CANADA_FRENCH);}
                 }
             }
         });
