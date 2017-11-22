@@ -248,7 +248,7 @@ public class testActivity extends AppCompatActivity
     //--------------------------------------------------Menu Functions---------------------------------------------------
     public void goTranslate(View view)
     {
-        Intent startIntent = new Intent(testActivity.this, letterPage.class);
+        Intent startIntent = new Intent(testActivity.this, wordPageActivity.class);
         startActivity(startIntent);
     }
 
