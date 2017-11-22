@@ -27,8 +27,8 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
     private static final String[]paths = {"English", "French", "Cameron","Kharma"};
 
     //------------track variables----------------
-    private int languageTrack = 1;
-    private boolean voice = true;
+    private static int languageTrack = 1;
+    private static boolean voice = true;
 
     //--------to LOG textPage events-----------
     protected static final String TAG = "settingsActivity";
@@ -115,7 +115,7 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
         }
     }
 
-    public boolean getVoiceOption(){return voice;}
+    public static boolean getVoiceOption(){return voice;}
 
     //-------------------------------------Selection for the language dropdown----------------------------------------------
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -137,12 +137,11 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
             case 3:
                 Toast.makeText(getApplicationContext(), "Very Good One.", Toast.LENGTH_SHORT).show();
                 break;
-        }
-    }
+        }}
 
-    public void onNothingSelected(AdapterView<?> parent) {
+    public void onNothingSelected(AdapterView<?> parent) {}
 
-    }
+    public static int getLanguageSelection(){ return languageTrack; }
 
 
     //-----------------------------------Functions for when the user presses the items--------------------------------------
@@ -166,7 +165,7 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
 
     public void goTranslate(View view)
     {
-        Intent startIntent = new Intent(settings.this, letterPage.class);
+        Intent startIntent = new Intent(settings.this, wordPageActivity.class);
         startActivity(startIntent);
     }
 }

@@ -56,6 +56,7 @@ public class wordPageActivity extends AppCompatActivity {
 
         hash.setAlphabets();
         setupUI();
+        setText();
     }
 
     //---------------------------Function that links the objects to their xml definitions-----------------------------
@@ -65,6 +66,25 @@ public class wordPageActivity extends AppCompatActivity {
         showText = (TextView) findViewById(R.id.viewWord);
         getWord = (Button) findViewById(R.id.getWord);
         addLetter = (Button) findViewById(R.id.addLetter);
+    }
+
+    //---------------------------------------set the text base on app language--------------------------------------
+    private void setText()
+    {
+        String Title = "TRANSLATION PAGE";
+        String getWordText = "Begin";
+        String addLetterText = "Add a Letter";
+
+        if (settings.getLanguageSelection() == 2)
+        {
+            Title = "PAGE DE TRANSLATION";
+            getWordText = "Commencer";
+            addLetterText = "Ajouter un Lettre";
+        }
+
+        title.setText(Title);
+        getWord.setText(getWordText);
+        addLetter.setText(addLetterText);
     }
 
     //-----------------------------------Functions for when the user presses the items--------------------------------------
@@ -109,7 +129,7 @@ public class wordPageActivity extends AppCompatActivity {
         //make bool variable false if its true, and true if its false
         if (word)
         {
-            voiceWord();
+            if (settings.getVoiceOption()) {voiceWord();}
 
             word = false;
             getWord.setText("Make a Word");
