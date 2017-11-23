@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/sssTheme1">
         <activity
-            android:name=".MainActivity"
+            android:theme="@style/sssTheme1.NoActionBar"
+            android:name=".Splash"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".wordPageActivity"
             android:screenOrientation="portrait" />
@@ -47,10 +51,6 @@
             android:name=".testActivity"
             android:parentActivityName=".tutorialActivitiy"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".Splash"
-            android:label="@string/title_activity_splash"
-            android:theme="@style/sssTheme1.NoActionBar"></activity>
     </application>
 
 </manifest>
