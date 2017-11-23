@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     //-----------------------------------Functions for when the user presses the items--------------------------------------
     public void goTranslate(View view)
     {
-        Intent startIntent = new Intent(MainActivity.this, letterPage.class);
+        Intent startIntent = new Intent(MainActivity.this, wordPageActivity.class);
         startActivity(startIntent);
     }
 

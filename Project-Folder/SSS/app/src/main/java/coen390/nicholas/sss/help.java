@@ -53,7 +53,7 @@ public class help extends AppCompatActivity
     //-----------------------------------Functions for when the user presses the items--------------------------------------
     public void goTranslate(View view)
     {
-        Intent startIntent = new Intent(help.this, letterPage.class);
+        Intent startIntent = new Intent(help.this, wordPageActivity.class);
         startActivity(startIntent);
     }
 

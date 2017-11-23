@@ -30,9 +30,6 @@
             android:name=".wordPageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".letterPage"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".settings"
             android:screenOrientation="portrait" />
         <activity
