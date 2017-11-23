@@ -47,6 +47,10 @@
             android:name=".testActivity"
             android:parentActivityName=".tutorialActivitiy"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".Splash"
+            android:label="@string/title_activity_splash"
+            android:theme="@style/sssTheme1.NoActionBar"></activity>
     </application>
 
 </manifest>
