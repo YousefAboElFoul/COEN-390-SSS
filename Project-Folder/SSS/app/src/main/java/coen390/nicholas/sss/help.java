@@ -37,9 +37,9 @@ public class help extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
         Log.d(TAG,"The onCreate() event");
-
         setupUI();
         listviewStuff();
+
     }
 
     //---------------------------Function that links the objects to their xml definitions-----------------------------

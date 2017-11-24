@@ -42,6 +42,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 
+    <com.hitomi.cmlibrary.CircleMenu
+        android:id="@+id/circle_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
+        android:layout_centerInParent="true"
+        tools:layout_editor_absoluteY="184dp"
+        tools:layout_editor_absoluteX="80dp" />
+
 
     <LinearLayout
         android:layout_width="364dp"
@@ -52,6 +60,7 @@
         android:gravity="start"
         app:layout_constraintTop_toBottomOf="@+id/helloText"
         tools:layout_editor_absoluteY="482dp">
+
 
         <Button
             android:id="@+id/homeButton"
@@ -97,6 +106,8 @@
             android:background="@color/background_grayish"
             android:onClick="goSettings"
             android:text="S" />
+
+
 
     </LinearLayout>
 
