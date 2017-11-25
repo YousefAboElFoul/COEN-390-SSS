@@ -16,6 +16,7 @@ import java.util.Random;
 public class wordPageActivity extends AppCompatActivity {
 
     //--------------------------------------------Declaring variables----------------------------------------------
+    sharedPreference sharePreferences;
     //-------for objects needed in the activity-------
     TextView title = null;
     TextView showText = null;
@@ -41,6 +42,8 @@ public class wordPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_word_page);
         Log.d(TAG,"The onCreate() event");
 
+        sharePreferences = new sharedPreference(this);
+
         //reference on initialization:
         //https://www.tutorialspoint.com/android/android_text_to_speech.htm
         speaking = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
@@ -54,8 +57,12 @@ public class wordPageActivity extends AppCompatActivity {
         });
 
         hash.setAlphabets();
+
         setupUI();
-        setText();
+        if (sharePreferences.getConnection()) {
+            setText();
+        }
+        else { setNoConnection();}
     }
 
     //---------------------------Function that links the objects to their xml definitions-----------------------------
@@ -70,52 +77,78 @@ public class wordPageActivity extends AppCompatActivity {
     //---------------------------------------set the text base on app language--------------------------------------
     private void setText()
     {
-        String Title = "TRANSLATION PAGE";
-        String getWordText = "Begin";
-        String addLetterText = "Add a Letter";
+            String Title = "TRANSLATION PAGE";
+            String getWordText = "Begin";
+            String addLetterText = "Add a Letter";
 
-        if (settings.getLanguageSelection() == 2)
-        {
-            Title = "PAGE DE TRANSLATION";
-            getWordText = "Commencer";
-            addLetterText = "Ajouter un Lettre";
+            if (settings.getLanguageSelection() == 2) {
+                Title = "PAGE DE TRANSLATION";
+                getWordText = "Commencer";
+                addLetterText = "Ajouter un Lettre";
+            }
+
+            title.setText(Title);
+            getWord.setText(getWordText);
+            addLetter.setText(addLetterText);
+
+    }
+
+    private void setNoConnection(){
+        String notConnected = "CONNECT TO BLUETOOTH!";
+
+        if (settings.getLanguageSelection() == 2) {
+            notConnected = "FAIT LA CONNECTION AVEC BLUETOOTH";
         }
 
-        title.setText(Title);
-        getWord.setText(getWordText);
-        addLetter.setText(addLetterText);
+        title.setText(notConnected);
+        getWord.setVisibility(View.INVISIBLE);
+        addLetter.setVisibility(View.INVISIBLE);
     }
 
     //-------------------------------------Function for monitoring the Word making----------------------------------------
     public void makingWord(View view)
     {
-        //make bool variable false if its true, and true if its false
-        if (word)
-        {
-            if (settings.getVoiceOption()) {voiceWord();}
+        if (sharePreferences.getConnection()) {
+            //make bool variable false if its true, and true if its false
+            if (word) {
+                if (settings.getVoiceOption()) {
+                    voiceWord();
+                }
 
-            word = false;
-            getWord.setText("BEGIN TRANSLATING");
-            wording = null;
-            addLetter.setVisibility(View.INVISIBLE);
+                word = false;
+                getWord.setText("BEGIN TRANSLATING");
+                wording = null;
+                addLetter.setVisibility(View.INVISIBLE);
+            } else {
+                word = true;
+                getWord.setText("End");
+                addLetter.setVisibility(View.VISIBLE);
+                showText.setText(wording);
+            }
         }
-        else {word = true; getWord.setText("End"); addLetter.setVisibility(View.VISIBLE); showText.setText(wording);}
+        else { setNoConnection();}
     }
 
     public void addToWord(View view)
     {
-        //-------Generate a random number from 1-26 for the indexes---------
-        Random rndIndex = new Random();
-        int hashIndex = rndIndex.nextInt(26) + 1;
+        if (sharePreferences.getConnection()) {
+            //-------Generate a random number from 1-26 for the indexes---------
+            Random rndIndex = new Random();
+            int hashIndex = rndIndex.nextInt(26) + 1;
 
-        //String letter = hash.getAlphabets(hashIndex);
-        Log.d(TAG,"IS the output being sent:"+BluetoothConnectionService.Print());
-        String letter = BluetoothConnectionService.Print();
+            //String letter = hash.getAlphabets(hashIndex);
+            Log.d(TAG, "IS the output being sent:" + BluetoothConnectionService.Print());
+            String letter = BluetoothConnectionService.Print();
 
-        if (wording == null) {wording = letter + "";}
-        else { wording = wording + letter;}
+            if (wording == null) {
+                wording = letter + "";
+            } else {
+                wording = wording + letter;
+            }
 
-        showText.setText(wording);
+            showText.setText(wording);
+        }
+        else {setNoConnection();}
     }
 
     //-------------------------------------Function for getting and outputting a letter----------------------------------------

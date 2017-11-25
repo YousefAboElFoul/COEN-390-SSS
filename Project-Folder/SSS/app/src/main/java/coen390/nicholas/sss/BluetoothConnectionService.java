@@ -14,6 +14,8 @@ import java.nio.charset.Charset;
 import java.util.UUID;
 
 public class BluetoothConnectionService {
+    Boolean connected = false;
+
     private static final String TAG = "BluetoothConnectionServ";
     private  static String Incoming;
     private static final String appName = "MYAPP";
@@ -256,9 +258,11 @@ public class BluetoothConnectionService {
                     Incoming=incomingMessage;
                     setthevalue(Incoming);
                     Log.d(TAG, "Print Function called :  " + Print());
+                    connected = true;
 
                 } catch (IOException e) {
                     Log.e(TAG, "write: Error reading Input Stream. " + e.getMessage() );
+                    connected = false;
                     break;
                 }
             }
@@ -279,6 +283,7 @@ public class BluetoothConnectionService {
         public void cancel() {
             try {
                 mmSocket.close();
+                connected = false;
             } catch (IOException e) { }
         }
     }
@@ -289,6 +294,7 @@ public class BluetoothConnectionService {
         // Start the thread to manage the connection and perform transmissions
         mConnectedThread = new ConnectedThread(mmSocket);
         mConnectedThread.start();
+        connected = true;
     }
 
     /**
@@ -313,4 +319,6 @@ public class BluetoothConnectionService {
     public void setthevalue(String Incoming){
         Incoming=Incoming;
     }
+
+    public Boolean getConnection() { return connected;}
 }

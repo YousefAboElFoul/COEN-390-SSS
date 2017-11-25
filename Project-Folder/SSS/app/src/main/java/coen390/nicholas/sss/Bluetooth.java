@@ -26,6 +26,8 @@ import java.util.UUID;
 
 
 public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemClickListener{
+    private sharedPreference sharedPreferences;
+
     private static final String TAG = "Bluetooth";
 
     BluetoothAdapter mBluetoothAdapter;
@@ -183,6 +185,9 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bluetooth);
+
+        sharedPreferences = new sharedPreference(this);
+
         Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
         btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
@@ -221,6 +226,7 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
             public void onClick(View view) {
                 byte[] bytes = etSend.getBytes(Charset.defaultCharset());
                 mBluetoothConnection.write(bytes);
+                sharedPreferences.saveConnection(mBluetoothConnection.getConnection());
             }
         });
 
@@ -235,9 +241,11 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
        if (mBTDevice ==  null) {
            Log.d(TAG, "No Connection established.....");
            toast.show();
+           sharedPreferences.saveConnection(false);
        }
-        else
-       startBTConnection(mBTDevice,MY_UUID_INSECURE);
+        else{
+            startBTConnection(mBTDevice,MY_UUID_INSECURE);
+           sharedPreferences.saveConnection(true);}
     }
 
     /**
@@ -254,6 +262,7 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
 
         if(mBluetoothAdapter == null) {
             Log.d(TAG, "enableDisableBT: Does not have BT capabilities.");
+            sharedPreferences.saveConnection(false);
         }
         if(!mBluetoothAdapter.isEnabled()){
             Log.d(TAG, "enableDisableBT: enabling BT.");
@@ -268,6 +277,8 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
 
             IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
             registerReceiver(mBroadcastReceiver1, BTIntent);
+
+            sharedPreferences.saveConnection(false);
         }
 
     }
