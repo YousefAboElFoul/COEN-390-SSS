@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context="coen390.nicholas.sss.settings">
 
+    <com.hitomi.cmlibrary.CircleMenu
+        android:id="@+id/circle_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
+        android:layout_centerInParent="true"
+        tools:layout_editor_absoluteY="184dp"
+        tools:layout_editor_absoluteX="80dp" />
     <TextView
         android:id="@+id/bluetooth_calibration"
         android:layout_width="wrap_content"
@@ -151,6 +158,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
 
         <Button
             android:id="@+id/homeButton"
