@@ -36,7 +36,7 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
     Button btnStartConnection;
     Button btnSend;
 
-    EditText etSend;
+    String etSend="cal";
 
     private static final UUID MY_UUID_INSECURE =
             UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -190,7 +190,7 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
 
         btnStartConnection = (Button) findViewById(R.id.btnStartConnection);
         btnSend = (Button) findViewById(R.id.btnSend);
-        etSend = (EditText) findViewById(R.id.editText);
+
 
         //Broadcasts when bond state changes (ie:pairing)
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
@@ -219,7 +219,7 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                byte[] bytes = etSend.getText().toString().getBytes(Charset.defaultCharset());
+                byte[] bytes = etSend.getBytes(Charset.defaultCharset());
                 mBluetoothConnection.write(bytes);
             }
         });
