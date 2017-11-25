@@ -258,9 +258,11 @@ public class BluetoothConnectionService {
                     Incoming=incomingMessage;
                     setthevalue(Incoming);
                     Log.d(TAG, "Print Function called :  " + Print());
+                    connected = true;
 
                 } catch (IOException e) {
                     Log.e(TAG, "write: Error reading Input Stream. " + e.getMessage() );
+                    connected = false;
                     break;
                 }
             }
@@ -273,7 +275,6 @@ public class BluetoothConnectionService {
             try {
                 mmOutStream.write(bytes);
             } catch (IOException e) {
-                connected = false;
                 Log.e(TAG, "write: Error writing to output stream. " + e.getMessage() );
             }
         }
