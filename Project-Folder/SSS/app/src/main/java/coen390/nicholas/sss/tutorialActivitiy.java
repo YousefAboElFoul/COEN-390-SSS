@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
 
@@ -18,13 +20,17 @@ public class tutorialActivitiy extends AppCompatActivity
     //---------------------------------------------Activity Variables--------------------------------------------------------
     protected static final String TAG = "Tutorial Activity";
 
+    sharedPreference sharePreferences;
+    static int language;
+
+    TextView title;
 
     //----------for the listview----------------
     ListView quiz;
     ArrayList<quizTracking> quizList = new ArrayList<>();
-    static quizTracking quiz1 = new quizTracking(1, "Learn How To Sign The Alphabet");
-    static quizTracking quiz2 = new quizTracking(2, "Test Your Skills Against 10 Random Letters");
-    static quizTracking quiz3 = new quizTracking(3, "Dare to Challenge Yourself Against Some Words");
+    static quizTracking quiz1;
+    static quizTracking quiz2;
+    static quizTracking quiz3;
 
 
     //---------for setting the quiz----------------
@@ -35,15 +41,41 @@ public class tutorialActivitiy extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial_activitiy);
 
+        sharePreferences = new sharedPreference(this);
+
+        language = sharePreferences.getLanguage();
+
+        title = (TextView) findViewById(R.id.tutTit);
+
         Log.d(TAG, "The onCreate event");
 
+        setQuiz();
 
         quizList.add(quiz1);
         quizList.add(quiz2);
         quizList.add(quiz3);
 
+        String titleText = "Select Your Level";
+        if (settings.getLanguageSelection() == 2) {titleText = "Choissi Votre Étages";}
+        title.setText(titleText);
+
         //function to set the listview
         setList(); //go to setlist function
+    }
+
+    public void setQuiz()
+    {
+        if (language == 1) {
+            quiz1 = new quizTracking(1, "Learn How To Sign The Alphabet");
+            quiz2 = new quizTracking(2, "Test Your Skills Against 10 Random Letters");
+            quiz3 = new quizTracking(3, "Dare to Challenge Yourself Against Some Words");
+        }
+        else {
+            quiz1 = new quizTracking(1, "Pratique l'alphabet");
+            quiz2 = new quizTracking(2, "Competition contre 10 lettres");
+            quiz3 = new quizTracking(3, "Peux-tu battres des mots...");
+        }
+
     }
 
     //function to create the listview
@@ -132,6 +164,7 @@ public class tutorialActivitiy extends AppCompatActivity
         return 0;
     }
 
+    public static int getLanguage(){ return language;}
 
     //--------------------------------------------Menu Functions------------------------------------------------------------
     public void goTranslate(View view)

@@ -2,8 +2,11 @@ package coen390.nicholas.sss;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Parcelable;
 
 public class sharedPreference {
+
+    Parcelable state;
 
     private SharedPreferences sharedPreferences; //class object
 
@@ -26,4 +29,18 @@ public class sharedPreference {
         return sharedPreferences.getBoolean("connection", false);
     }
 
+    public void saveLanguage(int language)
+    {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("language",language);
+        editor.apply();
+    }
+
+    public int getLanguage() { return sharedPreferences.getInt("language", 1);}
+
+    public void saveState(Parcelable stat){
+        state = stat;
+    }
+
+    public Parcelable getState(){ return state;}
 }

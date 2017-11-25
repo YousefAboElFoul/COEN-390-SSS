@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="61dp"
         android:layout_centerInParent="true"
-        tools:layout_editor_absoluteY="184dp"
+        tools:layout_editor_absoluteY="355dp"
         tools:layout_editor_absoluteX="80dp" />
     <TextView
         android:id="@+id/bluetooth_calibration"
