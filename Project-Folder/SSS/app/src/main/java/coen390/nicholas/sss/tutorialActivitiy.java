@@ -56,7 +56,7 @@ public class tutorialActivitiy extends AppCompatActivity
         quizList.add(quiz3);
 
         String titleText = "Select Your Level";
-        if (settings.getLanguageSelection() == 2) {titleText = "Choissi Votre Étages";}
+        if (language == 2) {titleText = "Choisi Votre Niveau";}
         title.setText(titleText);
 
         //function to set the listview

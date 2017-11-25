@@ -19,11 +19,17 @@ public class quizTracking
             //for quiz 3
             "HI", "SIGN", "DAY", "LOVE", "ENGINEER", "NICHOLAS", "RESPECT", "QUIZ", "LIT", "SSS"};
 
+    private static String questionsF[] =
+            //for quiz 1 and 2
+            {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
+                    "U", "V", "W", "X", "Y", "Z",
+                    //for quiz 3
+                    "BONJOUR", "GESTE", "JOUR", "AMOURE", "INJÉNIEUR", "NICHOLAS", "LA", "OUI", "CHAUD", "SSS"};
     //----------------------------------------------------Constructor--------------------------------------------------------
     public quizTracking(int level, String description)
     {
         lvl = "Level " + level;
-        if (settings.getLanguageSelection() == 2)
+        if (tutorialActivitiy.getLanguage() == 2)
         {
             lvl = "Niveau " + level;
         }
@@ -43,7 +49,7 @@ public class quizTracking
     public String getDescription() { return lvlDescription;}
 
     public String getScore() {
-        if (settings.getLanguageSelection() == 2)
+        if (tutorialActivitiy.getLanguage() == 2)
         {
             return "Compte: " + nmbCorrect + "/" + totalQ;
         }
@@ -52,7 +58,12 @@ public class quizTracking
 
     public int getNmbCorrect() { return nmbCorrect;}
 
-    public static String getQuestion(int q){ return questions[q];}
+    public static String getQuestion(int q){
+        if (tutorialActivitiy.getLanguage() == 2)
+        {
+            return  questionsF[q];
+        }
+        return questions[q];}
 
     public int getTotal(){ return totalQ;}
 
