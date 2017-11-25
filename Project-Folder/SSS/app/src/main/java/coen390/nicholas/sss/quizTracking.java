@@ -22,7 +22,13 @@ public class quizTracking
     //----------------------------------------------------Constructor--------------------------------------------------------
     public quizTracking(int level, String description)
     {
-        lvl = "Level " + level; lvlDescription = description;
+        lvl = "Level " + level;
+        if (settings.getLanguageSelection() == 2)
+        {
+            lvl = "Niveau " + level;
+        }
+
+        lvlDescription = description;
 
        if (level == 1){totalQ = 26;}
        else if (level == 2) { totalQ = 10;}
@@ -36,7 +42,13 @@ public class quizTracking
     //get the description
     public String getDescription() { return lvlDescription;}
 
-    public String getScore() { return "Score: " + nmbCorrect + "/" + totalQ;}
+    public String getScore() {
+        if (settings.getLanguageSelection() == 2)
+        {
+            return "Compte: " + nmbCorrect + "/" + totalQ;
+        }
+
+        return "Score: " + nmbCorrect + "/" + totalQ;}
 
     public int getNmbCorrect() { return nmbCorrect;}
 
