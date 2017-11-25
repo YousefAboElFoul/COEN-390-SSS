@@ -14,6 +14,8 @@ import java.nio.charset.Charset;
 import java.util.UUID;
 
 public class BluetoothConnectionService {
+    sharedPreference sharedPreferences;
+
     private static final String TAG = "BluetoothConnectionServ";
     private  static String Incoming;
     private static final String appName = "MYAPP";
@@ -271,6 +273,7 @@ public class BluetoothConnectionService {
             try {
                 mmOutStream.write(bytes);
             } catch (IOException e) {
+                sharedPreferences.saveConnection(false);
                 Log.e(TAG, "write: Error writing to output stream. " + e.getMessage() );
             }
         }
@@ -279,6 +282,7 @@ public class BluetoothConnectionService {
         public void cancel() {
             try {
                 mmSocket.close();
+                sharedPreferences.saveConnection(false);
             } catch (IOException e) { }
         }
     }
@@ -289,6 +293,7 @@ public class BluetoothConnectionService {
         // Start the thread to manage the connection and perform transmissions
         mConnectedThread = new ConnectedThread(mmSocket);
         mConnectedThread.start();
+        sharedPreferences.saveConnection(true);
     }
 
     /**

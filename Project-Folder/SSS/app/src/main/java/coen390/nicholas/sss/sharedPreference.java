@@ -25,5 +25,5 @@ public class sharedPreference {
     {
         return sharedPreferences.getBoolean("connection", false);
     }
-    
+
 }
