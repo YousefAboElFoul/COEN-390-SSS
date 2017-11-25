@@ -224,9 +224,19 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Context context =getApplicationContext();
+                CharSequence text =  " Please choose a device..."  ;
+                Toast toast=Toast.makeText(context, text, Toast.LENGTH_LONG);
+                if (mBTDevice ==  null) {
+                    Log.d(TAG, "No Connection is established.....");
+                    toast.show();
+                    sharedPreferences.saveConnection(false);
+                }
+                else{
                 byte[] bytes = etSend.getBytes(Charset.defaultCharset());
                 mBluetoothConnection.write(bytes);
                 sharedPreferences.saveConnection(mBluetoothConnection.getConnection());
+                }
             }
         });
 
