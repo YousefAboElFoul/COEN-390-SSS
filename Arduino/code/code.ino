@@ -11,7 +11,7 @@ const int sensorPinTHUMB = A0;    // pin that the THUMB flex sensor is attached 
 const int sensorPinINDEX = A1;    // pin that the INDEX flex sensor is attached to
 const int sensorPinMIDDLE = A2;    // pin that the MIDDLE flex sensor is attached to
 const int sensorPinRING = A3;    // pin that the RING flex sensor is attached to
-const int sensorPinPINKEY = A4;    // pin that the PINKEY flex sensor is attached to
+const int sensorPinPINKEY = A5;    // pin that the PINKEY flex sensor is attached to
 const int xPin = 2;		// X output of the accelerometer
 const int yPin = 3;		// y output of the accelerometer
 
