@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context="coen390.nicholas.sss.settings">
 
-<<<<<<< HEAD
-=======
     <com.hitomi.cmlibrary.CircleMenu
         android:id="@+id/circle_menu"
         android:layout_width="wrap_content"
@@ -16,7 +14,7 @@
         tools:layout_editor_absoluteY="225dp"
         tools:layout_editor_absoluteX="144dp"/>
 
->>>>>>> master
+
     <TextView
         android:id="@+id/bluetooth_calibration"
         android:layout_width="wrap_content"

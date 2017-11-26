@@ -44,7 +44,7 @@ public class wordPageActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_page);
-        Log.d(TAG,"The onCreate() event");
+
 
         sharePreferences = new sharedPreference(this);
 
