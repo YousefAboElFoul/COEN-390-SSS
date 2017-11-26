@@ -2,6 +2,7 @@ package coen390.nicholas.sss;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 public class settings extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     //--------------------------------------------Declaring variables----------------------------------------------
+    sharedPreference sharePreferences;
     //-------for objects needed in the home page-------
     TextView title = null;
     TextView languageSelection = null;
@@ -25,10 +27,12 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
 
     //----------options for language-------------
     private static final String[]paths = {"English", "Français", "Cameron","Kharma"};
+    boolean initialStart;
 
     //------------track variables----------------
     private static int languageTrack = 1;
     private static boolean voice = true;
+    Parcelable state;
 
     //--------to LOG textPage events-----------
     protected static final String TAG = "settingsActivity";
@@ -40,6 +44,12 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         Log.d(TAG,"The onCreate() event");
+
+        sharePreferences = new sharedPreference(this);
+
+        languageTrack = sharePreferences.getLanguage();
+
+        initialStart = true;
 
         setupUI();
     }
@@ -92,6 +102,7 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        //spinner.onRestoreInstanceState(sharePreferences.getState());
         spinner.setOnItemSelectedListener(this);
     }
 
@@ -119,16 +130,21 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
 
     //-------------------------------------Selection for the language dropdown----------------------------------------------
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if (initialStart){position = languageTrack - 1; initialStart = false;}
         switch (position) {
             //run code depending on language selection
             case 0:
                 Toast.makeText(getApplicationContext(), "English selected.", Toast.LENGTH_SHORT).show();
                 languageTrack = 1;
+                sharePreferences.saveLanguage(1);
+                sharePreferences.saveState(spinner.onSaveInstanceState());
                 setText();
                 break;
             case 1:
                 Toast.makeText(getApplicationContext(), "French selected.", Toast.LENGTH_SHORT).show();
                 languageTrack = 2;
+                sharePreferences.saveLanguage(2);
+                sharePreferences.saveState(spinner.onSaveInstanceState());
                 setText();
                 break;
             case 2:

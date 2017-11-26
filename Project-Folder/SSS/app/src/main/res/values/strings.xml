@@ -21,4 +21,5 @@
     <string name="menu_scan">Scan</string>
     <string name="menu_stop">Stop</string>
     <string name="action_settings">Action settings</string>
+    <string name="title_activity_splash">Splash</string>
 </resources>

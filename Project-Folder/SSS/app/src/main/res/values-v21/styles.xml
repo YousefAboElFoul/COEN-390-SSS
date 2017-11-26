@@ -4,10 +4,10 @@
     <style name="sssTheme1" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- <item name="windowActionBar">true</item>-->
         <!-- <item name="android:windowBackground">@android:color/darker_gray</item>-->
-        <item name="colorAccent">@color/bright_bluegreen</item>
-        <item name="android:colorBackground">@color/background_grayblue</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:colorBackground">@color/colorAccent</item>
         <item name="android:navigationBarColor">@android:color/black</item>
-        <item name="colorPrimary">@color/background_grayblue2</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="android:statusBarColor">@color/background_grayish</item>
     </style>
 </resources>

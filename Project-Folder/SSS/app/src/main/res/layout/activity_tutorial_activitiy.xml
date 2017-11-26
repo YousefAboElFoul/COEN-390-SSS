@@ -69,7 +69,6 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
-        android:text="SELECT YOUR LEVEL"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintHorizontal_bias="0.0"

@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -25,6 +26,8 @@ import java.util.UUID;
 
 
 public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemClickListener{
+    private sharedPreference sharedPreferences;
+
     private static final String TAG = "Bluetooth";
 
     BluetoothAdapter mBluetoothAdapter;
@@ -35,7 +38,7 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
     Button btnStartConnection;
     Button btnSend;
 
-    EditText etSend;
+    String etSend= "0";
 
     private static final UUID MY_UUID_INSECURE =
             UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -182,6 +185,9 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bluetooth);
+
+        sharedPreferences = new sharedPreference(this);
+
         Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
         btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
@@ -189,7 +195,7 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
 
         btnStartConnection = (Button) findViewById(R.id.btnStartConnection);
         btnSend = (Button) findViewById(R.id.btnSend);
-        etSend = (EditText) findViewById(R.id.editText);
+
 
         //Broadcasts when bond state changes (ie:pairing)
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
@@ -218,17 +224,38 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                byte[] bytes = etSend.getText().toString().getBytes(Charset.defaultCharset());
+                Context context =getApplicationContext();
+                CharSequence text =  " Please choose a device..."  ;
+                Toast toast=Toast.makeText(context, text, Toast.LENGTH_LONG);
+                if (mBTDevice ==  null) {
+                    Log.d(TAG, "No Connection is established.....");
+                    toast.show();
+                    sharedPreferences.saveConnection(false);
+                }
+                else{
+                byte[] bytes = etSend.getBytes(Charset.defaultCharset());
                 mBluetoothConnection.write(bytes);
+                sharedPreferences.saveConnection(true);
+                }
             }
         });
 
     }
 
     //create method for starting connection
-//***remember the conncction will fail and app will crash if you haven't paired first
+//----------------------------------------------------------------------------Application wont crash------------------------------------------------------------------
     public void startConnection(){
-        startBTConnection(mBTDevice,MY_UUID_INSECURE);
+        Context context =getApplicationContext();
+        CharSequence text =  " Please choose a device..."  ;
+        Toast toast=Toast.makeText(context, text, Toast.LENGTH_LONG);
+       if (mBTDevice ==  null) {
+           Log.d(TAG, "No Connection established.....");
+           toast.show();
+           sharedPreferences.saveConnection(false);
+       }
+        else{
+            startBTConnection(mBTDevice,MY_UUID_INSECURE);
+           sharedPreferences.saveConnection(true);}
     }
 
     /**
@@ -236,21 +263,21 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
      */
     public void startBTConnection(BluetoothDevice device, UUID uuid){
         Log.d(TAG, "startBTConnection: Initializing RFCOM Bluetooth Connection.");
-
         mBluetoothConnection.startClient(device,uuid);
     }
 
 
 
     public void enableDisableBT(){
-        if(mBluetoothAdapter == null){
+
+        if(mBluetoothAdapter == null) {
             Log.d(TAG, "enableDisableBT: Does not have BT capabilities.");
+            sharedPreferences.saveConnection(false);
         }
         if(!mBluetoothAdapter.isEnabled()){
             Log.d(TAG, "enableDisableBT: enabling BT.");
             Intent enableBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivity(enableBTIntent);
-
             IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
             registerReceiver(mBroadcastReceiver1, BTIntent);
         }
@@ -260,6 +287,8 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
 
             IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
             registerReceiver(mBroadcastReceiver1, BTIntent);
+
+            sharedPreferences.saveConnection(false);
         }
 
     }
