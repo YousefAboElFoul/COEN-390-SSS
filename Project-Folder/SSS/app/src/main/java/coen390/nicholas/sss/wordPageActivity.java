@@ -46,15 +46,33 @@ public class wordPageActivity extends AppCompatActivity {
 
         //reference on initialization:
         //https://www.tutorialspoint.com/android/android_text_to_speech.htm
-        speaking = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status != TextToSpeech.ERROR) {
-                    speaking.setLanguage(Locale.UK);
-                    if (settings.getLanguageSelection() == 2){speaking.setLanguage(Locale.CANADA_FRENCH);}
+        if (sharePreferences.getLanguage() == 2)
+        {
+            speaking = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                @Override
+                public void onInit(int status) {
+                    if (status != TextToSpeech.ERROR) {
+                        speaking.setLanguage(Locale.UK);
+                        if (settings.getLanguageSelection() == 2) {
+                            speaking.setLanguage(Locale.CANADA_FRENCH);
+                        }
+                    }
                 }
-            }
-        });
+            });
+        }
+        else {
+            speaking = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                @Override
+                public void onInit(int status) {
+                    if (status != TextToSpeech.ERROR) {
+                        speaking.setLanguage(Locale.UK);
+                        if (settings.getLanguageSelection() == 2) {
+                            speaking.setLanguage(Locale.US);
+                        }
+                    }
+                }
+            });
+        }
 
         hash.setAlphabets();
 
@@ -81,7 +99,7 @@ public class wordPageActivity extends AppCompatActivity {
             String getWordText = "Begin";
             String addLetterText = "Add a Letter";
 
-            if (settings.getLanguageSelection() == 2) {
+            if (sharePreferences.getLanguage() == 2) {
                 Title = "PAGE DE TRANSLATION";
                 getWordText = "Commencer";
                 addLetterText = "Ajouter un Lettre";
@@ -96,7 +114,7 @@ public class wordPageActivity extends AppCompatActivity {
     private void setNoConnection(){
         String notConnected = "CONNECT TO BLUETOOTH!";
 
-        if (settings.getLanguageSelection() == 2) {
+        if (sharePreferences.getLanguage() == 2) {
             notConnected = "FAIT LA CONNECTION AVEC BLUETOOTH";
         }
 
@@ -116,12 +134,16 @@ public class wordPageActivity extends AppCompatActivity {
                 }
 
                 word = false;
-                getWord.setText("BEGIN TRANSLATING");
+                String begin = "BEGIN TRANSLATING";
+                if (sharePreferences.getLanguage() == 2){ begin = "COMMENCER LA TRANSLATION";}
+                getWord.setText(begin);
                 wording = null;
                 addLetter.setVisibility(View.INVISIBLE);
             } else {
                 word = true;
-                getWord.setText("End");
+                String end = "END";
+                if (sharePreferences.getLanguage() == 2){ end = "TERMINÉ";}
+                getWord.setText(end);
                 addLetter.setVisibility(View.VISIBLE);
                 showText.setText(wording);
             }
