@@ -6,8 +6,6 @@ import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -50,12 +48,14 @@ public class wordPageActivity extends AppCompatActivity {
             public void onInit(int status) {
                 if (status != TextToSpeech.ERROR) {
                     speaking.setLanguage(Locale.UK);
+                    if (settings.getLanguageSelection() == 2){speaking.setLanguage(Locale.CANADA_FRENCH);}
                 }
             }
         });
 
         hash.setAlphabets();
         setupUI();
+        setText();
     }
 
     //---------------------------Function that links the objects to their xml definitions-----------------------------
@@ -67,40 +67,23 @@ public class wordPageActivity extends AppCompatActivity {
         addLetter = (Button) findViewById(R.id.addLetter);
     }
 
-    //-----------------------------------Functions for when the user presses the items--------------------------------------
-    //------when the action button gets pressed--------
-    public boolean onCreateOptionsMenu(Menu menu)
+    //---------------------------------------set the text base on app language--------------------------------------
+    private void setText()
     {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        String Title = "TRANSLATION PAGE";
+        String getWordText = "Begin";
+        String addLetterText = "Add a Letter";
 
-        return true;
-    }
-
-    //-----------when items are selected----------------
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d(TAG, "The onOptions event");
-        Intent startIntent;
-        switch (item.getItemId()) {
-            //action to switch to the letter page
-            case R.id.goLetter:
-                startIntent = new Intent(wordPageActivity.this, letterPage.class);
-                startActivity(startIntent);
-                return true;
-            //action to switch to word page
-            case R.id.goWord:
-                return true;
-            //action to switch to help
-            case R.id.goHelp:
-                startIntent = new Intent(wordPageActivity.this, help.class);
-                startActivity(startIntent);
-                return true;
-            //action to switch to settings gets pressed
-            case R.id.goSettings:
-                startIntent = new Intent(wordPageActivity.this, settings.class);
-                startActivity(startIntent);
-                return true;
+        if (settings.getLanguageSelection() == 2)
+        {
+            Title = "PAGE DE TRANSLATION";
+            getWordText = "Commencer";
+            addLetterText = "Ajouter un Lettre";
         }
-        return super.onOptionsItemSelected(item);
+
+        title.setText(Title);
+        getWord.setText(getWordText);
+        addLetter.setText(addLetterText);
     }
 
     //-------------------------------------Function for monitoring the Word making----------------------------------------
@@ -109,14 +92,14 @@ public class wordPageActivity extends AppCompatActivity {
         //make bool variable false if its true, and true if its false
         if (word)
         {
-            voiceWord();
+            if (settings.getVoiceOption()) {voiceWord();}
 
             word = false;
-            getWord.setText("Make a Word");
+            getWord.setText("BEGIN TRANSLATING");
             wording = null;
             addLetter.setVisibility(View.INVISIBLE);
         }
-        else {word = true; getWord.setText("End Word"); addLetter.setVisibility(View.VISIBLE); showText.setText(wording);}
+        else {word = true; getWord.setText("End"); addLetter.setVisibility(View.VISIBLE); showText.setText(wording);}
     }
 
     public void addToWord(View view)
@@ -125,7 +108,9 @@ public class wordPageActivity extends AppCompatActivity {
         Random rndIndex = new Random();
         int hashIndex = rndIndex.nextInt(26) + 1;
 
-        String letter = hash.getAlphabets(hashIndex);
+        //String letter = hash.getAlphabets(hashIndex);
+        Log.d(TAG,"IS the output being sent:"+BluetoothConnectionService.Print());
+        String letter = BluetoothConnectionService.Print();
 
         if (wording == null) {wording = letter + "";}
         else { wording = wording + letter;}
@@ -145,5 +130,30 @@ public class wordPageActivity extends AppCompatActivity {
         } else {
             speaking.speak(wording, TextToSpeech.QUEUE_FLUSH, null);
         }
+    }
+
+    //-----------------------------------Functions for when the user presses the items--------------------------------------
+    public void goHelp(View view)
+    {
+        Intent startIntent = new Intent(wordPageActivity.this, help.class);
+        startActivity(startIntent);
+    }
+
+    public void goTutorial(View view)
+    {
+        Intent startIntent = new Intent(wordPageActivity.this, tutorialActivitiy.class);
+        startActivity(startIntent);
+    }
+
+    public void goHome(View view)
+    {
+        Intent startIntent = new Intent(wordPageActivity.this, MainActivity.class);
+        startActivity(startIntent);
+    }
+
+    public void goSettings(View view)
+    {
+        Intent startIntent = new Intent(wordPageActivity.this, settings.class);
+        startActivity(startIntent);
     }
 }

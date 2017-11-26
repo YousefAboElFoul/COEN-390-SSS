@@ -3,12 +3,12 @@
     package="coen390.nicholas.sss">
 
     <uses-feature android:name="android.hardware.bluetooth" />
+
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" />
-
 
     <application
         android:allowBackup="true"
@@ -17,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/sssTheme1">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,22 +28,25 @@
         </activity>
         <activity
             android:name=".wordPageActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".letterPage"
-            android:parentActivityName=".MainActivity" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".settings"
-            android:parentActivityName=".MainActivity" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".help"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".tutorialActivitiy" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Bluetooth"
             android:label="@string/title_activity_bluetooth"
-            android:theme="@style/sssTheme1.NoActionBar"></activity>
+            android:parentActivityName=".settings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".tutorialActivitiy"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".testActivity"
+            android:parentActivityName=".tutorialActivitiy"
+            android:screenOrientation="portrait" />
     </application>
-
 
 </manifest>
