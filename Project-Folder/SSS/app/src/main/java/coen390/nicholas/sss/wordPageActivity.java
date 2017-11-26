@@ -10,12 +10,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.nio.charset.Charset;
 import java.util.Locale;
 import java.util.Random;
 
 public class wordPageActivity extends AppCompatActivity {
+    BluetoothConnectionService mmo;
 
     //--------------------------------------------Declaring variables----------------------------------------------
+    String send1 ="1";
+    byte[] bytes = send1.getBytes(Charset.defaultCharset());
     sharedPreference sharePreferences;
     //-------for objects needed in the activity-------
     TextView title = null;
@@ -63,8 +67,9 @@ public class wordPageActivity extends AppCompatActivity {
             setText();
         }
         else { setNoConnection();}
-    }
 
+
+    }
     //---------------------------Function that links the objects to their xml definitions-----------------------------
     protected void setupUI()
     {
@@ -72,6 +77,7 @@ public class wordPageActivity extends AppCompatActivity {
         showText = (TextView) findViewById(R.id.viewWord);
         getWord = (Button) findViewById(R.id.getWord);
         addLetter = (Button) findViewById(R.id.addLetter);
+        ;
     }
 
     //---------------------------------------set the text base on app language--------------------------------------
@@ -131,10 +137,18 @@ public class wordPageActivity extends AppCompatActivity {
 
     public void addToWord(View view)
     {
+
         if (sharePreferences.getConnection()) {
             //-------Generate a random number from 1-26 for the indexes---------
             Random rndIndex = new Random();
             int hashIndex = rndIndex.nextInt(26) + 1;
+            //------------------------------------------------------------------------
+            findViewById(R.id.addLetter).setOnClickListener( new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mmo.write(bytes);
+                }
+            });
 
             //String letter = hash.getAlphabets(hashIndex);
             Log.d(TAG, "IS the output being sent:" + BluetoothConnectionService.Print());
