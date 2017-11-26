@@ -24,7 +24,7 @@ public class quizTracking
             {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
                     "U", "V", "W", "X", "Y", "Z",
                     //for quiz 3
-                    "BONJOUR", "GESTE", "JOUR", "AMOURE", "INJÉNIEUR", "NICHOLAS", "LA", "OUI", "CHAUD", "SSS"};
+                    "BONJOUR", "GESTE", "JOUR", "AMOURE", "INGÉNIEUR", "NICHOLAS", "LA", "OUI", "CHAUD", "SSS"};
     //----------------------------------------------------Constructor--------------------------------------------------------
     public quizTracking(int level, String description)
     {

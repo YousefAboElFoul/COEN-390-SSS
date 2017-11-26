@@ -42,14 +42,26 @@ public class testActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        speaking = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status != TextToSpeech.ERROR) {
-                    speaking.setLanguage(Locale.UK);
+        if (tutorialActivitiy.getLanguage() == 2) {
+            speaking = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                @Override
+                public void onInit(int status) {
+                    if (status != TextToSpeech.ERROR) {
+                        speaking.setLanguage(Locale.CANADA_FRENCH);
+                    }
                 }
-            }
-        });
+            });
+        }
+        else {
+            speaking = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                @Override
+                public void onInit(int status) {
+                    if (status != TextToSpeech.ERROR) {
+                        speaking.setLanguage(Locale.UK);
+                    }
+                }
+            });
+        }
 
         lvlShow = (TextView) findViewById(R.id.showLvl);
         question = (TextView) findViewById(R.id.showQ);
@@ -89,6 +101,13 @@ public class testActivity extends AppCompatActivity
         String nextQuestion = "Next Question";
         String addAnswerButton = "Begin";
 
+        if (tutorialActivitiy.getLanguage() == 2)
+        {
+            title = "Bienvenue à niveau " + level;
+            nextQuestion = "Prochaine question";
+            addAnswerButton = "Commençer";
+        }
+
         nextQ.setText(nextQuestion);
         lvlShow.setText(title);
         beginAnswer.setText(addAnswerButton);
@@ -98,6 +117,11 @@ public class testActivity extends AppCompatActivity
     {
         getQuestion();
         String ask = "Sign the Following: " + theQuestion;
+
+        if (tutorialActivitiy.getLanguage() == 2)
+        {
+            ask = "Signe la suivante: " + theQuestion;
+        }
 
         question.setText(ask);
     }
@@ -193,6 +217,7 @@ public class testActivity extends AppCompatActivity
             if (tutorialActivitiy.getCurrent(level)  == tutorialActivitiy.getTotal(level))
             {
                 String text = "Completed";
+                if (tutorialActivitiy.getLanguage() == 2){ text = "Terminé";}
                 nextQ.setText(text);
 
                 completeGame();
@@ -217,11 +242,23 @@ public class testActivity extends AppCompatActivity
 
     //---------------------------------------Function to set the game as complete----------------------------------------
     public void completeGame(){
-        Toast toast = Toast.makeText(getApplicationContext(), "CONGRATS! YOU COMPLETED THIS LEVEL :)", Toast.LENGTH_LONG);
-        toast.show();
 
         String restartText = "Restart";
         String textComplete = "Level Completed!";
+
+        if (tutorialActivitiy.getLanguage() == 2)
+        {
+            restartText = "Recommencer";
+            textComplete = "Niveau terminé!";
+
+            Toast toast = Toast.makeText(getApplicationContext(), "FÉLICITATIONS! VOUS AVEZ TERMINÉ LA NIVEAU :)", Toast.LENGTH_LONG);
+            toast.show();
+        }
+        else {
+            Toast toast = Toast.makeText(getApplicationContext(), "CONGRATS! YOU COMPLETED THIS LEVEL :)", Toast.LENGTH_LONG);
+            toast.show();
+        }
+
         nextQ.setText(restartText);
         question.setText(textComplete);
         restart = true;

@@ -1,9 +1,9 @@
 /*
-Sign Language Translator, Made with Arduino, Inspired by Jeremy Blum
-http://romanakozak.com/sign-language-translator/
 
-Project by: Roman Kozak
-Spring 2013
+  Sign Language Translator, Made with Arduino, Inspired by Jeremy Blum
+  http://romanakozak.com/sign-language-translator/
+  Project by: Roman Kozak
+  Spring 2013
 */
 
 // These constants won't change:
@@ -12,10 +12,9 @@ const int sensorPinINDEX = A1;    // pin that the INDEX flex sensor is attached 
 const int sensorPinMIDDLE = A2;    // pin that the MIDDLE flex sensor is attached to
 const int sensorPinRING = A3;    // pin that the RING flex sensor is attached to
 const int sensorPinPINKEY = A4;    // pin that the PINKEY flex sensor is attached to
-const int xPin = 2;		// X output of the accelerometer
-const int yPin = 3;		// y output of the accelerometer
-
-
+const int xPin = 2;    // X output of the accelerometer
+const int yPin = 3;   // y output of the accelerometer
+const int button = 7;
 const int ledPinBLUE = 4;        // pin that the LED is attached to
 const int ledPinGREEN = 5;        // pin that the LED is attached to
 
@@ -41,35 +40,36 @@ int sensorMaxPINKEY = 0;           // maximum sensor value
 
 
 void setup() {
-  
+
   // turn on LED to signal the start of the calibration period:
   pinMode(6, OUTPUT);
   pinMode(9, OUTPUT);
   pinMode(18, OUTPUT);
   pinMode(xPin, INPUT);
   pinMode(yPin, INPUT);
-  
-  digitalWrite(ledPinBLUE, HIGH);
-  
-  Serial.begin (9600);
+  pinMode(button, INPUT);
 
-  // calibrate during the first five seconds 
+  digitalWrite(ledPinBLUE, HIGH);
+
+  Serial.begin(9600);
+
+  // calibrate during the first five seconds
   while (millis() < 5000) {
-      sensorValueTHUMB = analogRead(sensorPinTHUMB);
-      sensorValueINDEX = analogRead(sensorPinINDEX);
-      sensorValueMIDDLE = analogRead(sensorPinMIDDLE);
-      sensorValueRING = analogRead(sensorPinRING);
-      sensorValuePINKEY = analogRead(sensorPinPINKEY);
-//--------------------------------------------------
+    sensorValueTHUMB = analogRead(sensorPinTHUMB);
+    sensorValueINDEX = analogRead(sensorPinINDEX);
+    sensorValueMIDDLE = analogRead(sensorPinMIDDLE);
+    sensorValueRING = analogRead(sensorPinRING);
+    sensorValuePINKEY = analogRead(sensorPinPINKEY);
+    //--------------------------------------------------
     // record the maximum sensor value
     if (sensorValueTHUMB > sensorMaxTHUMB) {
       sensorMaxTHUMB = sensorValueTHUMB;
     }
-       // record the maximum sensor value
+    // record the maximum sensor value
     if (sensorValueINDEX > sensorMaxINDEX) {
       sensorMaxINDEX = sensorValueINDEX;
     }
-   // record the maximum sensor value
+    // record the maximum sensor value
     if (sensorValueMIDDLE > sensorMaxMIDDLE) {
       sensorMaxMIDDLE = sensorValueMIDDLE;
     }
@@ -81,7 +81,7 @@ void setup() {
     if (sensorValueRING < sensorMinRING) {
       sensorMinRING = sensorValueRING;
     }
-     // record the maximum sensor value
+    // record the maximum sensor value
     if (sensorValuePINKEY > sensorMaxPINKEY) {
       sensorMaxPINKEY = sensorValuePINKEY;
     }
@@ -91,12 +91,12 @@ void setup() {
     if (sensorValueTHUMB < sensorMinTHUMB) {
       sensorMinTHUMB = sensorValueTHUMB;
     }
-    
-       // record the minimum sensor value
+
+    // record the minimum sensor value
     if (sensorValueINDEX < sensorMinINDEX) {
       sensorMinINDEX = sensorValueINDEX;
     }
-        // record the minimum sensor value
+    // record the minimum sensor value
     if (sensorValueMIDDLE < sensorMinMIDDLE) {
       sensorMinMIDDLE = sensorValueMIDDLE;
     }
@@ -112,62 +112,72 @@ void setup() {
 
   // signal the end of the calibration period
   digitalWrite(ledPinBLUE, LOW);
- 
-  
-  Serial.print ("LowTHUMB = ");
-  Serial.println (sensorMinTHUMB);
-  Serial.print ("HighTHUMB = ");
-  Serial.println (sensorMaxTHUMB);
-  
-  Serial.println ("             ");
-  
-  Serial.print ("LowINDEX = ");
-  Serial.println (sensorMinINDEX);
-  Serial.print ("HighINDEX = ");
-  Serial.println (sensorMaxINDEX);
-  
-  Serial.println ("             "); 
-  
-  Serial.print ("LowMIDDLE = ");
-  Serial.println (sensorMinMIDDLE);
-  Serial.print ("HighMIDDLE = ");
-  Serial.println (sensorMaxMIDDLE);
-  
-  Serial.println ("             "); 
-  
-   Serial.print ("LowRING = ");
-  Serial.println (sensorMinRING);
-  Serial.print ("HighRING = ");
-  Serial.println (sensorMaxRING);
-  
-  Serial.println ("             "); 
-  
-  Serial.print ("LowPINKEY = ");
-  Serial.println (sensorMinPINKEY);
-  Serial.print ("HighPINKEY = ");
-  Serial.println (sensorMaxPINKEY);
-  
-  Serial.println ("             ");
-  
+
+
+  /*Serial.print ("LowTHUMB = ");
+    Serial.println (sensorMinTHUMB);
+    Serial.print ("HighTHUMB = ");
+    Serial.println (sensorMaxTHUMB);
+
+    Serial.println ("             ");
+
+    Serial.print ("LowINDEX = ");
+    Serial.println (sensorMinINDEX);
+    Serial.print ("HighINDEX = ");
+    Serial.println (sensorMaxINDEX);
+
+    Serial.println ("             ");
+
+    Serial.print ("LowMIDDLE = ");
+    Serial.println (sensorMinMIDDLE);
+    Serial.print ("HighMIDDLE = ");
+    Serial.println (sensorMaxMIDDLE);
+
+    Serial.println ("             ");
+
+    Serial.print ("LowRING = ");
+    Serial.println (sensorMinRING);
+    Serial.print ("HighRING = ");
+    Serial.println (sensorMaxRING);
+
+    Serial.println ("             ");
+
+    Serial.print ("LowPINKEY = ");
+    Serial.println (sensorMinPINKEY);
+    Serial.print ("HighPINKEY = ");
+    Serial.println (sensorMaxPINKEY);
+
+    Serial.println ("             ");*/
+
   delay (1000);
 }
 
-void loop() {
-  
+void loop()
+{
+  int switchstate = digitalRead(button);
+  if (switchstate == HIGH)
+  {
+    clickEvent();
+  }
+}
+
+void clickEvent()
+{
+
   // variables to read the pulse widths:
   int pulseX, pulseY;
   // variables to contain the resulting accelerations
   int accelerationX, accelerationY;
-  
+
   // read pulse from x- and y-axes:
-  pulseX = pulseIn(xPin,HIGH);  
-  pulseY = pulseIn(yPin,HIGH);    
+  pulseX = pulseIn(xPin, HIGH);
+  pulseY = pulseIn(yPin, HIGH);
   // convert the pulse width into acceleration
-  // accelerationX and accelerationY are in milli-g's: 
+  // accelerationX and accelerationY are in milli-g's:
   // earth's gravity is 1000 milli-g's, or 1g.
   accelerationX = ((pulseX / 10) - 500) * 8;
   accelerationY = ((pulseY / 10) - 500) * 8;
-  
+
   // read the sensor:
   sensorValueTHUMB = analogRead(sensorPinTHUMB);
   sensorValueINDEX = analogRead(sensorPinINDEX);
@@ -188,179 +198,150 @@ void loop() {
   sensorValueMIDDLE = constrain(sensorValueMIDDLE, 1, 255);
   sensorValueRING = constrain(sensorValueRING, 1, 255);
   sensorValuePINKEY = constrain(sensorValuePINKEY, 1, 255);
-  
-  Serial.println ("-------------------");
-  Serial.print ("sensorValue-THUMB = ");
-  Serial.println (sensorValueTHUMB);
-  
-  Serial.print ("sensorValue-INDEX = ");
-  Serial.println (sensorValueINDEX);
-  
-  Serial.print ("sensorValue-MIDDLE = ");
-  Serial.println (sensorValueMIDDLE);
-  
-  Serial.print ("sensorValue-RING = ");
-  Serial.println (sensorValueRING);
-  
-  Serial.print ("sensorValue-PINKEY = ");
-  Serial.println (sensorValuePINKEY);
-  
-  Serial.print ("acceleration-X = ");
-  Serial.println(accelerationX);
-  
-  Serial.print ("acceleration-y = ");
-  Serial.println(accelerationY);
-  
-  Serial.println ("   ");
-   Serial.println (" ");
-  
- 
-//if the glove is tilted up turn on the green led
-  
+
+  /*Serial.println ("-------------------");
+    Serial.print ("sensorValue-THUMB = ");
+    Serial.println (sensorValueTHUMB);
+
+    Serial.print ("sensorValue-INDEX = ");
+    Serial.println (sensorValueINDEX);
+
+    Serial.print ("sensorValue-MIDDLE = ");
+    Serial.println (sensorValueMIDDLE);
+
+    Serial.print ("sensorValue-RING = ");
+    Serial.println (sensorValueRING);
+
+    Serial.print ("sensorValue-PINKEY = ");
+    Serial.println (sensorValuePINKEY);
+
+    Serial.print ("acceleration-X = ");
+    Serial.println(accelerationX);
+
+    Serial.print ("acceleration-y = ");
+    Serial.println(accelerationY);
+
+    Serial.println ("   ");
+    Serial.println (" ");*/
+
+
+  //if the glove is tilted up turn on the green led
+
   if (accelerationX > 650) {
-    
+
     digitalWrite (ledPinGREEN, HIGH);
   }
-  
+
   else {
-   digitalWrite (ledPinGREEN, LOW); 
+    digitalWrite (ledPinGREEN, LOW);
   }
-  
+
   //if the glove is tilted to the right turn on the blue led
-  
+
   if (accelerationY > 500) {
-    
+
     digitalWrite (ledPinBLUE, HIGH);
-  }
-  
-  else {
-   digitalWrite (ledPinBLUE, LOW); 
-  }
-  
-    // if the glove is tilted to the left turn on the blue led
-    
-   if (accelerationY < -500) {
-    
-    digitalWrite (ledPinBLUE, HIGH);
-  }
-  
-  else {
-   digitalWrite (ledPinBLUE, LOW); 
   }
 
-  
+  else {
+    digitalWrite (ledPinBLUE, LOW);
+  }
+
+  // if the glove is tilted to the left turn on the blue led
+
+  if (accelerationY < -500) {
+
+    digitalWrite (ledPinBLUE, HIGH);
+  }
+
+  else {
+    digitalWrite (ledPinBLUE, LOW);
+  }
+
+
   //--------------------------------LetterA-----------------------------
-  
-  if (sensorValueTHUMB > 1 && sensorValueINDEX == 1 && sensorValueMIDDLE == 1 && sensorValueRING == 1 ) {
-    
-    Serial.println  ("\n");
-    Serial.println ("A"); //Print letter A to serial
-    Serial.println  ("        ");
-    
-  }
-  
-  else {
-    
-  }
-  
-  //--------------------------------LetterB-----------------------------
-  
-  if (sensorValueTHUMB > 200 && sensorValueINDEX > 200 && sensorValueMIDDLE > 200 && sensorValueRING > 200 && accelerationX > 650 ) {
-    
-    Serial.println ("B"); //Print letter B to serial
-    Serial.println  ("        ");
-    
-  }
-  
-  else {
-    
-  }
-  
-  //--------------------------------LetterC-----------------------------
-  
-  
-  if (sensorValueTHUMB < 200 && sensorValueTHUMB > 20 && sensorValueINDEX < 200 && sensorValueINDEX > 20 && sensorValueMIDDLE < 200 && sensorValueMIDDLE > 20 && sensorValueRING < 200 && sensorValueRING > 20) {
-    
-    Serial.println ("C"); //Print letter C to serial
-    Serial.println  ("        ");
-   
-  }
-  
-  else {
-   
-  }
-  
-  //--------------------------------LetterD-----------------------------
-  
-  
-  if (sensorValueTHUMB == 1 && sensorValueINDEX > 100 && sensorValueMIDDLE == 1 && sensorValueRING == 1 && accelerationX > 650) {
-    
-    Serial.println ("D"); //Print letter D to serial
-    Serial.println  ("        ");
-    
-  }
-  
-  else {
-   
-  }
-  
-  //--------------------------------LetterE-----------------------------
-  
-  
-  if (sensorValueTHUMB == 1 && sensorValueINDEX == 1 && sensorValueMIDDLE == 1 && sensorValueRING == 1 && accelerationX > 650) {
-    
-    Serial.println ("E"); //Print letter E to serial
-    Serial.println  ("        ");
-    
-  }
-  
-  else {
-   
-  }
-  
-  //--------------------------------LetterF-----------------------------
-  
-  
-  if (sensorValueTHUMB == 1 && sensorValueINDEX == 1 && sensorValueMIDDLE > 200 && sensorValueRING > 200 && accelerationX > 650) {
-    
-    Serial.println ("F"); //Print letter F to serial
-    Serial.println  ("        ");
-    
-  }
-  
-  else {
-   
-  }
-  
-  //--------------------------------LetterG-----------------------------
-  
-  
-  if (sensorValueTHUMB > 150 && sensorValueINDEX > 150 && sensorValueMIDDLE == 1 && sensorValueRING == 1  && accelerationX < 300) {
-    
-    Serial.println ("G"); //Print letter G to serial
-    Serial.println  ("        ");
-    
-  }
-  
-  else {
-   
-  }
-    //--------------------------------HELLO-----------------------------
-  
-  if (sensorValueTHUMB > 200 && sensorValueINDEX > 200 && sensorValueMIDDLE > 200 && sensorValueRING > 200 && accelerationX > 650 ) {
-    
-    Serial.println ("H"); //Print letter H to serial
-    Serial.println  ("        ");
-    
-  }
-  
-  else {
-   
-  }
-  
-  
-  delay (1000);
-  
-   
 
+  if (sensorValueTHUMB < 65 && sensorValueINDEX > 200 && sensorValueMIDDLE > 200 && sensorValueRING > 200 ) {
+
+    Serial.println("A");
+    Serial.write("A");
+    
+
+  }
+
+  else {
+
+  }
+
+  //--------------------------------LetterB-----------------------------
+
+  if (sensorValueTHUMB > 120 && sensorValueINDEX < 30 && sensorValueMIDDLE < 30 && sensorValueRING < 30) {
+
+    Serial.println("B");
+    Serial.write("B");
+
+  }
+
+  else {
+
+  }
+
+  //--------------------------------LetterC-----------------------------
+
+
+  if (sensorValueTHUMB < 120 && sensorValueINDEX < 120  && sensorValueMIDDLE < 120 && sensorValueRING < 120 ) {
+
+    Serial.println("C");
+    Serial.write("C");
+
+  }
+
+  else {
+
+  }
+
+  //--------------------------------LetterD-----------------------------
+
+
+  if (sensorValueINDEX < 30 && sensorValueTHUMB > 100 && sensorValueMIDDLE > 100 && sensorValueRING > 100) {
+
+    Serial.println("D");
+    Serial.write("D");
+
+  }
+
+  else {
+
+  }
+
+  //--------------------------------LetterE-----------------------------
+
+
+  if (sensorValueTHUMB > 100 && sensorValueINDEX > 100  && sensorValueMIDDLE > 100 && sensorValueRING > 100 ) {
+
+    Serial.println("E");
+    Serial.write("E");
+
+
+  }
+
+  else {
+
+  }
+
+  //--------------------------------LetterF-----------------------------
+
+
+  if (sensorValueTHUMB > 100 && sensorValueINDEX > 100 && sensorValueMIDDLE < 30 && sensorValueRING < 30) {
+
+    Serial.println("F");
+    Serial.write("F");
+
+  }
+
+  else {
+
+  }
 }
+
+
