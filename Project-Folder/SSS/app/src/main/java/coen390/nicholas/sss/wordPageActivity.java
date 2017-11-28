@@ -10,11 +10,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.nio.charset.Charset;
 import java.util.Locale;
 import java.util.Random;
 
 public class wordPageActivity extends AppCompatActivity {
 
+    BluetoothConnectionService mmo;
+
+    String send1 ="1";
+    byte[] bytes = send1.getBytes(Charset.defaultCharset());
     //--------------------------------------------Declaring variables----------------------------------------------
     sharedPreference sharePreferences;
     //-------for objects needed in the activity-------
@@ -158,6 +163,13 @@ public class wordPageActivity extends AppCompatActivity {
             Random rndIndex = new Random();
             int hashIndex = rndIndex.nextInt(26) + 1;
 
+            //------------------------------------------------------------------------
+            addLetter.setOnClickListener( new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+                                        mmo.write(bytes);
+                                    }
+             });
             //String letter = hash.getAlphabets(hashIndex);
             Log.d(TAG, "IS the output being sent:" + BluetoothConnectionService.Print());
             String letter = BluetoothConnectionService.Print();

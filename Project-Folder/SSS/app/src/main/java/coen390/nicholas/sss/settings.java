@@ -26,7 +26,7 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
     Button btn;
 
     //----------options for language-------------
-    private static final String[]paths = {"English", "Français", "Cameron","Kharma"};
+    private static final String[]paths = {"English", "Français"};
     boolean initialStart;
 
     //------------track variables----------------
@@ -146,12 +146,6 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
                 sharePreferences.saveLanguage(2);
                 sharePreferences.saveState(spinner.onSaveInstanceState());
                 setText();
-                break;
-            case 2:
-                Toast.makeText(getApplicationContext(), "Aha Good One", Toast.LENGTH_SHORT).show();
-                break;
-            case 3:
-                Toast.makeText(getApplicationContext(), "Very Good One.", Toast.LENGTH_SHORT).show();
                 break;
         }}
 
