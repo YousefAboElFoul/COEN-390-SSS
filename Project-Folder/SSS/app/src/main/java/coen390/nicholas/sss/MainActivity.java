@@ -1,21 +1,14 @@
 package coen390.nicholas.sss;
 
 import android.content.Intent;
-
-import android.graphics.Color;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import android.view.View.OnTouchListener;
 
 public class MainActivity extends AppCompatActivity {
 
