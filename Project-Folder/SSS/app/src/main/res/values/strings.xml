@@ -22,10 +22,4 @@
     <string name="menu_stop">Stop</string>
     <string name="action_settings">Action settings</string>
     <string name="title_activity_splash">Splash</string>
-
-
-    <!--menu stuff-->
-    <string name="open">Open</string>
-    <string name="close">Close</string>
-
 </resources>
