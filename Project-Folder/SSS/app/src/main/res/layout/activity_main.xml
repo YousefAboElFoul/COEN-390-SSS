@@ -113,14 +113,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp">
 
-        <com.hitomi.cmlibrary.CircleMenu
-            android:id="@+id/circle_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:layout_centerInParent="true"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="295dp" />
-
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
