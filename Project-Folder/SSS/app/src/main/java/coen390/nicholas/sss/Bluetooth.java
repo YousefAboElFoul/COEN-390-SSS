@@ -227,7 +227,7 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
                 Context context =getApplicationContext();
                 CharSequence text =  " Please choose a device..."  ;
                 Toast toast=Toast.makeText(context, text, Toast.LENGTH_LONG);
-                if (mBTDevice ==  null) {
+                if (mBTDevice ==  null || (mBTDevice.getBondState() == BluetoothDevice.BOND_BONDING)||(mBTDevice.getBondState() == BluetoothDevice.BOND_NONE)) {
                     Log.d(TAG, "No Connection is established.....");
                     toast.show();
                     sharedPreferences.saveConnection(false);
