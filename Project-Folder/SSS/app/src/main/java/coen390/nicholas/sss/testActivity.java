@@ -186,6 +186,7 @@ public class testActivity extends AppCompatActivity
             //String letter = BluetoothConnectionService.Print();
         //}
         if (receivingAnswer) {
+
             letterAns += theQuestion;
             answer.setText(letterAns);
             receivingAnswer = false;

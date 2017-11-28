@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context="coen390.nicholas.sss.MainActivity">
 
+
+
     <TextView
         android:id="@+id/helloText"
         android:layout_width="wrap_content"
@@ -79,6 +81,7 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goTutorial"
+
             android:text="T" />
 
         <Button
@@ -97,27 +100,13 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goSettings"
-            android:text="S" />
+            android:drawablePadding="@mipmap/icon_setting"
+
+            />
 
 
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="361dp"
-        android:layout_height="488dp"
-        android:layout_marginBottom="26dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp">
-
-        <com.hitomi.cmlibrary.CircleMenu
-            android:id="@+id/circle_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:layout_centerInParent="true"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="295dp" />
-
-    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

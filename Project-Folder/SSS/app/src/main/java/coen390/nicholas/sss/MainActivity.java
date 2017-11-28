@@ -3,6 +3,8 @@ package coen390.nicholas.sss;
 import android.content.Intent;
 
 import android.graphics.Color;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,9 +14,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.hitomi.cmlibrary.CircleMenu;
-import com.hitomi.cmlibrary.OnMenuSelectedListener;
-import com.hitomi.cmlibrary.OnMenuStatusChangeListener;
+
 import android.view.View.OnTouchListener;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,8 +28,9 @@ public class MainActivity extends AppCompatActivity {
     //-------for objects needed in the home page-------
     TextView title = null;
     TextView hello = null;
-    //-----------Circle menu------------------------------
-    CircleMenu circleMenu;
+    //-----------drawable menu------------------------------
+   private DrawerLayout mdrawerlayout;
+    private ActionBarDrawerToggle mtoggle;
     //--------to LOG mainActivity events-----------
     protected static final String TAG = "MainActivity";
 
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(TAG, "The onCreate() event");
         setupUI();
-        MenuCircle();
+
     //    RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 150);
     //   circleMenu.setLayoutParams(layoutParams);
      //   circleMenu.setOnTouchListener(new ChoiceTouchListener());
@@ -79,70 +80,9 @@ public class MainActivity extends AppCompatActivity {
 
     //-------------------------------------------------------finish function for the circle menu----------------------------------------------------
 
-    @Override
-    public void onBackPressed() {
-        if (circleMenu.isOpened())
-            circleMenu.closeMenu();
-        else
-            finish();
-    }
-
-    public void MenuCircle() {
-
-        circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
-        circleMenu.setMainMenu(Color.parseColor("#CDCDCD"), R.mipmap.icon_menu, R.mipmap.icon_cancel);
-        circleMenu.addSubMenu(Color.parseColor("#258CFF"), R.mipmap.icon_home)
-                .addSubMenu(Color.parseColor("#30A400"), R.mipmap.icon_search)
-                .addSubMenu(Color.parseColor("#FF4B32"), R.mipmap.icon_notify)
-                .addSubMenu(Color.parseColor("#8A39FF"), R.mipmap.icon_setting)
-                .addSubMenu(Color.parseColor("#FF6A00"), R.mipmap.icon_gps);
-        circleMenu.setOnMenuSelectedListener(new OnMenuSelectedListener() {
-
-            @Override
-            public void onMenuSelected(int index) {
-                switch (index) {
-                    case 0:
-                        Toast.makeText(MainActivity.this, "Home Button Clicked", Toast.LENGTH_SHORT).show();
-                        break;
-                    case 1:
-                        Toast.makeText(MainActivity.this, "Search button Clicked", Toast.LENGTH_SHORT).show();
-                        break;
-                    case 2:
-                        Toast.makeText(MainActivity.this, "Notify button Clciked", Toast.LENGTH_SHORT).show();
-                        break;
-                    case 3:
-                        Toast.makeText(MainActivity.this, "Settings button Clcked", Toast.LENGTH_SHORT).show();
-                        break;
-                    case 4:
-                        Toast.makeText(MainActivity.this, "GPS button Clicked", Toast.LENGTH_SHORT).show();
-                        break;
 
 
 
-                }
-            }
-
-                                             }
-
-        );
-
-        circleMenu.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                circleMenu.setOnMenuStatusChangeListener(new OnMenuStatusChangeListener() {
-
-                                                             @Override
-                                                             public void onMenuOpened() {
-                                                                 Toast.makeText(MainActivity.this, "Menu Opend", Toast.LENGTH_SHORT).show();
-                                                             }
-
-                                                             @Override
-                                                             public void onMenuClosed() {
-                                                                 Toast.makeText(MainActivity.this, "Menu Closed", Toast.LENGTH_SHORT).show();
-                                                             }
-                                                         }
-                );
-            }
-    });
     }
 
    /* private final class ChoiceTouchListener implements OnTouchListener
@@ -178,5 +118,5 @@ public class MainActivity extends AppCompatActivity {
     }*/
 
 
-    }
+
 //}
