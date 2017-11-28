@@ -373,32 +373,35 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
             mBluetoothConnection = new BluetoothConnectionService(Bluetooth.this);
         }
     }
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d(TAG, "The onOptions event");
-        Intent startIntent;
-        switch (item.getItemId()) {
-            //action for the letter page
-            //action to switch to word page
-            case R.id.goWord:
-                startIntent = new Intent(Bluetooth.this, wordPageActivity.class);
-                startActivity(startIntent);
-                return true;
-            //action to switch to help
-            case R.id.goHelp:
-                startIntent = new Intent(Bluetooth.this, help.class);
-                startActivity(startIntent);
-                return true;
-            //action to switch to settings gets pressed
-            case R.id.goSettings:
-                startIntent = new Intent(Bluetooth.this, settings.class);
-                startActivity(startIntent);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
 
-        return true;
+    //--------------------------------------------------Menu Functions---------------------------------------------------
+    public void goTranslate(View view)
+    {
+        Intent startIntent = new Intent(Bluetooth.this, wordPageActivity.class);
+        startActivity(startIntent);
+    }
+
+    public void goHelp(View view)
+    {
+        Intent startIntent = new Intent(Bluetooth.this, help.class);
+        startActivity(startIntent);
+    }
+
+    public void goHome(View view)
+    {
+        Intent startIntent = new Intent(Bluetooth.this, MainActivity.class);
+        startActivity(startIntent);
+    }
+
+    public void goSettings(View view)
+    {
+        Intent startIntent = new Intent(Bluetooth.this, settings.class);
+        startActivity(startIntent);
+    }
+
+    public void goTutorial(View view)
+    {
+        Intent startIntent = new Intent(Bluetooth.this, tutorialActivitiy.class);
+        startActivity(startIntent);
     }
 }

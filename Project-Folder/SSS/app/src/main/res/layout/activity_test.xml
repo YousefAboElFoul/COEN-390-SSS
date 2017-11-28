@@ -91,7 +91,8 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goHome"
-            android:text="H" />
+            android:text="H"
+            android:textColor="@color/colorAccent"/>
 
         <Button
             android:id="@+id/translationButton"
@@ -100,7 +101,8 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goTranslate"
-            android:text="C" />
+            android:text="C"
+            android:textColor="@color/colorAccent"/>
 
         <Button
             android:id="@+id/tutorialButton"
@@ -119,7 +121,8 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goHelp"
-            android:text="!" />
+            android:text="!"
+            android:textColor="@color/colorAccent"/>
 
         <Button
             android:id="@+id/settingsButton"
@@ -128,7 +131,8 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goSettings"
-            android:text="S" />
+            android:text="S"
+            android:textColor="@color/colorAccent"/>
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

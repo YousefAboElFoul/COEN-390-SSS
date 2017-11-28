@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context="coen390.nicholas.sss.MainActivity">
 
-
-
     <TextView
         android:id="@+id/helloText"
         android:layout_width="wrap_content"
@@ -24,8 +22,8 @@
 
     <TextView
         android:id="@+id/Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="283dp"
+        android:layout_height="53dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -42,7 +40,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.544"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        tools:layout_editor_absoluteY="42dp" />
 
 
     <LinearLayout
@@ -72,7 +71,8 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goTranslate"
-            android:text="C" />
+            android:text="C"
+            android:textColor="@color/colorAccent"/>
 
         <Button
             android:id="@+id/tutorialButton"
@@ -81,8 +81,8 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goTutorial"
-
-            android:text="T" />
+            android:text="T"
+            android:textColor="@color/colorAccent"/>
 
         <Button
             android:id="@+id/helpButton"
@@ -91,7 +91,8 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goHelp"
-            android:text="!" />
+            android:text="!"
+            android:textColor="@color/colorAccent" />
 
         <Button
             android:id="@+id/settingsButton"
@@ -100,13 +101,26 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goSettings"
-            android:drawablePadding="@mipmap/icon_setting"
-
+            android:text="S"
+            android:textColor="@color/colorAccent"
             />
-
-
-
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="361dp"
+        android:layout_height="488dp"
+        android:layout_marginBottom="26dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <com.hitomi.cmlibrary.CircleMenu
+            android:id="@+id/circle_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="295dp" />
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

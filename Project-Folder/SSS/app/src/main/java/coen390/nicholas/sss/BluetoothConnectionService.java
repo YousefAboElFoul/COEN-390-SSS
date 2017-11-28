@@ -269,7 +269,7 @@ public class BluetoothConnectionService {
         }
     //bye
         //Call this from the main activity to send data to the remote device
-        public  void write(byte[] bytes) {
+        public void write(byte[] bytes) {
             String text = new String(bytes, Charset.defaultCharset());
             Log.d(TAG, "write: Writing to outputstream: " + text);
             try {

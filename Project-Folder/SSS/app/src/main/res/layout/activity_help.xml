@@ -74,7 +74,8 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goHome"
-            android:text="H" />
+            android:text="HOME"
+            android:textColor="@color/colorAccent"/>
 
         <Button
             android:id="@+id/translationButton"
@@ -83,7 +84,8 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goTranslate"
-            android:text="C" />
+            android:text="TALK"
+            android:textColor="@color/colorAccent"/>
 
         <Button
             android:id="@+id/tutorialButton"
@@ -92,7 +94,8 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goTutorial"
-            android:text="T" />
+            android:text="TUTORIAL"
+            android:textColor="@color/colorAccent"/>
 
         <Button
             android:id="@+id/helpButton"
@@ -100,7 +103,7 @@
             android:layout_width="73dp"
             android:layout_height="61dp"
             android:background="@color/background_grayish"
-            android:text="!"
+            android:text="HELP"
             android:textColor="@android:color/holo_blue_bright" />
 
         <Button
@@ -110,7 +113,8 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goSettings"
-            android:text="S" />
+            android:text="Settings"
+            android:textColor="@color/colorAccent"/>
 
     </LinearLayout>
 
