@@ -26,8 +26,7 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
     Button btn;
 
     //----------options for language-------------
-    private static final String[]paths = {"English", "Français",};
-    private static final String[]pathsfrench = { "Français","English",};
+    private static final String[]paths = {"English", "Français", "Cameron","Kharma"};
     boolean initialStart;
 
     //------------track variables----------------
@@ -100,11 +99,11 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
         // set up spinner for language selection
         ArrayAdapter<String> adapter = new ArrayAdapter<>(settings.this,
                 android.R.layout.simple_spinner_item,paths);
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         //spinner.onRestoreInstanceState(sharePreferences.getState());
         spinner.setOnItemSelectedListener(this);
-
     }
 
     //-------------------------------------------for going to bluetooth------------------------------------------------
@@ -147,6 +146,12 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
                 sharePreferences.saveLanguage(2);
                 sharePreferences.saveState(spinner.onSaveInstanceState());
                 setText();
+                break;
+            case 2:
+                Toast.makeText(getApplicationContext(), "Aha Good One", Toast.LENGTH_SHORT).show();
+                break;
+            case 3:
+                Toast.makeText(getApplicationContext(), "Very Good One.", Toast.LENGTH_SHORT).show();
                 break;
         }}
 
