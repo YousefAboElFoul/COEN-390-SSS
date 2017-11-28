@@ -20,8 +20,7 @@ public class BluetoothConnectionService {
     private  static String Incoming;
     private static final String appName = "MYAPP";
 
-    private static final UUID MY_UUID_INSECURE =
-            UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    private static final UUID MY_UUID_INSECURE = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     private final BluetoothAdapter mBluetoothAdapter;
     Context mContext;
