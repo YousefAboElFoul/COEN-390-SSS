@@ -75,13 +75,14 @@ public class BluetoothConnectionService {
                 // This is a blocking call and will only return on a
                 // successful connection or an exception
                 Log.d(TAG, "run: RFCOM server socket start.....");
-
                 socket = mmServerSocket.accept();
-
                 Log.d(TAG, "run: RFCOM server socket accepted connection.");
 
             }catch (IOException e){
                 Log.e(TAG, "AcceptThread: IOException: " + e.getMessage() );
+            }catch (Exception E){
+                //elimanted by halloweenhunter
+                Log.e(TAG, "AcceptThread: General Exception: " + E.getMessage() );
             }
 
             //talk about this is in the 3rd
