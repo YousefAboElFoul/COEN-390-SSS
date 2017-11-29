@@ -32,12 +32,13 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
     private static final String TAG = "Bluetooth";
 
     BluetoothAdapter mBluetoothAdapter;
-    Button btnEnableDisable_Discoverable;
 
     static BluetoothConnectionService mBluetoothConnection;
 
     Button btnStartConnection;
     Button btnSend;
+    Button btnDiscoverable;
+    Button btnONOFF;
 
     String etSend= "0";
     String senddata ="1";
@@ -190,13 +191,13 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
 
         sharedPreferences = new sharedPreference(this);
 
-        Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
-        btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
+        btnONOFF = (Button) findViewById(R.id.btnONOFF);
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
         mBTDevices = new ArrayList<>();
 
         btnStartConnection = (Button) findViewById(R.id.btnStartConnection);
         btnSend = (Button) findViewById(R.id.btnSend);
+        btnDiscoverable = (Button) findViewById(R.id.btnFindUnpairedDevices);
 
 
 
@@ -208,6 +209,8 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
 
         lvNewDevices.setOnItemClickListener(Bluetooth.this);
 
+        if (sharedPreferences.getOn()){btnDiscoverable.setVisibility(View.VISIBLE); btnONOFF.setText("ON");}
+        else {btnONOFF.setText("OFF");}
 
         btnONOFF.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -275,7 +278,9 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
        }
         else{
             startBTConnection(mBTDevice,MY_UUID_INSECURE);
-           sharedPreferences.saveConnection(true);}
+           sharedPreferences.saveConnection(true);
+            btnSend.setVisibility(View.VISIBLE);
+           btnStartConnection.setVisibility(View.INVISIBLE);}
     }
 
     /**
@@ -304,6 +309,9 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
             startActivity(enableBTIntent);
             IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
             registerReceiver(mBroadcastReceiver1, BTIntent);
+           btnDiscoverable.setVisibility(View.VISIBLE);
+            btnONOFF.setText("ON");
+            sharedPreferences.isOn(true);
         }
         if(mBluetoothAdapter.isEnabled()){
             Log.d(TAG, "enableDisableBT: disabling BT.");
@@ -312,12 +320,15 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
             IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
             registerReceiver(mBroadcastReceiver1, BTIntent);
 
+            btnDiscoverable.setVisibility(View.INVISIBLE);
+            btnONOFF.setText("OFF");
+            sharedPreferences.isOn(false);
             sharedPreferences.saveConnection(false);
         }
 
     }
 
-
+/*
     public void btnEnableDisable_Discoverable(View view) {
         Log.d(TAG, "btnEnableDisable_Discoverable: Making device discoverable for 300 seconds.");
 
@@ -327,8 +338,7 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
 
         IntentFilter intentFilter = new IntentFilter(mBluetoothAdapter.ACTION_SCAN_MODE_CHANGED);
         registerReceiver(mBroadcastReceiver2,intentFilter);
-
-    }
+    }*/
 
     public void btnDiscover(View view) {
         Log.d(TAG, "btnDiscover: Looking for unpaired devices.");
@@ -352,6 +362,8 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
             mBluetoothAdapter.startDiscovery();
             IntentFilter discoverDevicesIntent = new IntentFilter(BluetoothDevice.ACTION_FOUND);
             registerReceiver(mBroadcastReceiver3, discoverDevicesIntent);
+
+            btnStartConnection.setVisibility(View.VISIBLE);
         }
     }
 

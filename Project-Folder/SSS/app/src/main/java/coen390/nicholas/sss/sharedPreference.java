@@ -37,4 +37,16 @@ public class sharedPreference {
     }
 
     public int getLanguage() { return sharedPreferences.getInt("language", 1);}
+
+    public void isOn(Boolean on)
+    {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("on",on);
+        editor.apply();
+    }
+
+    public boolean getOn()
+    {
+        return sharedPreferences.getBoolean("on", false);
+    }
 }
