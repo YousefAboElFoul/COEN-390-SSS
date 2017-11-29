@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/homescreen"
+    android:background="@drawable/homescreen2"
     tools:context="coen390.nicholas.sss.MainActivity">
 
     <LinearLayout
@@ -75,9 +75,9 @@
     <RelativeLayout
         android:layout_width="361dp"
         android:layout_height="488dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp">
+        tools:layout_editor_absoluteX="16dp">
 
     </RelativeLayout>
 
