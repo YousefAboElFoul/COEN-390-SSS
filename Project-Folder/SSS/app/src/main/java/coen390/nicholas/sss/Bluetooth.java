@@ -34,7 +34,7 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
     BluetoothAdapter mBluetoothAdapter;
     Button btnEnableDisable_Discoverable;
 
-    BluetoothConnectionService mBluetoothConnection;
+    static BluetoothConnectionService mBluetoothConnection;
 
     Button btnStartConnection;
     Button btnSend;
@@ -45,7 +45,7 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
     private static final UUID MY_UUID_INSECURE =
             UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
-    BluetoothDevice mBTDevice;
+    static BluetoothDevice mBTDevice;
 
     public ArrayList<BluetoothDevice> mBTDevices = new ArrayList<>();
 
