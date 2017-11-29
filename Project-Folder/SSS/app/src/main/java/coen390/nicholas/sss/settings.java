@@ -26,7 +26,7 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
     Button btn;
 
     //----------options for language-------------
-    private static final String[]paths = {"English", "Français"};
+    private static final String[]paths = {"Select","English", "Français"};
     boolean initialStart;
 
     //------------track variables----------------
@@ -130,20 +130,22 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
 
     //-------------------------------------Selection for the language dropdown----------------------------------------------
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if (initialStart){position = languageTrack - 1; initialStart = false;}
+        if (initialStart){position = languageTrack; initialStart = false;}
         switch (position) {
             //run code depending on language selection
-            case 0:
+            case 1:
                 Toast.makeText(getApplicationContext(), "English selected.", Toast.LENGTH_SHORT).show();
                 languageTrack = 1;
                 sharePreferences.saveLanguage(1);
                 setText();
                 break;
-            case 1:
+            case 2:
                 Toast.makeText(getApplicationContext(), "French selected.", Toast.LENGTH_SHORT).show();
                 languageTrack = 2;
                 sharePreferences.saveLanguage(2);
                 setText();
+                break;
+            default:
                 break;
         }}
 
