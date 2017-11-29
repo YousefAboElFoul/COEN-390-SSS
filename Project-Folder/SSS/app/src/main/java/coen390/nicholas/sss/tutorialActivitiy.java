@@ -65,14 +65,14 @@ public class tutorialActivitiy extends AppCompatActivity
     public void setQuiz()
     {
         if (language == 1) {
-            quiz1 = new quizTracking(1, "Learn How To Sign The Alphabet");
-            quiz2 = new quizTracking(2, "Test Your Skills Against 10 Random Letters");
-            quiz3 = new quizTracking(3, "Dare to Challenge Yourself Against Some Words");
+            quiz1 = new quizTracking(1, " Learn How To Sign The Alphabet");
+            quiz2 = new quizTracking(2, " Test Your Skills Against 10 Random Letters");
+            quiz3 = new quizTracking(3, " Dare to Challenge Yourself Against Some Words");
         }
         else {
-            quiz1 = new quizTracking(1, "Pratique l'alphabet");
-            quiz2 = new quizTracking(2, "Compétition contre 10 lettres");
-            quiz3 = new quizTracking(3, "Peux-tu battres des mots...");
+            quiz1 = new quizTracking(1, " Pratique l'alphabet");
+            quiz2 = new quizTracking(2, " Compétition contre 10 lettres");
+            quiz3 = new quizTracking(3, " Peux-tu battres des mots...");
         }
 
     }

@@ -28,10 +28,10 @@ public class quizTracking
     //----------------------------------------------------Constructor--------------------------------------------------------
     public quizTracking(int level, String description)
     {
-        lvl = "Level " + level;
+        lvl = " Level " + level;
         if (tutorialActivitiy.getLanguage() == 2)
         {
-            lvl = "Niveau " + level;
+            lvl = " Niveau " + level;
         }
 
         lvlDescription = description;

@@ -4,46 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/signlangbackup3"
+    android:background="@drawable/homescreen"
     tools:context="coen390.nicholas.sss.MainActivity">
-
-    <TextView
-        android:id="@+id/helloText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="serif-monospace"
-        android:text="Welcome!"
-        android:textColor="@color/colorPrimary"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.29" />
-
-    <TextView
-        android:id="@+id/Title"
-        android:layout_width="300dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="cursive"
-        android:text="@string/SIGN_SEE_SOUND"
-        android:textAllCaps="false"
-        android:textColor="@android:color/black"
-        android:textSize="36sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/helloText"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintHorizontal_bias="0.508" />
-
 
     <LinearLayout
         android:layout_width="364dp"
@@ -52,7 +14,6 @@
         android:orientation="horizontal"
         android:weightSum="100"
         android:gravity="start"
-        app:layout_constraintTop_toBottomOf="@+id/helloText"
         tools:layout_editor_absoluteX="0dp">
 
 
@@ -62,8 +23,9 @@
             android:layout_width="73dp"
             android:layout_height="61dp"
             android:background="@color/background_grayish"
-            android:text="H"
-            android:textColor="@android:color/holo_blue_bright" />
+            android:text="HOME"
+            android:textColor="@android:color/holo_blue_bright"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/translationButton"
@@ -72,8 +34,9 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goTranslate"
-            android:text="C"
-            android:textColor="@color/colorAccent"/>
+            android:text="TALK"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/tutorialButton"
@@ -82,8 +45,9 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goTutorial"
-            android:text="T"
-            android:textColor="@color/colorAccent"/>
+            android:text="TUTORIAL"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/helpButton"
@@ -92,8 +56,9 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goHelp"
-            android:text="!"
-            android:textColor="@color/colorAccent" />
+            android:text="HELP"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/settingsButton"
@@ -102,8 +67,9 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goSettings"
-            android:text="S"
-            android:textColor="@color/colorAccent" />
+            android:text="SETTINGS"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <RelativeLayout

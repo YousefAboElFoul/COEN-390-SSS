@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bluered"
     tools:context="coen390.nicholas.sss.testActivity">
 
     <TextView
@@ -12,7 +13,8 @@
         android:layout_height="68dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="114dp"
+        android:textColor="@android:color/background_light"
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintHorizontal_bias="0.0"
@@ -28,6 +30,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="35dp"
         android:fontFamily="monospace"
+        android:textColor="@android:color/background_light"
         android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -35,14 +38,15 @@
 
     <Button
         android:id="@+id/nextQ"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="122dp"
         android:onClick="goToNextQ"
         android:visibility="invisible"
-        app:layout_constraintHorizontal_bias="0.759"
+        app:layout_constraintHorizontal_bias="0.743"
         app:layout_constraintLeft_toRightOf="@+id/showLvl"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,7 +60,7 @@
         android:layout_marginTop="38dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:textColor="@android:color/holo_orange_dark"
+        android:textColor="@color/bright_bluegreen"
         android:textSize="50sp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -65,11 +69,12 @@
 
     <Button
         android:id="@+id/addAnswer"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="24dp"
         android:onClick="beginQ"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -78,11 +83,12 @@
     <LinearLayout
         android:layout_width="364dp"
         android:layout_height="87dp"
-        android:layout_marginTop="503dp"
+        android:layout_marginTop="-3dp"
         android:gravity="start"
         android:orientation="horizontal"
         android:weightSum="100"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="-2dp">
 
         <Button
             android:id="@+id/homeButton"
@@ -91,8 +97,9 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goHome"
-            android:text="H"
-            android:textColor="@color/colorAccent"/>
+            android:text="HOME"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/translationButton"
@@ -101,8 +108,9 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goTranslate"
-            android:text="C"
-            android:textColor="@color/colorAccent"/>
+            android:text="TALK"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/tutorialButton"
@@ -110,9 +118,10 @@
             android:layout_width="73dp"
             android:layout_height="61dp"
             android:background="@color/background_grayish"
-            android:textColor="@android:color/holo_blue_bright"
             android:onClick="goTutorial"
-            android:text="T" />
+            android:text="TUTORIAL"
+            android:textColor="@android:color/holo_blue_bright"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/helpButton"
@@ -121,8 +130,9 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goHelp"
-            android:text="!"
-            android:textColor="@color/colorAccent"/>
+            android:text="HELP"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/settingsButton"
@@ -131,8 +141,9 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goSettings"
-            android:text="S"
-            android:textColor="@color/colorAccent"/>
+            android:text="SETTINGS"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
