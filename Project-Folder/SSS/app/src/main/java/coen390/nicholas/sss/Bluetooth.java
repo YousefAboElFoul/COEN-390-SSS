@@ -239,9 +239,14 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
                         byte[] bytes = etSend.getBytes(Charset.defaultCharset());
                         mBluetoothConnection.write(bytes);
                         sharedPreferences.saveConnection(true);
+                        Context context2 =getApplicationContext();
+                        CharSequence text2 =  "Calibration Done"  ;
+                        Toast toast2=Toast.makeText(context2, text2, Toast.LENGTH_LONG);
+                        toast2.show();
 
                     } catch (Exception E) {
                         Log.e("Error handling",E.getMessage());
+                        toast.show();
                     }
                 }
             }

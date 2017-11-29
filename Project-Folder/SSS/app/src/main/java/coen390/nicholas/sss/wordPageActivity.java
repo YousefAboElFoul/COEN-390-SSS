@@ -162,6 +162,7 @@ public class wordPageActivity extends AppCompatActivity {
 
     public void addToWord(View view)
     {
+
         if (sharePreferences.getConnection()) {
             //-------Generate a random number from 1-26 for the indexes--------
             //Random rndIndex = new Random();
@@ -170,25 +171,30 @@ public class wordPageActivity extends AppCompatActivity {
             if (Bluetooth.mBTDevice ==  null) {
                 Log.d(TAG, "No Connection is established.....");
                 sharePreferences.saveConnection(false);
+                setNoConnection();
             }
             else{
                 Bluetooth.mBluetoothConnection.write(bytes);
-                sharePreferences.saveConnection(true);
+                if (BluetoothConnectionService.getConnect())
+                {
+                    sharePreferences.saveConnection(true);
+                    //String letter = hash.getAlphabets(hashIndex);
+                    Log.d(TAG, "IS the output being sent:" + BluetoothConnectionService.Print());
+
+                    try {
+                        Thread.sleep(2500);
+                    }
+                    catch (Exception e){e.printStackTrace();}
+
+                    String letter = BluetoothConnectionService.Print();
+
+                    wording = wording + letter;
+
+
+                    showText.setText(wording);}
+
+                else {setNoConnection();}
             }
-            //String letter = hash.getAlphabets(hashIndex);
-            Log.d(TAG, "IS the output being sent:" + BluetoothConnectionService.Print());
-
-            try {
-                Thread.sleep(2500);
-            }
-            catch (Exception e){e.printStackTrace();}
-
-            String letter = BluetoothConnectionService.Print();
-
-            wording = wording + letter;
-
-
-            showText.setText(wording);
         }
         else {setNoConnection();}
    }
