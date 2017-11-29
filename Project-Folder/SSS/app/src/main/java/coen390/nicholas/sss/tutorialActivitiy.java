@@ -74,7 +74,9 @@ public class tutorialActivitiy extends AppCompatActivity
             quiz2 = new quizTracking(2, " Compétition contre 10 lettres");
             quiz3 = new quizTracking(3, " Peux-tu battres des mots...");
         }
-
+       // quiz1.setInitialScore(sharePreferences.getSC1());
+       // quiz2.setInitialScore(sharePreferences.getSC2());
+       // quiz3.setInitialScore(sharePreferences.getSC3());
     }
 
     //function to create the listview
@@ -164,6 +166,7 @@ public class tutorialActivitiy extends AppCompatActivity
     }
 
     public static int getLanguage(){ return language;}
+
 
     //--------------------------------------------Menu Functions------------------------------------------------------------
     public void goTranslate(View view)

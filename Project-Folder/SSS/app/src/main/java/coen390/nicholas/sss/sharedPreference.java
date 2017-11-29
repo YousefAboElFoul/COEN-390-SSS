@@ -49,4 +49,31 @@ public class sharedPreference {
     {
         return sharedPreferences.getBoolean("on", false);
     }
+
+    public void nmbC1(int score)
+    {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("score1",score);
+        editor.apply();
+    }
+
+    public int getSC1(){ return sharedPreferences.getInt("score1", 0);}
+
+    public void nmbC2(int score)
+    {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("score2",score);
+        editor.apply();
+    }
+
+    public int getSC2(){ return sharedPreferences.getInt("score2", 0);}
+
+    public void nmbC3(int score)
+    {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("score3",score);
+        editor.apply();
+    }
+
+    public int getSC3(){ return sharedPreferences.getInt("score3", 0);}
 }

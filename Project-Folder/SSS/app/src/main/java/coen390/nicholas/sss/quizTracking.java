@@ -68,8 +68,10 @@ public class quizTracking
     public int getTotal(){ return totalQ;}
 
     //-------------------------------------------------------Setters--------------------------------------------------------
-    public void setCorrect() { if (nmbCorrect < totalQ) {nmbCorrect += 1;}}
+    public void setCorrect() {if (nmbCorrect < totalQ) {nmbCorrect += 1;}}
 
     public void setNewGame() { nmbCorrect = 0;}
+
+    public void setInitialScore(int score){nmbCorrect = score;}
 
 }
