@@ -199,6 +199,7 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
         btnSend = (Button) findViewById(R.id.btnSend);
 
 
+
         //Broadcasts when bond state changes (ie:pairing)
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
         registerReceiver(mBroadcastReceiver4, filter);
@@ -236,18 +237,24 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
                 }
                 else if(sharedPreferences.getConnection()) {
                     try {
+                        Context context2 =getApplicationContext();
+                        CharSequence text2 =  "Calibrating..." ;
+                        Toast toast2=Toast.makeText(context2, text2, Toast.LENGTH_LONG);
+
+                        toast2.show();
                         byte[] bytes = etSend.getBytes(Charset.defaultCharset());
                         mBluetoothConnection.write(bytes);
                         sharedPreferences.saveConnection(true);
-                        Context context2 =getApplicationContext();
-                        CharSequence text2 =  "Calibration Done"  ;
-                        Toast toast2=Toast.makeText(context2, text2, Toast.LENGTH_LONG);
-                        toast2.show();
 
                     } catch (Exception E) {
                         Log.e("Error handling",E.getMessage());
                         toast.show();
                     }
+
+                    Context context3 =getApplicationContext();
+                    CharSequence text3 = "Callibration Done"   ;
+                    Toast toast3=Toast.makeText(context3, text3, Toast.LENGTH_LONG);
+                    toast3.show();
                 }
             }
         });
