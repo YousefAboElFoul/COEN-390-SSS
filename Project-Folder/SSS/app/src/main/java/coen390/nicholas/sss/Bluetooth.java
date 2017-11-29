@@ -23,6 +23,7 @@ import android.widget.Toast;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 
 public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemClickListener{
@@ -33,17 +34,18 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
     BluetoothAdapter mBluetoothAdapter;
     Button btnEnableDisable_Discoverable;
 
-    BluetoothConnectionService mBluetoothConnection;
+    static BluetoothConnectionService mBluetoothConnection;
 
     Button btnStartConnection;
     Button btnSend;
 
     String etSend= "0";
+    String senddata ="1";
 
     private static final UUID MY_UUID_INSECURE =
             UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
-    BluetoothDevice mBTDevice;
+    static BluetoothDevice mBTDevice;
 
     public ArrayList<BluetoothDevice> mBTDevices = new ArrayList<>();
 
@@ -227,20 +229,26 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
                 Context context =getApplicationContext();
                 CharSequence text =  " Please choose a device..."  ;
                 Toast toast=Toast.makeText(context, text, Toast.LENGTH_LONG);
-                if (mBTDevice ==  null) {
+                if (mBTDevice ==  null || (mBTDevice.getBondState() == BluetoothDevice.BOND_BONDING)||(mBTDevice.getBondState() == BluetoothDevice.BOND_NONE)) {
                     Log.d(TAG, "No Connection is established.....");
                     toast.show();
                     sharedPreferences.saveConnection(false);
                 }
-                else{
-                byte[] bytes = etSend.getBytes(Charset.defaultCharset());
-                mBluetoothConnection.write(bytes);
-                sharedPreferences.saveConnection(true);
+                else if(sharedPreferences.getConnection()) {
+                    try {
+                        byte[] bytes = etSend.getBytes(Charset.defaultCharset());
+                        mBluetoothConnection.write(bytes);
+                        sharedPreferences.saveConnection(true);
+
+                    } catch (Exception E) {
+                        Log.e("Error handling",E.getMessage());
+                    }
                 }
             }
         });
 
     }
+
 
     //create method for starting connection
 //----------------------------------------------------------------------------Application wont crash------------------------------------------------------------------
@@ -266,7 +274,11 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
         mBluetoothConnection.startClient(device,uuid);
     }
 
-
+    public  void sendo1(){
+        byte[] bytei = senddata.getBytes(Charset.defaultCharset());
+        mBluetoothConnection.write(bytei);
+        sharedPreferences.saveConnection(true);
+    }
 
     public void enableDisableBT(){
 

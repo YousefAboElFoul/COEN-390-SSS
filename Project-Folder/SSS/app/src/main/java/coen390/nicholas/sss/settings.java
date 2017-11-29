@@ -137,14 +137,12 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
                 Toast.makeText(getApplicationContext(), "English selected.", Toast.LENGTH_SHORT).show();
                 languageTrack = 1;
                 sharePreferences.saveLanguage(1);
-                sharePreferences.saveState(spinner.onSaveInstanceState());
                 setText();
                 break;
             case 1:
                 Toast.makeText(getApplicationContext(), "French selected.", Toast.LENGTH_SHORT).show();
                 languageTrack = 2;
                 sharePreferences.saveLanguage(2);
-                sharePreferences.saveState(spinner.onSaveInstanceState());
                 setText();
                 break;
         }}
