@@ -252,6 +252,7 @@ public class testActivity extends AppCompatActivity
         }
         else
         {
+
             answer.setBackgroundColor(Color.argb(100, 200, 0, 0));
 
             reset();
