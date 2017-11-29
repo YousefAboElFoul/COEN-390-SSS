@@ -10,9 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Locale;
 import java.util.Random;
+import java.util.Date;
 
 public class wordPageActivity extends AppCompatActivity {
 
@@ -39,7 +41,7 @@ public class wordPageActivity extends AppCompatActivity {
 
     //----------To control word making-----------
     boolean word = false;
-    String wording;
+    String wording = "";
 
 
     //---------------------------------------Function for when the activity is created--------------------------------
@@ -146,7 +148,7 @@ public class wordPageActivity extends AppCompatActivity {
                 String begin = "BEGIN TRANSLATING";
                 if (sharePreferences.getLanguage() == 2){ begin = "COMMENCER LA TRANSLATION";}
                 getWord.setText(begin);
-                wording = null;
+                wording = "";
                 addLetter.setVisibility(View.INVISIBLE);
             } else {
                 word = true;
@@ -176,17 +178,19 @@ public class wordPageActivity extends AppCompatActivity {
                 sharePreferences.saveConnection(true);
             }
             //String letter = hash.getAlphabets(hashIndex);
-            /*Log.d(TAG, "IS the output being sent:" + BluetoothConnectionService.Print());
-           
+            Log.d(TAG, "IS the output being sent:" + BluetoothConnectionService.Print());
+
+            try {
+                Thread.sleep(4000);
+            }
+            catch (Exception e){e.printStackTrace();}
+
             String letter = BluetoothConnectionService.Print();
 
-            if (wording == null) {
-                wording = letter + "";
-            } else {
-                wording = wording + letter;
-            }
+            wording = wording + letter;
 
-            showText.setText(wording);*/
+
+            showText.setText(wording);
         }
         else {setNoConnection();}
    }
