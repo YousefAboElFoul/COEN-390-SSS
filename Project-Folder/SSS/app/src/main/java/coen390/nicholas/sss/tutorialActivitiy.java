@@ -2,11 +2,10 @@ package coen390.nicholas.sss;
 
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import coen390.nicholas.sss.quizTracking;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -72,7 +71,7 @@ public class tutorialActivitiy extends AppCompatActivity
         }
         else {
             quiz1 = new quizTracking(1, "Pratique l'alphabet");
-            quiz2 = new quizTracking(2, "Competition contre 10 lettres");
+            quiz2 = new quizTracking(2, "Compétition contre 10 lettres");
             quiz3 = new quizTracking(3, "Peux-tu battres des mots...");
         }
 

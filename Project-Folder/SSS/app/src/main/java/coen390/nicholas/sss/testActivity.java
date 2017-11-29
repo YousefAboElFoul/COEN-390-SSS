@@ -252,7 +252,10 @@ public class testActivity extends AppCompatActivity
         }
         else
         {
+
             answer.setBackgroundColor(Color.argb(100, 200, 0, 0));
+            if (ans.equals("CONNECTEZ AVEC BLUETOOTH") || ans.equals("CONNECT TO BLUETOOTH") ){answer.setBackgroundColor(Color.argb(0, 0, 0, 0));}
+
 
             reset();
         }
