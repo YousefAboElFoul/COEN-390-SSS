@@ -105,6 +105,7 @@ public class help extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
                 final ImageView imageView = (ImageView) findViewById(R.id.helpImage);
+                imageView.setVisibility(View.VISIBLE);
                 switch (position)
                 {
                     case 0: //case A
