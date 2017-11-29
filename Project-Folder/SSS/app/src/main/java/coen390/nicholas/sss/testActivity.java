@@ -11,12 +11,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.nio.charset.Charset;
 import java.util.Locale;
 import java.util.Random;
 
 public class testActivity extends AppCompatActivity
 {
     //-------------------------------------------Necessary Variables------------------------------------------
+    sharedPreference sharePreferences;
+    String send1 ="1";
+    byte[] bytes;
+
     //Layout Variable
     TextView lvlShow;
     TextView question;
@@ -41,6 +46,9 @@ public class testActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+
+        bytes = send1.getBytes(Charset.defaultCharset());
+        sharePreferences = new sharedPreference(this);
 
         if (tutorialActivitiy.getLanguage() == 2) {
             speaking = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
@@ -181,14 +189,13 @@ public class testActivity extends AppCompatActivity
     {
         answer.setBackgroundColor(Color.TRANSPARENT);
 
-        //count++;
-        //while (count != 2) {
-            //String letter = BluetoothConnectionService.Print();
-        //}
         if (receivingAnswer) {
-            letterAns += theQuestion;
+            letterAns += addLetter();
             answer.setText(letterAns);
-            receivingAnswer = false;
+            if(theQuestion.length() <= letterAns.length())
+            {
+                receivingAnswer = false;
+            }
         }
         else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -201,6 +208,27 @@ public class testActivity extends AppCompatActivity
         }
     }
 
+    public String addLetter()
+    {
+        if (sharePreferences.getConnection()) {
+            if (Bluetooth.mBTDevice ==  null) {
+                sharePreferences.saveConnection(false);
+            }
+            else{
+                Bluetooth.mBluetoothConnection.write(bytes);
+                sharePreferences.saveConnection(true);
+            }
+
+            try {
+                Thread.sleep(2500);
+            }
+            catch (Exception e){e.printStackTrace();}
+
+            return BluetoothConnectionService.Print();
+
+        }
+        else {if (tutorialActivitiy.getLanguage() == 2){return "CONNECTEZ AVEC BLUETOOTH";} return "CONNECT TO BLUETOOTH";}
+    }
     //--------------------------------------Function to check if answer is corrected------------------------------------------
     public void checkQ(String ans)
     {
@@ -225,7 +253,8 @@ public class testActivity extends AppCompatActivity
         else
         {
             answer.setBackgroundColor(Color.argb(100, 200, 0, 0));
-            //reset();
+
+            reset();
         }
     }
 
@@ -235,8 +264,13 @@ public class testActivity extends AppCompatActivity
         receivingAnswer = true;
         letterAns = "";
         nextQ.setVisibility(View.INVISIBLE);
+        try {
+            Thread.sleep(500);
+        }
+        catch (Exception e)
+        {e.printStackTrace();}
         answer.setText("");
-        answer.setBackgroundColor(Color.TRANSPARENT);
+
     }
 
     //---------------------------------------Function to set the game as complete----------------------------------------

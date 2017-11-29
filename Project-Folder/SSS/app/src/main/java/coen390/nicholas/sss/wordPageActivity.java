@@ -10,9 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Locale;
 import java.util.Random;
+import java.util.Date;
 
 public class wordPageActivity extends AppCompatActivity {
 
@@ -29,8 +31,6 @@ public class wordPageActivity extends AppCompatActivity {
     Button getWord = null;
     Button addLetter = null;
 
-
-
     //--------to LOG textPage events-----------
     protected static final String TAG = "textActivity";
 
@@ -39,7 +39,7 @@ public class wordPageActivity extends AppCompatActivity {
 
     //----------To control word making-----------
     boolean word = false;
-    String wording;
+    String wording = "";
 
 
     //---------------------------------------Function for when the activity is created--------------------------------
@@ -146,7 +146,7 @@ public class wordPageActivity extends AppCompatActivity {
                 String begin = "BEGIN TRANSLATING";
                 if (sharePreferences.getLanguage() == 2){ begin = "COMMENCER LA TRANSLATION";}
                 getWord.setText(begin);
-                wording = null;
+                wording = "";
                 addLetter.setVisibility(View.INVISIBLE);
             } else {
                 word = true;
@@ -162,6 +162,7 @@ public class wordPageActivity extends AppCompatActivity {
 
     public void addToWord(View view)
     {
+
         if (sharePreferences.getConnection()) {
             //-------Generate a random number from 1-26 for the indexes--------
             //Random rndIndex = new Random();
@@ -170,23 +171,30 @@ public class wordPageActivity extends AppCompatActivity {
             if (Bluetooth.mBTDevice ==  null) {
                 Log.d(TAG, "No Connection is established.....");
                 sharePreferences.saveConnection(false);
+                setNoConnection();
             }
             else{
                 Bluetooth.mBluetoothConnection.write(bytes);
-                sharePreferences.saveConnection(true);
-            }
-            //String letter = hash.getAlphabets(hashIndex);
-            /*Log.d(TAG, "IS the output being sent:" + BluetoothConnectionService.Print());
-           
-            String letter = BluetoothConnectionService.Print();
+                if (BluetoothConnectionService.getConnect())
+                {
+                    sharePreferences.saveConnection(true);
+                    //String letter = hash.getAlphabets(hashIndex);
+                    Log.d(TAG, "IS the output being sent:" + BluetoothConnectionService.Print());
 
-            if (wording == null) {
-                wording = letter + "";
-            } else {
-                wording = wording + letter;
-            }
+                    try {
+                        Thread.sleep(2500);
+                    }
+                    catch (Exception e){e.printStackTrace();}
 
-            showText.setText(wording);*/
+                    String letter = BluetoothConnectionService.Print();
+
+                    wording = wording + letter;
+
+
+                    showText.setText(wording);}
+
+                else {setNoConnection();}
+            }
         }
         else {setNoConnection();}
    }

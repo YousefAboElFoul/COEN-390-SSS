@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,7 +15,8 @@ import java.nio.charset.Charset;
 import java.util.UUID;
 
 public class BluetoothConnectionService {
-    Boolean connected = false;
+    private Boolean connected = false;
+    private static Boolean connect;
 
     private static final String TAG = "BluetoothConnectionServ";
     private  static String Incoming;
@@ -273,11 +275,13 @@ public class BluetoothConnectionService {
             String text = new String(bytes, Charset.defaultCharset());
             Log.d(TAG, "write: Writing to outputstream: " + text);
             try {
-                mmOutStream.write(bytes);
+                mmOutStream.write(bytes); connect = true;
             } catch (IOException e) {
                 Log.e(TAG, "write: Error writing to output stream. " + e.getMessage() );
+                mmDevice = null; connect = false;
             }
         }
+
 
         /* Call this from the main activity to shutdown the connection */
         public void cancel() {
@@ -287,6 +291,8 @@ public class BluetoothConnectionService {
             } catch (IOException e) { }
         }
     }
+
+    public static boolean getConnect(){return connect;}
 
     private void connected(BluetoothSocket mmSocket, BluetoothDevice mmDevice) {
         Log.d(TAG, "connected: Starting.");
