@@ -81,8 +81,8 @@ public class BluetoothConnectionService {
             }catch (IOException e){
                 Log.e(TAG, "AcceptThread: IOException: " + e.getMessage() );
             }catch (Exception E){
-                //elimanted by halloweenhunter
-                Log.e(TAG, "AcceptThread: General Exception: " + E.getMessage() );
+                //elimanted by hallowhunter
+                Log.e(TAG, "AcceptThread: IOException: " + E.getMessage() );
             }
 
             //talk about this is in the 3rd

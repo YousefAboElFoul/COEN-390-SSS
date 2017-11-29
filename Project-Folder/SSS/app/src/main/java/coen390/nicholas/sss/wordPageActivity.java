@@ -18,8 +18,8 @@ public class wordPageActivity extends AppCompatActivity {
 
     BluetoothConnectionService mmo;
 
-    String send1 ="1";
-    byte[] bytes = send1.getBytes(Charset.defaultCharset());
+    Bluetooth bb;
+
     //--------------------------------------------Declaring variables----------------------------------------------
     sharedPreference sharePreferences;
     //-------for objects needed in the activity-------
@@ -27,6 +27,8 @@ public class wordPageActivity extends AppCompatActivity {
     TextView showText = null;
     Button getWord = null;
     Button addLetter = null;
+
+
 
     //--------to LOG textPage events-----------
     protected static final String TAG = "textActivity";
@@ -157,21 +159,33 @@ public class wordPageActivity extends AppCompatActivity {
     }
 
     public void addToWord(View view)
+
     {
         if (sharePreferences.getConnection()) {
             //-------Generate a random number from 1-26 for the indexes---------
-            Random rndIndex = new Random();
-            int hashIndex = rndIndex.nextInt(26) + 1;
-
+          //  Random rndIndex = new Random();
+ //           int hashIndex = rndIndex.nextInt(26) + 1;
+            Log.d(TAG,"before sending");
             //------------------------------------------------------------------------
-            addLetter.setOnClickListener( new View.OnClickListener() {
-                 @Override
-                 public void onClick(View v) {
-                                        mmo.write(bytes);
-                                    }
-             });
+            addLetter.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try{
+
+                        Log.d(TAG,"We are sending");
+
+                        System.out.println("HEYYYYYYYYYYYYYYYyyyy");
+                        bb.sendo1();
+
+                        Log.d(TAG,"We SENTOOOOOOOOOOOOOOOOOOOOOOOO");
+                    }
+                    catch(Exception E){
+
+                    }
+                }
+            });
             //String letter = hash.getAlphabets(hashIndex);
-            Log.d(TAG, "IS the output being sent:" + BluetoothConnectionService.Print());
+          /*  Log.d(TAG, "IS the output being sent:" + BluetoothConnectionService.Print());
             String letter = BluetoothConnectionService.Print();
 
             if (wording == null) {
@@ -182,8 +196,8 @@ public class wordPageActivity extends AppCompatActivity {
 
             showText.setText(wording);
         }
-        else {setNoConnection();}
-    }
+        else {setNoConnection();}*/
+        }}
 
     //-------------------------------------Function for getting and outputting a letter----------------------------------------
     //potential to customize our own voice:

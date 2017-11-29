@@ -2,12 +2,12 @@ package coen390.nicholas.sss;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Parcelable;
+
 
 public class sharedPreference {
 
-    Parcelable state;
 
+    BluetoothConnectionService mBluetooth;
     private SharedPreferences sharedPreferences; //class object
 
     //constructor
@@ -38,9 +38,8 @@ public class sharedPreference {
 
     public int getLanguage() { return sharedPreferences.getInt("language", 1);}
 
-    public void saveState(Parcelable stat){
-        state = stat;
-    }
+    public void saveBluetooth(BluetoothConnectionService mBlue) { mBluetooth = mBlue;}
 
-    public Parcelable getState(){ return state;}
+    public BluetoothConnectionService getBluetooth(){return mBluetooth;}
+
 }
