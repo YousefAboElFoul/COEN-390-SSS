@@ -31,8 +31,6 @@ public class wordPageActivity extends AppCompatActivity {
     Button getWord = null;
     Button addLetter = null;
 
-
-
     //--------to LOG textPage events-----------
     protected static final String TAG = "textActivity";
 
@@ -181,7 +179,7 @@ public class wordPageActivity extends AppCompatActivity {
             Log.d(TAG, "IS the output being sent:" + BluetoothConnectionService.Print());
 
             try {
-                Thread.sleep(4000);
+                Thread.sleep(2500);
             }
             catch (Exception e){e.printStackTrace();}
 
