@@ -239,9 +239,7 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
                         byte[] bytes = etSend.getBytes(Charset.defaultCharset());
                         mBluetoothConnection.write(bytes);
                         sharedPreferences.saveConnection(true);
-                        sharedPreferences.saveBluetooth(mBluetoothConnection);
 
-                        System.out.println(bytes+"HEYYYYYYYYYY2YYYYYyyyy");
                     } catch (Exception E) {
                         Log.e("Error handling",E.getMessage());
                     }
@@ -280,7 +278,6 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
         byte[] bytei = senddata.getBytes(Charset.defaultCharset());
         mBluetoothConnection.write(bytei);
         sharedPreferences.saveConnection(true);
-        sharedPreferences.saveBluetooth(mBluetoothConnection);
     }
 
     public void enableDisableBT(){
