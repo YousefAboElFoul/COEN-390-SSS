@@ -24,8 +24,9 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goHome"
-            android:text="H"
-            android:textColor="@color/colorAccent"/>
+            android:text="HOME"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/translationButton"
@@ -34,8 +35,9 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goTranslate"
-            android:text="C"
-            android:textColor="@color/colorAccent"/>
+            android:text="TALK"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/tutorialButton"
@@ -43,8 +45,9 @@
             android:layout_width="73dp"
             android:layout_height="61dp"
             android:background="@color/background_grayish"
+            android:text="TUTORIAL"
             android:textColor="@android:color/holo_blue_bright"
-            android:text="T" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/helpButton"
@@ -53,8 +56,9 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goHelp"
-            android:text="!"
-            android:textColor="@color/colorAccent"/>
+            android:text="HELP"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/settingsButton"
@@ -63,8 +67,9 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goSettings"
-            android:text="S"
-            android:textColor="@color/colorAccent"/>
+            android:text="SETTINGS"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
