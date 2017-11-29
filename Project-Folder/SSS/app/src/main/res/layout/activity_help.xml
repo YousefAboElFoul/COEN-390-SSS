@@ -70,7 +70,8 @@
             android:background="@color/background_grayish"
             android:onClick="goHome"
             android:text="HOME"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/translationButton"
@@ -80,7 +81,8 @@
             android:background="@color/background_grayish"
             android:onClick="goTranslate"
             android:text="TALK"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/tutorialButton"
@@ -90,7 +92,8 @@
             android:background="@color/background_grayish"
             android:onClick="goTutorial"
             android:text="TUTORIAL"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/helpButton"
@@ -99,7 +102,8 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:text="HELP"
-            android:textColor="@android:color/holo_blue_bright" />
+            android:textColor="@android:color/holo_blue_bright"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/settingsButton"
@@ -109,7 +113,8 @@
             android:background="@color/background_grayish"
             android:onClick="goSettings"
             android:text="Settings"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
