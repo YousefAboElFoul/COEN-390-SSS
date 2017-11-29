@@ -38,9 +38,4 @@ public class sharedPreference {
 
     public int getLanguage() { return sharedPreferences.getInt("language", 1);}
 
-    public void saveState(Parcelable stat){
-        state = stat;
-    }
-
-    public Parcelable getState(){ return state;}
 }
