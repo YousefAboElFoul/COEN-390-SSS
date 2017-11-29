@@ -12,10 +12,6 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     //--------------------------------------------Declaring variables----------------------------------------------
-    //-------for objects needed in the home page-------
-    TextView title = null;
-    TextView hello = null;
-
     //--------to LOG mainActivity events-----------
     protected static final String TAG = "MainActivity";
 
@@ -25,15 +21,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "The onCreate() event");
-        setupUI();
-    }
-
-    //---------------------------Function that links the objects to their xml definitions-----------------------------
-    protected void setupUI() {
-        title = (TextView) findViewById(R.id.Title);
-        hello = (TextView) findViewById(R.id.helloText);
-
-
     }
 
     //-----------------------------------Functions for when the user presses the items--------------------------------------

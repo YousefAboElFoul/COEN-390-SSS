@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/darkblue"
     tools:context="coen390.nicholas.sss.wordPageActivity">
 
     <TextView
@@ -14,25 +15,23 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:fontFamily="casual"
-        android:textAllCaps="false"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:text="hello"
+        android:textAppearance="@style/TextAppearance.AppCompat"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.074" />
+        app:layout_constraintVertical_bias="0.153" />
 
     <Button
         android:id="@+id/getWord"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="59dp"
+        android:layout_marginTop="73dp"
         android:onClick="makingWord"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -47,7 +46,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:textAlignment="center"
-        android:textColor="@android:color/holo_orange_dark"
+        android:textColor="@color/bright_bluegreen"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.516"
@@ -58,6 +57,7 @@
 
     <Button
         android:id="@+id/addLetter"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -74,11 +74,12 @@
     <LinearLayout
         android:layout_width="364dp"
         android:layout_height="87dp"
-        android:layout_marginTop="503dp"
+        android:layout_marginTop="-3dp"
         android:gravity="start"
         android:orientation="horizontal"
         android:weightSum="100"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="-2dp">
 
         <Button
             android:id="@+id/homeButton"
@@ -87,8 +88,9 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goHome"
-            android:text="H"
-            android:textColor="@color/colorAccent"/>
+            android:text="HOME"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/translationButton"
@@ -96,8 +98,9 @@
             android:layout_width="73dp"
             android:layout_height="61dp"
             android:background="@color/background_grayish"
+            android:text="TALK"
             android:textColor="@android:color/holo_blue_bright"
-            android:text="C" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/tutorialButton"
@@ -106,8 +109,9 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goTutorial"
-            android:text="T"
-            android:textColor="@color/colorAccent"/>
+            android:text="TUTORIAL"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/helpButton"
@@ -116,8 +120,9 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goHelp"
-            android:text="!"
-            android:textColor="@color/colorAccent"/>
+            android:text="HELP"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/settingsButton"
@@ -126,7 +131,8 @@
             android:layout_height="61dp"
             android:background="@color/background_grayish"
             android:onClick="goSettings"
-            android:text="S"
-            android:textColor="@color/colorAccent"/>
+            android:text="SETTINGS"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
