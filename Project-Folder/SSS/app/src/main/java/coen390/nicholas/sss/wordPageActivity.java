@@ -138,7 +138,7 @@ public class wordPageActivity extends AppCompatActivity {
         if (sharePreferences.getConnection()) {
             //make bool variable false if its true, and true if its false
             if (word) {
-                if (settings.getVoiceOption()) {
+                if (sharePreferences.getVoiceOut()) {
                     voiceWord();
                 }
 

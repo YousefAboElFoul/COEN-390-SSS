@@ -24,6 +24,7 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
     TextView bluetoothSelection = null;
     private Spinner spinner;
     Button btn;
+    CheckBox check;
 
     //----------options for language-------------
     private static final String[]paths = {"Select","English", "Français"};
@@ -32,7 +33,6 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
     //------------track variables----------------
     private static int languageTrack = 1;
     private static boolean voice = true;
-    Parcelable state;
 
     //--------to LOG textPage events-----------
     protected static final String TAG = "settingsActivity";
@@ -48,6 +48,7 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
         sharePreferences = new sharedPreference(this);
 
         languageTrack = sharePreferences.getLanguage();
+        voice = sharePreferences.getVoiceOut();
 
         initialStart = true;
 
@@ -63,6 +64,8 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
         bluetoothSelection = (TextView) findViewById(R.id.bluetooth_calibration);
         btn = (Button) findViewById(R.id.button_gotobluetooth);
         spinner = (Spinner)findViewById(R.id.spinner);
+        check = (CheckBox) findViewById(R.id.checkBoxVoice);
+        check.setChecked(voice);
 
         setText();
         setSpinner();
@@ -122,6 +125,7 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
         switch (view.getId()) {
             case R.id.checkBoxVoice:
                 voice = checked;
+                sharePreferences.voiceOut(voice);
                 break;
         }
     }

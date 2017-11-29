@@ -198,11 +198,14 @@ public class testActivity extends AppCompatActivity
             }
         }
         else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                speaking.speak(letterAns, TextToSpeech.QUEUE_FLUSH, null, null);
-            }
-            else {
-                speaking.speak(letterAns, TextToSpeech.QUEUE_FLUSH, null);
+            if (sharePreferences.getVoiceOut())
+            {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    speaking.speak(letterAns, TextToSpeech.QUEUE_FLUSH, null, null);
+                }
+                else {
+                    speaking.speak(letterAns, TextToSpeech.QUEUE_FLUSH, null);
+                }
             }
             checkQ(letterAns);
         }

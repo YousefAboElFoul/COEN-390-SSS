@@ -38,6 +38,18 @@ public class sharedPreference {
 
     public int getLanguage() { return sharedPreferences.getInt("language", 1);}
 
+    public void voiceOut(Boolean voice)
+    {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("voice",voice);
+        editor.apply();
+    }
+    //function to get the name
+    public boolean getVoiceOut()
+    {
+        return sharedPreferences.getBoolean("voice", true);
+    }
+
     public void isOn(Boolean on)
     {
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -50,6 +62,7 @@ public class sharedPreference {
         return sharedPreferences.getBoolean("on", false);
     }
 
+    /*
     public void nmbC1(int score)
     {
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -75,5 +88,5 @@ public class sharedPreference {
         editor.apply();
     }
 
-    public int getSC3(){ return sharedPreferences.getInt("score3", 0);}
+    public int getSC3(){ return sharedPreferences.getInt("score3", 0);}*/
 }
