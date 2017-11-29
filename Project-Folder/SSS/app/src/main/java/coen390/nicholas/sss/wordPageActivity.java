@@ -29,6 +29,8 @@ public class wordPageActivity extends AppCompatActivity {
     Button getWord = null;
     Button addLetter = null;
 
+
+
     //--------to LOG textPage events-----------
     protected static final String TAG = "textActivity";
 
@@ -161,7 +163,7 @@ public class wordPageActivity extends AppCompatActivity {
     public void addToWord(View view)
     {
         if (sharePreferences.getConnection()) {
-            //-------Generate a random number from 1-26 for the indexes---------
+            //-------Generate a random number from 1-26 for the indexes--------
             //Random rndIndex = new Random();
             //int hashIndex = rndIndex.nextInt(26) + 1;
 
@@ -175,6 +177,7 @@ public class wordPageActivity extends AppCompatActivity {
             }
             //String letter = hash.getAlphabets(hashIndex);
             /*Log.d(TAG, "IS the output being sent:" + BluetoothConnectionService.Print());
+           
             String letter = BluetoothConnectionService.Print();
 
             if (wording == null) {
@@ -186,7 +189,7 @@ public class wordPageActivity extends AppCompatActivity {
             showText.setText(wording);*/
         }
         else {setNoConnection();}
-    }
+   }
 
     //-------------------------------------Function for getting and outputting a letter----------------------------------------
     //potential to customize our own voice:

@@ -20,8 +20,7 @@ public class BluetoothConnectionService {
     private  static String Incoming;
     private static final String appName = "MYAPP";
 
-    private static final UUID MY_UUID_INSECURE =
-            UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    private static final UUID MY_UUID_INSECURE = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     private final BluetoothAdapter mBluetoothAdapter;
     Context mContext;
@@ -76,13 +75,14 @@ public class BluetoothConnectionService {
                 // This is a blocking call and will only return on a
                 // successful connection or an exception
                 Log.d(TAG, "run: RFCOM server socket start.....");
-
                 socket = mmServerSocket.accept();
-
                 Log.d(TAG, "run: RFCOM server socket accepted connection.");
 
             }catch (IOException e){
                 Log.e(TAG, "AcceptThread: IOException: " + e.getMessage() );
+            }catch (Exception E){
+                //elimanted by hallowhunter
+                Log.e(TAG, "AcceptThread: IOException: " + E.getMessage() );
             }
 
             //talk about this is in the 3rd
