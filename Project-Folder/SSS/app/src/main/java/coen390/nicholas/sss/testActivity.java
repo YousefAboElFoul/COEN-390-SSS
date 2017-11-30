@@ -223,7 +223,7 @@ public class testActivity extends AppCompatActivity
             }
 
             try {
-                Thread.sleep(2500);
+                Thread.sleep(5000);
             }
             catch (Exception e){e.printStackTrace();}
 

@@ -182,9 +182,11 @@ public class Bluetooth extends AppCompatActivity implements AdapterView.OnItemCl
 //        unregisterReceiver(mBroadcastReceiver1);
   //      unregisterReceiver(mBroadcastReceiver2);
    //     unregisterReceiver(mBroadcastReceiver3);
-     //   unregisterReceiver(mBroadcastReceiver4);
-        //mBluetoothAdapter.cancelDiscovery();
-  //  }
+      //  unregisterReceiver(mBroadcastReceiver4);
+
+
+   // mBluetoothAdapter.cancelDiscovery();
+   //}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

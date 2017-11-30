@@ -182,7 +182,7 @@ public class wordPageActivity extends AppCompatActivity {
                     Log.d(TAG, "IS the output being sent:" + BluetoothConnectionService.Print());
 
                     try {
-                        Thread.sleep(2500);
+                        Thread.sleep(5000);
                     }
                     catch (Exception e){e.printStackTrace();}
 
