@@ -1,10 +1,4 @@
-/*
 
-  Sign Language Translator, Made with Arduino, Inspired by Jeremy Blum
-  http://romanakozak.com/sign-language-translator/
-  Project by: Roman Kozak
-  Spring 2013
-*/
 
 // These constants won't change:
 const int sensorPinTHUMB = A0;    // pin that the THUMB flex sensor is attached to
